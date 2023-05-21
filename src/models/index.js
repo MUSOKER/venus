@@ -1,5 +1,11 @@
-const ProjectModel = require('./projects.model');
+const UserModel = require('./user.model');
+const AddressModel = require('./address.model');
+const AdminModel = require('./admin.model');
+const UserIndentificationSchema = require('./user_identification.model');
 
 module.exports = {
-    ProjectModel
+  UserModel,
+  AddressModel,
+  AdminModel,
+  UserIndentificationSchema,
 };
