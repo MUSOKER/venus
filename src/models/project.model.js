@@ -2,6 +2,9 @@ const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 
+const { PROJECT_STATUS } = require('../const');
+const { PROJECT_VISIBILITY } = require('../const');
+
 const projectSchema = new Schema({
   projectTitle: {
     type: String,
@@ -30,16 +33,16 @@ const projectSchema = new Schema({
     type: String,
   },
   status: {
-    type: String,
-    enum: ['pending', 'in-progress', 'completed', 'to-do'],
+    type: Number,
+    enum: [PROJECT_STATUS.pending, PROJECT_STATUS.in_progress, PROJECT_STATUS.completed, PROJECT_STATUS.to_do],
     required: true,
   },
   visibility: {
-    type: String,
-    enum: ['public', 'private'],
+    type: Number,
+    enum: [PROJECT_VISIBILITY.public, PROJECT_VISIBILITY.private],
     required: true,
   },
-  category: { type: Schema.Types.ObjectId, ref: 'category', required: true },
+  category_ids: { type: Schema.Types.ObjectId, ref: 'category', required: true },
   comments: {
     type: Array,
   },
