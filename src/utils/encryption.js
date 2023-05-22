@@ -1,8 +1,9 @@
 const crypto = require('crypto');
 
-const encryption = async ({ payload }) => {
+const encryption = async (payload) => {
+  const data = payload.toString();
   const hash = crypto.createHash('sha256');
-  hash.update(payload);
+  hash.update(data);
   return hash.digest('hex');
 };
 

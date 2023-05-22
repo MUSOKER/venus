@@ -6,6 +6,7 @@ const userIdentificationSchema = new Schema({
   id: {
     type: String,
     required: true,
+    maxlength: 500,
     index: true,
   },
   password: {

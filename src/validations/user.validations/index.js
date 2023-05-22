@@ -1,4 +1,4 @@
-const { validateSignUp } = require('./register.user.validations');
+const { validateSignUp } = require('./user.validations');
 const { userloginValidation } = require('./login.user.validations');
 
 module.exports = {
