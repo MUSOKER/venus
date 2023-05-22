@@ -21,10 +21,9 @@ const userSchema = new Schema({
   contactNo: {
     type: Number,
     index: true,
-    required: true,
     unique: true,
   },
-  addressId: { type: Schema.Types.ObjectId, ref: 'address', required: true },
+  addressId: { type: Schema.Types.ObjectId, ref: 'address' },
   profilePic: {
     type: String,
   },
