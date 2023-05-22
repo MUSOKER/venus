@@ -5,11 +5,9 @@ const validateSignUp = Joi.object().keys({
   fullName: enseedlingValidator.name.required().label('Full Name'),
   email: enseedlingValidator.email.required().label('Email'),
   contactNo: Joi.array().items(enseedlingValidator.phoneNo.required()).label('Contact Number'),
-  visibility: enseedlingValidator.generic.string.medium.required().label('Visibility'),
-  aadharNo: enseedlingValidator.generic.number.positive.required().label('Aadhar Number'),
-  panNo: enseedlingValidator.generic.string.small.required().label('Pan Number'),
-  password: enseedlingValidator.generic.string.any.required().label('Password'),
-  name: enseedlingValidator.generic.string.medium.required().label('Name'),
+  profilePic: enseedlingValidator.generic.string.medium.required().label('Profile Pic'),
+  skills: Joi.array().items(enseedlingValidator.generic.string.small).required().label('Skills'),
+  resume: enseedlingValidator.generic.string.small.required().label('Resume'),
   country: enseedlingValidator.generic.string.small.required().label('Country'),
   state: enseedlingValidator.generic.string.medium.required().label('State'),
   city: enseedlingValidator.generic.string.small.required().label('City'),
@@ -17,6 +15,9 @@ const validateSignUp = Joi.object().keys({
   pincode: enseedlingValidator.generic.string.small.required().label('Pincode'),
   landmark: enseedlingValidator.generic.string.any.required().label('Landmark'),
   street: enseedlingValidator.generic.string.medium.label('Street'),
+  is_active: enseedlingValidator.generic.boolean.valid(true, false).label('Is Active'),
+  title: enseedlingValidator.generic.string.medium.label('Title'),
+  prefrences: Joi.array().items(enseedlingValidator.generic.string.small).required().label('Prefrence'),
 });
 
 module.exports = {
