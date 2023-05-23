@@ -4,7 +4,7 @@ const express = require('express');
 const cors = require('cors');
 // Import internal modules
 const { connectToMongoDb, environmentVariables } = require('./config');
-const apiRoutes = require('./routes');
+const apiRoutes = require('./routes/index');
 
 const app = express();
 
