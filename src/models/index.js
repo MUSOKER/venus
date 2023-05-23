@@ -13,5 +13,7 @@ module.exports = {
   AdminModel,
   UserIndentificationSchema,
   ProjectModel,
+  AppliedInternshipSchema,
+  PostedInternshipSchema,
   CategoryModel
 };
