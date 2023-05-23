@@ -15,7 +15,8 @@ const registerUser = async (req, res, next) => {
     const user = await userServices.getUserByEmail({ email });
     if (user) {
       // now check user is_verified or not
-      let userId = user._doc._id;
+      let userId = user._id;
+      // let userId = user._doc._id;
       // encrypt a user id
       userId = await encryption(userId);
       // now fetch user info from indentification a model
@@ -30,7 +31,7 @@ const registerUser = async (req, res, next) => {
           throw error.throwPreconditionFailed({ message: 'Server Issue! failed to register a user' });
         }
         // create a token
-        const token = await jwt.createToken({ userId: user._doc._id });
+        const token = await jwt.createToken({ userId: user._id });
         // send a mail
         await dispatcher({
           payload: {
@@ -56,7 +57,8 @@ const registerUser = async (req, res, next) => {
       }
       // encrypt a user Id
       // now save user Identification
-      let userId = user._doc._id;
+      let userId = user._id;
+      // let userId = user._doc._id;
       // encrypt a user id
       userId = await encryption(userId);
       const userIdentification = await userServices.createUserIdentification({
@@ -67,7 +69,7 @@ const registerUser = async (req, res, next) => {
         throw error.throwPreconditionFailed({ message: 'Server Issue! failed to register a user' });
       }
       // create a token
-      const token = await jwt.createToken({ userId: user._doc._id });
+      const token = await jwt.createToken({ userId: user._id });
       // now send a mail
       // send a mail
       await dispatcher({
