@@ -1,5 +1,13 @@
-const { addProjectValidation } = require('./project.validations');
+const {
+    addProjectValidation,
+    projectTitleValidation,
+    projectIdValidation,
+    userIdValidation,
+} = require('./project.validations');
 
 module.exports = {
-  addProjectValidation,
+    addProjectValidation,
+    projectTitleValidation,
+    projectIdValidation,
+    userIdValidation,
 };
