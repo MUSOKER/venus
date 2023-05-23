@@ -3,6 +3,7 @@ const {
     projectTitleValidation,
     projectIdValidation,
     userIdValidation,
+    projectStatusValidation,
 } = require('./project.validations');
 
 module.exports = {
@@ -10,4 +11,5 @@ module.exports = {
     projectTitleValidation,
     projectIdValidation,
     userIdValidation,
+    projectStatusValidation,
 };

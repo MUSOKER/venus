@@ -41,6 +41,27 @@ const fetchOneProjectById = async(req, res, next) => {
         await transaction.endSession();
     }
 };
+
+// fetching by project id
+const fetchProjectsByStatus = async(req, res, next) => {
+    const transaction = await Transaction.startSession();
+    try {
+        await transaction.startTransaction();
+        const id = await projectValidation.projectStatusValidation.validateAsync(req.params.id);
+        // check user exits or not
+        const project = await projectServices.getProjectById({ id });
+        if (!project) {
+            throw error.throwNotFound({ message: 'Project' });
+        }
+        return success.handler({ project: project }, req, res, next);
+    } catch (err) {
+        await transaction.abortTransaction();
+        return error.handler(err, req, res, next);
+    } finally {
+        await transaction.endSession();
+    }
+};
+
 // fetching by project title
 const fetchOneProjectByTitle = async(req, res, next) => {
     const transaction = await Transaction.startSession();
@@ -62,13 +83,13 @@ const fetchOneProjectByTitle = async(req, res, next) => {
 };
 
 // fetching projects by userid
-const fetchProjectByUser = async(req, res, next) => {
+const fetchProjectsByUserId = async(req, res, next) => {
     const transaction = await Transaction.startSession();
     try {
         await transaction.startTransaction();
-        const user = await projectValidation.userIdValidation.validateAsync(req.params.userid);
+        const userId = await projectValidation.userIdValidation.validateAsync(req.params.userid);
         // check user exits or not
-        const projects = await projectServices.getProjectByTitle({ user });
+        const projects = await projectServices.getProjectsByUserId({ userId });
         if (!projects) {
             throw error.throwNotFound({ message: 'Project' });
         }
@@ -85,5 +106,6 @@ module.exports = {
     fetchAllProjects,
     fetchOneProjectById,
     fetchOneProjectByTitle,
-    fetchProjectByUser,
+    fetchProjectsByUserId,
+    fetchProjectsByStatus,
 };

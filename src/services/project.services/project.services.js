@@ -8,11 +8,13 @@ const getProjectById = async({ id }) => ProjectModel.findOne({ id });
 // Fetching project by the project title
 const getProjectByTitle = async({ title }) => ProjectModel.findOne({ title });
 // Fetching projects by status
-const getProjectByStatus = async({ status }) => ProjectModel.findOne({ status });
+const getProjectsByStatus = async({ status }) => ProjectModel.findAll({ status });
+const getProjectsByUserId = async({ userId }) => ProjectModel.findAll({ userId });
 
 module.exports = {
     getAllProjects,
     getProjectById,
     getProjectByTitle,
-    getProjectByStatus,
+    getProjectsByStatus,
+    getProjectsByUserId,
 };

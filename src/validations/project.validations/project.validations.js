@@ -28,9 +28,14 @@ const projectIdValidation = Joi.object().keys({
 const userIdValidation = Joi.object().keys({
     userId: enseedlingValidator._id.required()
 });
+const projectStatusValidation = Joi.object().keys({
+    status: enseedlingValidator.generic.number.integer.valid(PROJECT_STATUS.pending, PROJECT_STATUS.in_progress, PROJECT_STATUS.completed, PROJECT_STATUS.to_do)
+});
+
 module.exports = {
     addProjectValidation,
     projectTitleValidation,
     projectIdValidation,
     userIdValidation,
+    projectStatusValidation,
 };

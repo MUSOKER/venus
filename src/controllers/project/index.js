@@ -2,12 +2,14 @@ const {
     fetchAllProjects,
     fetchOneProjectById,
     fetchOneProjectByTitle,
-    fetchProjectByUser,
+    fetchProjectsByUserId,
+    fetchProjectsByStatus,
 } = require('./project.controllers');
 
 module.exports = {
     fetchAllProjects,
     fetchOneProjectById,
     fetchOneProjectByTitle,
-    fetchProjectByUser,
+    fetchProjectsByUserId,
+    fetchProjectsByStatus,
 };
