@@ -8,7 +8,7 @@ const internshipRoutes = require('./internship.routes/index.js');
 const apiRoutes = express.Router();
 
 apiRoutes.use('/user', userRoutes);
-apiRoutes.use('internship',internshipRoutes)
+apiRoutes.use('internship', internshipRoutes)
 
 apiRoutes.use('*', () => error.throwNotFound({ item: 'Route' }));
 
