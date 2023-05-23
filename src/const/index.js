@@ -1,7 +1,6 @@
 const OTP = require('./otp.const');
-
-const PROJECT_STATUS = ('./projectStatus.const');
-const PROJECT_VISIBILITY = ('./projectVisibility.const');
+const PROJECT_STATUS = require('./projectStatus.const');
+const PROJECT_VISIBILITY = require('./projectVisibility.const');
 
 module.exports = {
   OTP,
