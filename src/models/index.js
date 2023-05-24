@@ -4,6 +4,7 @@ const AdminModel = require('./admin.model');
 const UserIndentificationSchema = require('./user_identification.model');
 const ProjectModel = require('./project.model');
 const CategoryModel = require('./category.model');
+const CourseModel = require('./course.model');
 
 module.exports = {
   UserModel,
@@ -11,5 +12,6 @@ module.exports = {
   AdminModel,
   UserIndentificationSchema,
   ProjectModel,
-  CategoryModel
+  CategoryModel,
+  CourseModel,
 };
