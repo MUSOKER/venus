@@ -3,7 +3,7 @@ const Joi = require('joi');
 const { PROJECT_STATUS } = require('../../const');
 const { PROJECT_VISIBILITY } = require('../../const');
 
-const addProjectValidation = Joi.object().keys({
+const addCoursetValidation = Joi.object().keys({
     comments: Joi.array()
         .items(enseedlingValidator.generic.string.any)
         .label('Comments'),
@@ -19,20 +19,8 @@ const addProjectValidation = Joi.object().keys({
     category_ids: enseedlingValidator._id.required().label('Category'),
     userId: enseedlingValidator._id.required().label('User Id'),
 });
-const projectTitleValidation = Joi.object().keys({
-    title: enseedlingValidator.generic.string.any.required()
-});
-const projectIdValidations = Joi.object().keys({
-    id: enseedlingValidator._id.required()
-});
-const userIdValidation = Joi.object().keys({
-    userId: enseedlingValidator._id.required()
-});
-const projectStatusValidation = Joi.object().keys({
-    status: enseedlingValidator.generic.number.integer.valid(PROJECT_STATUS.pending, PROJECT_STATUS.in_progress, PROJECT_STATUS.completed, PROJECT_STATUS.to_do)
-});
 
-const updateProjectValidation = Joi.object().keys({
+const updateCourseValidation = Joi.object().keys({
     comments: Joi.array()
         .items(enseedlingValidator.generic.string.any)
         .label('Comments'),
@@ -49,20 +37,8 @@ const updateProjectValidation = Joi.object().keys({
     userId: enseedlingValidator._id.label('User Id'),
 });
 
-const projectIdValidation = Joi.object().keys({
-    projectId: enseedlingValidator._id.required().label('Project Id'),
-    status: enseedlingValidator.generic.number.integer.valid(PROJECT_STATUS.pending, PROJECT_STATUS.in_progress, PROJECT_STATUS.completed, PROJECT_STATUS.to_do).label('Status'),
-    category_ids: enseedlingValidator._id.required().label('Category'),
-    userId: enseedlingValidator._id.required().label('User Id'),
-
-});
 
 module.exports = {
-    addProjectValidation,
-    projectTitleValidation,
-    projectIdValidations,
-    userIdValidation,
-    projectStatusValidation,
-    projectIdValidation,
-    updateProjectValidation,
+    addCoursetValidation,
+    updateCourseValidation,
 };

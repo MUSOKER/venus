@@ -4,6 +4,8 @@ const {
     getProjectByTitle,
     getProjectsByStatus,
     getProjectsByUserId,
+    createProject,
+    updateTheProject
 } = require('./project.services');
 
 module.exports = {
@@ -12,4 +14,6 @@ module.exports = {
     getProjectByTitle,
     getProjectsByStatus,
     getProjectsByUserId,
+    createProject,
+    updateTheProject,
 };

@@ -22,7 +22,8 @@ const createUserIdentification = async({ isUserVerified, id }, transaction) => {
     });
     const saveUserIdentification = await addUserIdentification.save({ transaction });
     return saveUserIdentification;
-};
+
+}
 
 module.exports = {
     getUserByEmail,

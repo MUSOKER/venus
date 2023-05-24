@@ -3,7 +3,6 @@ const { error } = require('@Enseedling/enseedling-lib-handler');
 const userRoutes = require('./user.routes.js');
 const projectRoutes = require('./project.routes.js');
 
-
 const apiRoutes = express.Router();
 
 apiRoutes.use('/user', userRoutes);
