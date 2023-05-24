@@ -82,7 +82,7 @@ const updateProject = async (req, res, next) => {
       comments,
       userId,
     });
-    return success.handler({ message: 'course update' }, req, res, next);
+    return success.handler({ message: 'course updated' }, req, res, next);
   } catch (err) {
     await transaction.abortTransaction();
     return error.handler(err, req, res, next);
