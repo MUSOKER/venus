@@ -1,33 +1,34 @@
-const { AppliedInternshipSchema, PostedInternshipModel, AppliedInternshipModel} = require("../../models");
+const { AppliedInternshipSchema, PostedInternshipModel, AppliedInternshipModel } = require('../../models');
 
-//Get posted Id
-const getPostedInternshipModel = async ({ id }) => PostedInternshipModel.findOne({ id });
+// Get posted internship by ID
+const getPostedInternshipById = async ({ id }) => PostedInternshipModel.findOne({ id });
 
-const getPostedInternshipById = async ({ id }) => AppliedInternshipSchema.findOne({ id });
+// Get applied internship by ID
+const getAppliedInternshipById = async ({ id }) => AppliedInternshipModel.findOne({ id });
 
-// apply internship
-
-const applyInternship = async(
+// Apply internship
+const applyInternship = async (
   {
-  userId,
-  internshipId,
-  selectionStatus,
-  additionalInformation
-
-  }, 
-  transaction
-) => {
-  const applyInternship = new applyInternship({
     userId,
     internshipId,
     selectionStatus,
-    additionalInformation
+    additionalInformation,
+  },
+  transaction,
+) => {
+  const appliedInternship = new AppliedInternshipSchema({
+    userId,
+    internshipId,
+    selectionStatus,
+    additionalInformation,
   });
-  const saveInternship = await applyInternship.save({ transaction });
+  const saveInternship = await appliedInternship.save({ transaction });
   return saveInternship;
 };
-//delete
-const deleteAppliedInternship = async ({id}) =>AppliedInternshipModel.findByIdAndDelete({id})
 
+// Delete applied internship
+const deleteAppliedInternship = async ({ id }) => AppliedInternshipModel.findByIdAndDelete(id);
 
-module.exports = {applyInternship, deleteAppliedInternship};
+module.exports = {
+  applyInternship, deleteAppliedInternship, getPostedInternshipById, getAppliedInternshipById,
+};

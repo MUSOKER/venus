@@ -15,5 +15,5 @@ module.exports = {
   ProjectModel,
   AppliedInternshipModel,
   PostedInternshipModel,
-  CategoryModel
+  CategoryModel,
 };

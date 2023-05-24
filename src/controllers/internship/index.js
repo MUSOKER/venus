@@ -1,7 +1,6 @@
-const {applyInternship } = require("./apply.Internship.controller.js");
-const {postInternship} = require("./post.internship.controller.js")
+const { applyInternship } = require('./apply.internship.controller');
 
 module.exports = {
-    applyInternship,
-    postInternship
-}
+  applyInternship,
+
+};
