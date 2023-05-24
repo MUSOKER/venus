@@ -25,7 +25,7 @@ const createUserIdentification = async ({ isUserVerified, id }, transaction) => 
 };
 
 // get user by userId
-const getUserByUserId = async ({ userId }) => UserModel.findById(userId).populate('address');
+const getUserByUserId = async ({ userId }) => UserModel.findById(userId).populate('addressId');
 
 module.exports = {
   getUserByEmail,

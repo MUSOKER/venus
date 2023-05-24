@@ -29,7 +29,7 @@ const verifyMagicLink = async (req, res, next) => {
     const token = await jwt.createToken({ userId: user._doc._id });
     res.set('token', token);
     // redirect a user to frontent url
-    return res.redircet('https://enseedling.com');
+    return res.redirect('https://enseedling.com');
   } catch (err) {
     return error.handler(err, req, res, next);
   }
