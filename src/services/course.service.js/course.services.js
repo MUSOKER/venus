@@ -2,6 +2,7 @@ const { CourseModel } = require('../../models');
 
 const createCourse = async({
     course_name,
+    comments,
     course_description,
     course_duration,
     course_rating,
@@ -18,6 +19,7 @@ const createCourse = async({
     meta_info,
 }) => CourseModel.create({
     course_name,
+    comments,
     course_description,
     course_duration,
     course_rating,
@@ -36,6 +38,7 @@ const createCourse = async({
 
 const updateTheCourse = async({
     course_name,
+
     course_description,
     course_duration,
     course_rating,
