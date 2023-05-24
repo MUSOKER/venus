@@ -27,7 +27,7 @@ const fetchOneProjectById = async(req, res, next) => {
     const transaction = await Transaction.startSession();
     try {
         await transaction.startTransaction();
-        const id = await projectValidation.projectIdValidation.validateAsync(req.params.id);
+        const id = await projectValidation.projectIdValidations.validateAsync(req.params.id);
         // check user exits or not
         const project = await projectServices.getProjectById({ id });
         if (!project) {

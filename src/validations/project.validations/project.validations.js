@@ -22,7 +22,7 @@ const addProjectValidation = Joi.object().keys({
 const projectTitleValidation = Joi.object().keys({
     title: enseedlingValidator.generic.string.any.required()
 });
-const projectIdValidation = Joi.object().keys({
+const projectIdValidations = Joi.object().keys({
     id: enseedlingValidator._id.required()
 });
 const userIdValidation = Joi.object().keys({
@@ -35,7 +35,7 @@ const projectStatusValidation = Joi.object().keys({
 module.exports = {
     addProjectValidation,
     projectTitleValidation,
-    projectIdValidation,
+    projectIdValidations,
     userIdValidation,
     projectStatusValidation,
 };
