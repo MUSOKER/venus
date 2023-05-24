@@ -24,7 +24,7 @@ const courseSchema = new Schema({
   },
   course_thumb_image: {
     type: String,
-    required:  true,
+    required: true,
   },
   course_state: {
     type: String,
@@ -52,18 +52,8 @@ const courseSchema = new Schema({
   capacity: {
     type: Number,
   },
-//   status: {
-//     type: String,
-//     enum: ['pending', 'in_progress', 'completed', 'to_do'],
-//     required: true,
-//   },
 
   createdBy: {
-    type: Schema.Types.ObjectId,
-    ref: 'user',
-    required: true,
-  },
-  instructorId: {
     type: Schema.Types.ObjectId,
     ref: 'user',
     required: true,
@@ -74,7 +64,7 @@ const courseSchema = new Schema({
   meta_info: {
     type: Array,
   },
-  is_Active: {
+  is_active: {
     type: Boolean,
     default: true,
   },

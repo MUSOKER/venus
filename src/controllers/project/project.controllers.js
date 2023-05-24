@@ -16,7 +16,7 @@ const addProject = async (req, res, next) => {
       projectMilestone,
       status,
       visibility,
-      // categoryIds,
+      categoryIds,
       comments,
       userId,
     } = await projectValidation.addProjectValidation.validateAsync(req.body);
@@ -31,7 +31,7 @@ const addProject = async (req, res, next) => {
       projectMilestone,
       status,
       visibility,
-      // categoryIds,
+      categoryIds,
       comments,
       userId,
     });
@@ -53,7 +53,7 @@ const updateProject = async (req, res, next) => {
       projectMilestone,
       status,
       visibility,
-      // categoryIds,
+      categoryIds,
       comments,
       userId,
     } = await projectValidation.updateProjectValidation.validateAsync(req.body);
@@ -69,11 +69,11 @@ const updateProject = async (req, res, next) => {
       projectMilestone,
       status,
       visibility,
-      // categoryIds,
+      categoryIds,
       comments,
       userId,
     });
-    return success.handler({ message: 'Project updated successfully' }, req, res, next);
+    return success.handler({ updateProject }, req, res, next);
   } catch (err) {
     return error.handler(err, req, res, next);
   }
