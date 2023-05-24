@@ -4,22 +4,22 @@ const { Schema } = mongoose;
 
 const appliedInternshipSchema = new Schema(
   {
-    user_id: {
+    userId: {
       type: Schema.Types.ObjectId,
       ref: 'users',
       required: true,
     },
-    internship_id: {
+    internshipId: {
       type: Schema.Types.ObjectId,
       ref: 'PostedInternship',
       required: true,
     },
-    selection_status: {
+    selectionStatus: {
       type: String,
       enum: ['Hired', 'Rejected', 'Shortlisted','pending'],
       default: 'Pending',
     },
-    additional_information: {
+    additionalInformation: {
       type: String,
     },
 
@@ -29,6 +29,6 @@ const appliedInternshipSchema = new Schema(
   },
 );
 
-const AppliedInternship = mongoose.model('AppliedInternship', appliedInternshipSchema);
+const AppliedInternshipModel = mongoose.model('AppliedInternship', appliedInternshipSchema);
 
-module.exports = AppliedInternship;
+module.exports = AppliedInternshipModel;

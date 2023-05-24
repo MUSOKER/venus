@@ -76,9 +76,9 @@ const postedInternshipSchema = new Schema(
   }
 );
 
-const PostedInternship = mongoose.model(
+const PostedInternshipModel = mongoose.model(
   "PostedInternship",
   postedInternshipSchema
 );
 
-module.exports = PostedInternship;
+module.exports = PostedInternshipModel;
