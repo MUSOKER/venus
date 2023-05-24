@@ -3,14 +3,17 @@ const { categoryControllers } = require('../../controllers');
 
 const getCategoryRoutes = express.Router();
 
-getCategoryRoutes.get('/all_categories', categoryControllers.getAllCategories);
+getCategoryRoutes.get(
+  '/all_categories',
+  categoryControllers.fetchAllCategories,
+);
 getCategoryRoutes.get(
   '/category/category_id',
-  categoryControllers.getCategoryById,
+  categoryControllers.fetchCategoryById,
 );
 getCategoryRoutes.get(
   '/category/category_name',
-  categoryControllers.getCategoryByName,
+  categoryControllers.fetchCategoryByName,
 );
 
 module.exports = {
