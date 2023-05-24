@@ -1,11 +1,15 @@
 const { error, success } = require('@Enseedling/enseedling-lib-handler');
 
+const { Transaction } = require('../../utils');
+
 const { projectValidation } = require('../../validations');
 
 const { projectServices } = require('../../services');
 
 const addProject = async (req, res, next) => {
+  const transaction = await Transaction.startSession();
   try {
+    await transaction.startTransaction();
     const {
       projectTitle,
       projectDescription,
@@ -37,12 +41,17 @@ const addProject = async (req, res, next) => {
     });
     return success.handler({ project }, req, res, next);
   } catch (err) {
+    await transaction.abortTransaction();
     return error.handler(err, req, res, next);
+  } finally {
+    await transaction.endSession();
   }
 };
 
 const updateProject = async (req, res, next) => {
+  const transaction = await Transaction.startSession();
   try {
+    await transaction.startTransaction();
     const {
       projectTitle,
       projectDescription,
@@ -73,9 +82,12 @@ const updateProject = async (req, res, next) => {
       comments,
       userId,
     });
-    return success.handler({ updateProject }, req, res, next);
+    return success.handler({ message: 'course update' }, req, res, next);
   } catch (err) {
+    await transaction.abortTransaction();
     return error.handler(err, req, res, next);
+  } finally {
+    await transaction.endSession();
   }
 };
 
