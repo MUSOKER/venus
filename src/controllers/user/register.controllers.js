@@ -43,7 +43,7 @@ const registerUser = async (req, res, next) => {
           },
         });
       } else {
-        throw error.throwPreconditionFailed({ message: 'User exist already with same email' }, req, res, next);
+        throw error.throwPreconditionFailed({ message: 'User exist already with same email' });
       }
     } else {
     // create a user and their identification then send a mail for verification
@@ -52,7 +52,7 @@ const registerUser = async (req, res, next) => {
         email,
       }, transaction);
       if (!addUser) {
-        throw error.throwPreconditionFailed({ message: 'Server Issued! Failed to register a user' }, req, res, next);
+        throw error.throwPreconditionFailed({ message: 'Server Issued! Failed to register a user' });
       }
       // encrypt a user Id
       // now save user Identification

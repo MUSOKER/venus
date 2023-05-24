@@ -1,7 +1,10 @@
 const { error, success } = require('@Enseedling/enseedling-lib-handler');
 const { userServices } = require('../../services');
-const { encryption, jwt, isOtpExpired } = require('../../utils');
+const {
+  encryption, jwt, isOtpExpired, Transaction,
+} = require('../../utils');
 const { userValidation } = require('../../validations');
+const { loginUser } = require('./login.controller');
 
 const verifyMagicLink = async (req, res, next) => {
   try {
@@ -68,7 +71,26 @@ const verifyOtp = async (req, res, next) => {
   }
 };
 
+// send verify link and otp again
+
+const resendOTP = async (req, res, next) => {
+  const transaction = await Transaction.startSession();
+  try {
+    await transaction.startTransaction();
+    const { email } = await userValidation.userloginValidation.validateAsync(req.body);
+    // login a user
+    const message = await loginUser({ email }, transaction);
+    return success.handler({ message }, req, res, next);
+  } catch (err) {
+    await transaction.abortTransaction();
+    return error.handler(err, req, res, next);
+  } finally {
+    await transaction.endSession();
+  }
+};
+
 module.exports = {
   verifyMagicLink,
   verifyOtp,
+  resendOTP,
 };
