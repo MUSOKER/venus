@@ -1,8 +1,9 @@
-const { UserModel, UserIndentificationSchema } = require('../../models');
+const { UserModel, UserIndentificationSchema } = require("../../models");
 
 const getUserByEmail = async ({ email }) => UserModel.findOne({ email });
 
-const getUserByIdFromIdentification = async ({ id }) => UserIndentificationSchema.findOne({ id });
+const getUserByIdFromIdentification = async ({ id }) =>
+  UserIndentificationSchema.findOne({ id });
 
 // create user
 const createUser = async ({ fullName, email }, transaction) => {
@@ -15,12 +16,17 @@ const createUser = async ({ fullName, email }, transaction) => {
 };
 
 // create user identification
-const createUserIdentification = async ({ isUserVerified, id }, transaction) => {
+const createUserIdentification = async (
+  { isUserVerified, id },
+  transaction
+) => {
   const addUserIdentification = new UserIndentificationSchema({
     is_user_verified: isUserVerified,
     id,
   });
-  const saveUserIdentification = await addUserIdentification.save({ transaction });
+  const saveUserIdentification = await addUserIdentification.save({
+    transaction,
+  });
   return saveUserIdentification;
 };
 
