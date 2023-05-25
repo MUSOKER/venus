@@ -24,7 +24,7 @@ const AssignmentSchema = new mongoose.Schema({
         required: true,
     },
     topics: [{
-        type: String,
+        type: Array,
         required: true,
     }],
     createdBy: {
@@ -46,6 +46,6 @@ const AssignmentSchema = new mongoose.Schema({
     },
 });
 
-const AssignmentsModel = mongoose.model('Assignments', AssignmentSchema);
+const AssignmentsModel = mongoose.model('assignments', AssignmentSchema);
 
 module.exports = AssignmentsModel;
