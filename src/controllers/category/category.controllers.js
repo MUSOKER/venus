@@ -39,8 +39,7 @@ const fetchCategoryById = async (req, res, next) => {
     const category = await categoryServices.getProjectById({ id });
     if (!category) {
       throw error.throwNotFound({ message: 'category not found' });
-    }
-    return success.handler({ message: 'Category successfully fetched', category }, req, res, next);
+    } else { return success.handler({ message: 'Category successfully fetched', category }, req, res, next); }
   } catch (err) {
     await transaction.abortTransaction();
     return error.handler(err, req, res, next);
@@ -111,32 +110,13 @@ const createCategory = async (req, res, next) => {
     // step 1. take all params from category and validate them
     const { categoryName, categoryDescription, categoryVersion } = await categoryValidation.addCategoryValidation.validateAsync(req.body);
     // now check category exist with  or not
-    const category = await categoryServices.getCategoryByNameAndVersion({ categoryName, categoryVersion });
-    if (category) {
-      throw error.throwNotFound({ message: 'category already exist' });
-    } else {
-      // create a category
-      const newCategory = await categoryServices.createCategory({
-        categoryName,
-        categoryDescription,
-        categoryVersion,
-      });
-      if (!newCategory) {
-        throw error.throwPreconditionFailed(
-          { message: 'Server Issued! Failed to create a category' },
-          req,
-          res,
-          next,
-        );
-      } else {
-        return success.handler(
-          { message: 'Verification Link send successfully' },
-          req,
-          res,
-          next,
-        );
-      }
-    }
+    // create a category
+    const Category = await categoryServices.createCategory({
+      categoryName,
+      categoryDescription,
+      categoryVersion,
+    });
+    return success.handler({ Category }, req, res, next);
   } catch (err) {
     await transaction.abortTransaction();
     return error.handler(err, req, res, next);
