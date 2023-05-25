@@ -15,6 +15,7 @@ const userIdentificationSchema = new Schema({
   OTP: {
     otp: Number,
     valid_till: Number,
+    created_at: Number,
   },
   is_user_verified: {
     type: Boolean,
