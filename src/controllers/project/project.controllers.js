@@ -127,24 +127,16 @@ const deleteProjectById = async(req, res, next) => {
         await transaction.endSession();
     }
 };
-const filterProject = async({ projectId, projectTitle, category, userId, status }) => {
-    let q = {};
-    if (projectId) {
-        q._id = projectId;
+const filterProject = async(req, res, next) => {
+    try {
+        const { projectTitle, status, projectId, userId, categoryIds } = await projectValidation.getProjectValidation.validateAsync(req.query);
+        const projects = await projectServices.filterProject({ projectId, projectTitle, category, userId, status });
+        return success.handler({ projects },
+            req, res, next);
+
+    } catch (err) {
+        return error.handler(err, req, res, next);
     }
-    if (projectTitle) {
-        q.projectId = projectId;
-    }
-    if (category && catgory.length > 0) {
-        q.category = { $in: category };
-    }
-    if (userId) {
-        q.userId = userId;
-    }
-    if (status) {
-        q.status = status;
-    }
-    return ProjectModel.find(q);
 }
 module.exports = {
     addProject,

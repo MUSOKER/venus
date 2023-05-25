@@ -4,7 +4,7 @@ const { ProjectModel } = require('../../models');
 const getAllProjects = async() => ProjectModel.findAll();
 // Fetching project by the project id
 // Fetcing project by userId
-const filterProject = async(q) => async({ projectId, projectTitle, category, userId, status }) => {
+const filterProject = async({ projectId, projectTitle, category, userId, status }) => {
         let q = {};
         if (projectId) {
             q._id = projectId;
