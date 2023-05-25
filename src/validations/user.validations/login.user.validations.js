@@ -6,6 +6,12 @@ const userloginValidation = Joi.object().keys({
   fullName: enseedlingValidator.name.label('Full Name'),
 });
 
+const userOTPVerificationValidations = Joi.object().keys({
+  email: enseedlingValidator.email.required().label('Email'),
+  otp: enseedlingValidator.generic.number.positive.required().label('OTP'),
+});
+
 module.exports = {
   userloginValidation,
+  userOTPVerificationValidations,
 };

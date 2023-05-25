@@ -43,7 +43,7 @@ const registerUser = async (req, res, next) => {
           },
         });
       } else {
-        throw error.throwPreconditionFailed({ message: 'User exist already with same email' }, req, res, next);
+        throw error.throwPreconditionFailed({ message: 'User exist already with same email' });
       }
     } else {
     // create a user and their identification then send a mail for verification
@@ -52,11 +52,11 @@ const registerUser = async (req, res, next) => {
         email,
       }, transaction);
       if (!addUser) {
-        throw error.throwPreconditionFailed({ message: 'Server Issued! Failed to register a user' }, req, res, next);
+        throw error.throwPreconditionFailed({ message: 'Server Issued! Failed to register a user' });
       }
       // encrypt a user Id
       // now save user Identification
-      let userId = user._doc._id;
+      let userId = addUser._id;
       // encrypt a user id
       userId = await encryption(userId);
       const userIdentification = await userServices.createUserIdentification({
@@ -67,7 +67,7 @@ const registerUser = async (req, res, next) => {
         throw error.throwPreconditionFailed({ message: 'Server Issue! failed to register a user' });
       }
       // create a token
-      const token = await jwt.createToken({ userId: user._doc._id });
+      const token = await jwt.createToken({ userId: addUser._id });
       // now send a mail
       // send a mail
       await dispatcher({
@@ -75,7 +75,7 @@ const registerUser = async (req, res, next) => {
           type: 'REGISTRATION_MAIL',
           body: {
             to: [{ email }],
-            name: user.fullName,
+            name: addUser.fullName,
             token,
           },
         },
