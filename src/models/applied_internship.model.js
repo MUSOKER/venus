@@ -16,7 +16,7 @@ const appliedInternshipSchema = new Schema(
     },
     selectionStatus: {
       type: String,
-      enum: ['Hired', 'Rejected', 'Shortlisted','pending'],
+      enum: ['Hired', 'Rejected', 'Shortlisted', 'pending'],
       default: 'Pending',
     },
     additionalInformation: {
