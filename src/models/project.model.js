@@ -42,11 +42,7 @@ const projectSchema = new Schema({
     enum: [PROJECT_VISIBILITY.public, PROJECT_VISIBILITY.private],
     required: true,
   },
-<<<<<<< HEAD
-  // categoryIds: { type: Schema.Types.ObjectId, ref: 'category', required: true },
-=======
-  category_ids: { type: Schema.Types.ObjectId, ref: 'category', required: true },
->>>>>>> 28d191adfb4516c6a7fe6eb1d793724ea574db38
+  categoryIds: { type: Schema.Types.ObjectId, ref: 'category', required: true },
   comments: {
     type: Array,
   },

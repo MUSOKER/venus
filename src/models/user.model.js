@@ -20,8 +20,6 @@ const userSchema = new Schema({
   },
   contactNo: {
     type: Number,
-    index: true,
-    unique: true,
   },
   addressId: { type: Schema.Types.ObjectId, ref: 'address' },
   profilePic: {

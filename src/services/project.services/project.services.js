@@ -1,6 +1,5 @@
 const { ProjectModel } = require('../../models');
 
-
 // Fetch all projects
 const getAllProjects = async() => ProjectModel.findALL();
 // Fetching project by the project id
@@ -24,7 +23,7 @@ const createProject = async({
     projectMilestone,
     status,
     visibility,
-    // categoryIds,
+    categoryIds,
     comments,
     userId,
 }) => ProjectModel.create({
@@ -37,7 +36,7 @@ const createProject = async({
     projectMilestone,
     status,
     visibility,
-    // categoryIds,
+    categoryIds,
     comments,
     userId,
 });

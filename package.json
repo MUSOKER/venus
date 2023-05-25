@@ -17,6 +17,7 @@
   "license": "ISC",
   "dependencies": {
     "@Enseedling/enseedling-lib-handler": "^1.0.0",
+    "@Enseedling/enseedling-lib-middlewares": "^1.0.2",
     "@Enseedling/enseedling-validations": "^1.0.0",
     "@google-cloud/storage": "^6.10.1",
     "bcrypt": "^5.1.0",

@@ -3,12 +3,12 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const ratingSchema = new Schema({
-  course: {
+  courseId: {
     type: Schema.Types.ObjectId,
     ref: 'course',
     required: true,
   },
-  user: {
+  userId: {
     type: Schema.Types.ObjectId,
     ref: 'user',
     required: true,
@@ -20,10 +20,7 @@ const ratingSchema = new Schema({
   comments: {
     type: Array,
   },
-  date: {
-    type: Date,
-    default: Date.now,
-  },
+
 }, {
   timestamps: true,
 });
