@@ -10,7 +10,7 @@ const createProject = async ({
   projectMilestone,
   status,
   visibility,
-  // categoryIds,
+  categoryIds,
   comments,
   userId,
 }) => ProjectModel.create({
@@ -23,7 +23,7 @@ const createProject = async ({
   projectMilestone,
   status,
   visibility,
-  // categoryIds,
+  categoryIds,
   comments,
   userId,
 });
