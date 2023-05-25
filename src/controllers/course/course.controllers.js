@@ -3,8 +3,10 @@ const { error, success } = require('@Enseedling/enseedling-lib-handler');
 const { courseValidation } = require('../../validations');
 
 const { courseServices } = require('../../services');
-const addCourses = async(req, res, next) => {
+const createCourse = async(req, res, next) => {
+    const transaction = await transaction.startTransaction();
     try {
+        await transaction.startTransaction();
         const {
             course_name,
             comments,
@@ -44,10 +46,65 @@ const addCourses = async(req, res, next) => {
             instructorId,
             demo_video_src,
             meta_info,
-        });
-        return success.handler({ project }, req, res, next);
+        }, transaction);
+        return success.handler({ course }, req, res, next);
     } catch (err) {
+        await transaction.abortTransaction();
         return error.handler(err, req, res, next);
+    } finally {
+        await transaction.endSession();
+    }
+};
+// Update course by Id
+const updateCourse = async(req, res, next) => {
+    const transaction = await Transaction.startSession();
+    try {
+        await transaction.startTransaction();
+        const {
+            course_name,
+            comments,
+            course_description,
+            course_duration,
+            course_rating,
+            course_thumb_image,
+            course_state,
+            category_ids,
+            social_media_links,
+            total_videos,
+            startDate,
+            endDate,
+            capacity,
+            status,
+            createdBy,
+            instructorId,
+            demo_video_src,
+            meta_info
+        } = await courseValidation.updateCourseValidation.validateAsync(req.query);
+        const course = await courseServices.updateTheCourse({
+            course_name,
+            course_description,
+            course_duration,
+            course_rating,
+            course_thumb_image,
+            course_state,
+            category_ids,
+            social_media_links,
+            total_videos,
+            startDate,
+            endDate,
+            capacity,
+            status,
+            createdBy,
+            instructorId,
+            demo_video_src,
+            meta_info,
+        });
+        return success.handler({ message: 'course updated' }, req, res, next);
+    } catch (err) {
+        await transaction.abortTransaction();
+        return error.handler(err, req, res, next);
+    } finally {
+        await transaction.endSession();
     }
 };
 
@@ -83,4 +140,6 @@ const findCourse = async(req, res, next) => {
 module.exports = {
     findCourses,
     findCourse,
+    updateCourse,
+    createCourse,
 };

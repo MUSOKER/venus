@@ -1,5 +1,6 @@
 const { success, error } = require('@Enseedling/enseedling-lib-handler');
 const { Transaction } = require('../../utils');
+const { ProjectModel } = require('../../models');
 // fetching all available projects
 const fetchAllProjects = async(req, res, next) => {
     const transaction = await Transaction.startSession();
@@ -19,45 +20,7 @@ const fetchAllProjects = async(req, res, next) => {
     }
 };
 
-// fetching by project id
-const fetchOneProjectById = async(req, res, next) => {
-    const transaction = await Transaction.startSession();
-    try {
-        await transaction.startTransaction();
-        const id = await projectValidation.projectIdValidations.validateAsync(req.params.id);
-        // check user exits or not
-        const project = await projectServices.getProjectById({ id });
-        if (!project) {
-            throw error.throwNotFound({ message: 'Project' });
-        }
-        return success.handler({ project: project }, req, res, next);
-    } catch (err) {
-        await transaction.abortTransaction();
-        return error.handler(err, req, res, next);
-    } finally {
-        await transaction.endSession();
-    }
-};
 
-// fetching by project id
-const fetchProjectsByStatus = async(req, res, next) => {
-    const transaction = await Transaction.startSession();
-    try {
-        await transaction.startTransaction();
-        const status = await projectValidation.projectStatusValidation.validateAsync(req.params.status);
-        // check user exits or not
-        const project = await projectServices.getProjectsByStatus({ status });
-        if (!project) {
-            throw error.throwNotFound({ message: 'Project' });
-        }
-        return success.handler({ project: project }, req, res, next);
-    } catch (err) {
-        await transaction.abortTransaction();
-        return error.handler(err, req, res, next);
-    } finally {
-        await transaction.endSession();
-    }
-}
 const addProject = async(req, res, next) => {
     const transaction = await Transaction.startSession();
     try {
@@ -134,7 +97,7 @@ const updateProject = async(req, res, next) => {
             comments,
             userId,
         });
-        return success.handler({ message: 'course updated' }, req, res, next);
+        return success.handler({ message: 'project updated' }, req, res, next);
     } catch (err) {
         await transaction.abortTransaction();
         return error.handler(err, req, res, next);
@@ -143,45 +106,6 @@ const updateProject = async(req, res, next) => {
     }
 };
 
-// fetching by project title
-const fetchOneProjectByTitle = async(req, res, next) => {
-    const transaction = await Transaction.startSession();
-    try {
-        await transaction.startTransaction();
-        const title = await projectValidation.projectTitleValidation.validateAsync(req.params.title);
-        // check user exits or not
-        const project = await projectServices.getProjectByTitle({ title });
-        if (!project) {
-            throw error.throwNotFound({ message: 'Project' });
-        }
-        return success.handler({ project: project }, req, res, next);
-    } catch (err) {
-        await transaction.abortTransaction();
-        return error.handler(err, req, res, next);
-    } finally {
-        await transaction.endSession();
-    }
-};
-
-// fetching projects by userid
-const fetchProjectsByUserId = async(req, res, next) => {
-    const transaction = await Transaction.startSession();
-    try {
-        await transaction.startTransaction();
-        const userId = await projectValidation.userIdValidation.validateAsync(req.params.userid);
-        // check user exits or not
-        const projects = await projectServices.getProjectsByUserId({ userId });
-        if (!projects) {
-            throw error.throwNotFound({ message: 'Project' });
-        }
-        return success.handler({ projects: projects }, req, res, next);
-    } catch (err) {
-        await transaction.abortTransaction();
-        return error.handler(err, req, res, next);
-    } finally {
-        await transaction.endSession();
-    }
-};
 
 // Delete by project id
 const deleteProjectById = async(req, res, next) => {
@@ -194,8 +118,8 @@ const deleteProjectById = async(req, res, next) => {
         if (!project) {
             throw error.throwNotFound({ message: 'Project' });
         }
-        return WriteResult({ 'nRemoved': 1 })
         return success.handler({ message: 'Project has been successfully deleted.' }, req, res, next);
+        return WriteResult({ 'nRemoved': 1 })
     } catch (err) {
         await transaction.abortTransaction();
         return error.handler(err, req, res, next);
@@ -203,13 +127,29 @@ const deleteProjectById = async(req, res, next) => {
         await transaction.endSession();
     }
 };
+const filterProject = async({ projectId, projectTitle, category, userId, status }) => {
+    let q = {};
+    if (projectId) {
+        q._id = projectId;
+    }
+    if (projectTitle) {
+        q.projectId = projectId;
+    }
+    if (category && catgory.length > 0) {
+        q.category = { $in: category };
+    }
+    if (userId) {
+        q.userId = userId;
+    }
+    if (status) {
+        q.status = status;
+    }
+    return ProjectModel.find(q);
+}
 module.exports = {
     addProject,
     updateProject,
     fetchAllProjects,
-    fetchOneProjectById,
-    fetchOneProjectByTitle,
-    fetchProjectsByUserId,
-    fetchProjectsByStatus,
     deleteProjectById,
+    filterProject
 };

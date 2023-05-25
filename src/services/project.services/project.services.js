@@ -1,17 +1,30 @@
 const { ProjectModel } = require('../../models');
 
 // Fetch all projects
-const getAllProjects = async() => ProjectModel.findALL();
+const getAllProjects = async() => ProjectModel.findAll();
 // Fetching project by the project id
-const getProjectById = async({ id }) => ProjectModel.findOne({ id });
-// Fetching project by the project title
-const getProjectByTitle = async({ title }) => ProjectModel.findOne({ title });
-// Fetching projects by status
-const getProjectsByStatus = async({ status }) => ProjectModel.find({ status });
 // Fetcing project by userId
-const getProjectsByUserId = async({ userId }) => ProjectModel.find({ userId });
-// Deleting project by projectId
-const deleteProjectById = async({ id }) => ProjectModel.deleteOne({ id });
+const filterProject = async(q) => async({ projectId, projectTitle, category, userId, status }) => {
+        let q = {};
+        if (projectId) {
+            q._id = projectId;
+        }
+        if (projectTitle) {
+            q.projectId = projectId;
+        }
+        if (category && catgory.length > 0) {
+            q.category = { $in: category };
+        }
+        if (userId) {
+            q.userId = userId;
+        }
+        if (status) {
+            q.status = status;
+        }
+        return ProjectModel.find(q);
+    }
+    // Deleting project by projectId
+const deleteProjectById = async({ id }) => ProjectModel.findAndDeleteOne({ id });
 
 const createProject = async({
     projectTitle,
@@ -76,9 +89,6 @@ module.exports = {
     createProject,
     updateTheProject,
     getAllProjects,
-    getProjectById,
-    getProjectByTitle,
-    getProjectsByStatus,
-    getProjectsByUserId,
+    filterProject,
     deleteProjectById,
 };
