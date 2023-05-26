@@ -62,7 +62,7 @@ const updateCourse = async(req, res, next) => {
         await transaction.startTransaction();
         const {
             course_name,
-            comments,
+            // comments,
             course_description,
             course_duration,
             course_rating,

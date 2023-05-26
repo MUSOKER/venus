@@ -9,7 +9,7 @@ const addCoursetValidation = Joi.object().keys({
         .items(enseedlingValidator.generic.string.any)
         .label('Comments'),
     course_description: enseedlingValidator.generic.string.any.required().label('Course Description'),
-    course_duration: enseedlingValidator.generic.number.required().label('Course Duration'),
+    course_duration: enseedlingValidator.generic.number.integer.required().label('Course Duration'),
     course_rating: enseedlingValidator._id.required().label('Course Rating'),
     course_thumb_image: enseedlingValidator.generic.string.medium.required().label('Course Thumb Image'),
     course_state: enseedlingValidator.generic.string.medium.label('Course State'),
@@ -17,10 +17,10 @@ const addCoursetValidation = Joi.object().keys({
     social_media_links: Joi.array()
         .items(enseedlingValidator.generic.string.any)
         .label('Social Medial Links'),
-    total_videos: enseedlingValidator.generic.number.label('Total Video'),
+    total_videos: enseedlingValidator.generic.number.integer.required().label('Total Video'),
     startDate: Joi.date().required().label('Start Date'),
     endDate: Joi.date().required().label('End Date'),
-    capacity: enseedlingValidator.generic.number.required().label('Capacity'),
+    capacity: enseedlingValidator.generic.number.integer.required().label('Capacity'),
     status: enseedlingValidator.generic.string.medium.label('Course Status'),
     createdBy: enseedlingValidator._id.required().label('Created By'),
     instructorId: enseedlingValidator._id.required().label('Insructor'),
@@ -33,7 +33,7 @@ const addCoursetValidation = Joi.object().keys({
 const updateCourseValidation = Joi.object().keys({
     course_name: enseedlingValidator.generic.string.any.required().label('Course Name'),
     course_description: enseedlingValidator.generic.string.any.required().label('Course Description'),
-    course_duration: enseedlingValidator.generic.number.required().label('Course Duration'),
+    course_duration: enseedlingValidator.generic.number.integer.required().label('Course Duration'),
     course_rating: enseedlingValidator._id.required().label('Course Rating'),
     course_thumb_image: enseedlingValidator.generic.string.medium.required().label('Course Thumb Image'),
     course_state: enseedlingValidator.generic.string.medium.label('Course State'),
@@ -41,10 +41,10 @@ const updateCourseValidation = Joi.object().keys({
     social_media_links: Joi.array()
         .items(enseedlingValidator.generic.string.any)
         .label('Social Medial Links'),
-    total_videos: enseedlingValidator.generic.number.label('Total Video'),
+    total_videos: enseedlingValidator.generic.number.integer.required().label('Total Video'),
     startDate: Joi.date().required().label('Start Date'),
     endDate: Joi.date().required().label('End Date'),
-    capacity: enseedlingValidator.generic.number.required().label('Capacity'),
+    capacity: enseedlingValidator.generic.number.integer.required().label('Capacity'),
     status: enseedlingValidator.generic.string.medium.label('Course Status'),
     createdBy: enseedlingValidator._id.required().label('Created By'),
     instructorId: enseedlingValidator._id.required().label('Insructor'),

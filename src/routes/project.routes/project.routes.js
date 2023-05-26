@@ -11,4 +11,3 @@ projectRoutes.get('/project', projectControllers.filterProject);
 projectRoutes.delete('/delete/:projectId', projectControllers.deleteProjectById);
 
 module.exports = projectRoutes;
-s
