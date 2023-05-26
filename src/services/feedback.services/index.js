@@ -1,7 +1,7 @@
 const {
-  createFeedback, getFeedbacks, updateTheFeedback, deleteFeedback,
+  createUpdateTheFeedback, deleteFeedback,
 } = require('./feedback.services');
 
 module.exports = {
-  createFeedback, getFeedbacks, updateTheFeedback, deleteFeedback,
+  createUpdateTheFeedback, deleteFeedback,
 };

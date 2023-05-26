@@ -1,40 +1,17 @@
 const { error, success } = require('@Enseedling/enseedling-lib-handler');
 const { feedbackServices } = require('../../services');
+const { assignmentValidation } = require('../../validations');
+const { feedbackValidation } = require('../../validations');
 
-const addFeedback = async (req, res, next) => {
+const createUpdateFeedback = async (req, res, next) => {
   try {
-    const { id: userId } = req;
-    const {
-      assignmentID, rating, comment, like,
-    } = req.body;
-    const feedback = await feedbackServices.createFeedback({
-      userId, assignmentID, rating, comment, like,
+    const { like, comment, rating } = await feedbackValidation.createUpdateFeedbackVal.validateAsync(req.body);
+    const { assignmentId } = await assignmentValidation.assignmentIdValidation.validateAsync(req.params);
+    console.log(assignmentId);
+    await feedbackServices.createUpdateTheFeedback({
+      assignmentId, like, comment, rating,
     });
-
-    return success.handler({ feedback }, req, res, next);
-  } catch (err) {
-    return error.handler(err, req, res, next);
-  }
-};
-
-const findFeedback = async (req, res, next) => {
-  try {
-    const { like, rating } = req.query;
-    const feedbacks = await feedbackServices.getFeedbacks({ like, rating });
-    return success.handler({ feedbacks }, req, res, next);
-  } catch (err) {
-    return error.handler(err, req, res, next);
-  }
-};
-
-const updateFeedback = async (req, res, next) => {
-  try {
-    const { like, comment, rating } = req.body;
-    const { feedbackId } = req.params;
-    const feedbackOutput = await feedbackServices.updateTheFeedback({
-      feedbackId, like, comment, rating,
-    });
-    return success.handler({ feedbackOutput }, req, res, next);
+    return success.handler({ message: 'feedback created/ updated successfully' }, req, res, next);
   } catch (err) {
     return error.handler(err, req, res, next);
   }
@@ -42,7 +19,7 @@ const updateFeedback = async (req, res, next) => {
 
 const removeFeedback = async (req, res, next) => {
   try {
-    const { feedbackId } = req.params;
+    const { feedbackId } = await feedbackValidation.feedbackIdValidation.validateAsync(req.params);
     const deleteFeedback = await feedbackServices.deleteFeedback(feedbackId);
     return success.handler({ deleteFeedback }, req, res, next);
   } catch (err) {
@@ -50,5 +27,5 @@ const removeFeedback = async (req, res, next) => {
   }
 };
 module.exports = {
-  addFeedback, findFeedback, updateFeedback, removeFeedback,
+  createUpdateFeedback, removeFeedback,
 };

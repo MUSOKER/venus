@@ -20,7 +20,7 @@ const AssignmentSchema = new mongoose.Schema({
         default: 'Pending',
     },
     category: {
-        type: String,
+        type: Array,
         required: true,
     },
     topics: [{

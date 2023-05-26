@@ -1,13 +1,15 @@
 const mongoose = require('mongoose');
 
 const FeedbackSchema = new mongoose.Schema({
-  userID: {
+  userId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'user',
+    required: true,
   },
-  assignmentID: {
+  assignmentId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'assignments',
+    required: true,
   },
   rating: {
     type: Number,

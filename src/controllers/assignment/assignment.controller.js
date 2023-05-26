@@ -1,9 +1,7 @@
-/* eslint-disable no-unused-vars */
 const { error, success } = require('@Enseedling/enseedling-lib-handler');
-const AssignmentsModel = require('../../models/assignment.model');
 const { assignmentServices } = require('../../services');
 const { assignmentValidation } = require('../../validations');
-// eslint-disable-next-line consistent-return
+
 const addAssignment = async (req, res, next) => {
   try {
     const {
@@ -36,7 +34,6 @@ const addAssignment = async (req, res, next) => {
   }
 };
 
-// eslint-disable-next-line consistent-return
 const findAssignments = async (req, res, next) => {
   try {
     const {
@@ -50,10 +47,9 @@ const findAssignments = async (req, res, next) => {
       difficultyLevel,
       marks,
     });
-
     return success.handler({ assignments }, req, res, next);
   } catch (err) {
-    console.log(err, req, res, next);
+    return error.handler(err, req, res, next);
   }
 };
 
