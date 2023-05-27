@@ -1,43 +1,51 @@
-const { applyInternship, deleteAppliedInternship } = require('../../services/internship.services/apply.internship.services');
+const { success, error } = require('@Enseedling/enseedling-lib-handler');
+const { internshipService } = require('../../services');
+const { internshipValidation } = require('../../validations');
+const { Transaction } = require('../../utils');
 
-const applyInternshipController = async (req, res, next) => {
+const applyInternship = async (req, res, next) => {
+  const transaction = await Transaction.startSession();
   try {
+    await transaction.startTransaction();
     const {
       userId,
       internshipId,
       selectionStatus,
       additionalInformation,
-    } = req.body;
+    } = await internshipValidation.appliedInternshipValidation.validateAsync.req.body;
 
     // Call the applyInternship service to apply for the internship
-    const appliedInternship = await applyInternship({
+    const Internship = await internshipService.applyInternship({
       userId,
       internshipId,
       selectionStatus,
       additionalInformation,
     });
 
-    return res.json({ message: 'Internship application submitted successfully', appliedInternship });
-  } catch (error) {
-    return next(error);
+    return success.handler({ Internship }, req, res, next);
+  } catch (err) {
+    await transaction.abortTransaction();
+    return error.handler(err, req, res, next);
   }
 };
-const deleteAppliedInternshipController = async (req, res, next) => {
+const deleteInternship = async (req, res, next) => {
+  const transaction = await Transaction.startSession();
   try {
-    const { internshipId } = req.params;
+    await transaction.startTransaction();
+    const { internshipId } = await internshipValidation.appliedInternshipValidation.validateAsync.req.params;
 
-    // Call the deleteAppliedInternship service to delete the applied internship
-    const deletedInternship = await deleteAppliedInternship(internshipId);
+    // Call the deleteInternship service to delete the applied internship
+    const deletedInternship = await internshipService.deleteInternship(internshipId);
     if (!deletedInternship) {
-      return res.status(404).json({ message: 'Applied internship not found' });
+      return success.handler({ message: 'internship not found' });
     }
-
-    return res.json({ message: 'Applied internship deleted successfully' });
-  } catch (error) {
+    return success.handler({ message: 'Applied internship deleted successfully' }, req, res, next);
+  } catch (err) {
+    await transaction.abortTransaction();
     return next(error);
   }
 };
 
 module.exports = {
-  applyInternshipController, deleteAppliedInternshipController,
+  applyInternship, deleteInternship,
 };
