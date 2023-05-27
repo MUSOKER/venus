@@ -1,5 +1,6 @@
 const { error, success } = require('@Enseedling/enseedling-lib-handler');
 const { userServices } = require('../../services');
+const { userValidation } = require('../../validations');
 const { encryption } = require('../../utils');
 
 const fetchUserInfo = async (req, res, next) => {
@@ -31,6 +32,59 @@ const fetchUserInfo = async (req, res, next) => {
   }
 };
 
+const updateUserInfo = async (req, res, next) => {
+  try {
+    const { id: userId } = req.user;
+    // 1. validate your info
+    const {
+      fullName,
+      qualification,
+      certificates,
+      experience,
+      socialMedia,
+      skills,
+      documents,
+      title,
+      preferences,
+      is_active: isActive, resume, profilePic, contactNo,
+      street, landmark, pincode,
+      district, country, city, state,
+    } = await userValidation.userValidation.validateAsync(req.body);
+    // 2. now update whatever field sent by user
+    const updatedUser = await userServices.updateUserByID({
+      fullName,
+      userId,
+      qualification,
+      certificates,
+      experience,
+      socialMedia,
+      skills,
+      documents,
+      title,
+      lastLogin: Date.now(),
+      preferences,
+      isActive,
+      resume,
+      profilePic,
+      contactNo,
+      street,
+      landmark,
+      pincode,
+      district,
+      country,
+      city,
+      state,
+    });
+    if (!updatedUser) {
+      throw error.throwPreconditionFailed({ message: 'Failed to update user' });
+    }
+    return success.handler({ user: updatedUser }, req, res, next);
+  } catch (err) {
+    return error.handler(err, req, res, next);
+  }
+};
+
 module.exports = {
   fetchUserInfo,
+  updateUserInfo,
 };
