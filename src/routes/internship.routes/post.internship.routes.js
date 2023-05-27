@@ -1,8 +1,10 @@
-const express = require("express");
-const { postInternshipController } = require('../../controllers/internship/post.internship.controller.js');
+const express = require('express');
+const { addinternship, removeInternship, findInternship } = require('../../controllers/internship/post.internship.controller.js');
 
-const postInternship = express.Router();
+const postInternshipRoutes = express.Router();
 
-postInternship.post("/internship", postInternshipController);
+postInternshipRoutes.post('/create', addinternship);
+postInternshipRoutes.get('/', findInternship);
+postInternshipRoutes.delete('/internshipId', removeInternship);
 
-module.exports = postInternship;
+module.exports = postInternshipRoutes;
