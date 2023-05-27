@@ -1,8 +1,9 @@
-const { UserModel, UserIndentificationSchema } = require('../../models');
+const mongoose = require('mongoose');
+const { UserModel, UserIdentificationSchema } = require('../../models');
 
 const getUserByEmail = async ({ email }) => UserModel.findOne({ email });
 
-const getUserByIdFromIdentification = async ({ id }) => UserIndentificationSchema.findOne({ id });
+const getUserByIdFromIdentification = async ({ id }) => UserIdentificationSchema.findOne({ id });
 
 // create user
 const createUser = async ({ fullName, email }, transaction) => {
@@ -16,7 +17,7 @@ const createUser = async ({ fullName, email }, transaction) => {
 
 // create user identification
 const createUserIdentification = async ({ isUserVerified, id }, transaction) => {
-  const addUserIdentification = new UserIndentificationSchema({
+  const addUserIdentification = new UserIdentificationSchema({
     is_user_verified: isUserVerified,
     id,
   });
@@ -27,10 +28,79 @@ const createUserIdentification = async ({ isUserVerified, id }, transaction) => 
 // get user by userId
 const getUserByUserId = async ({ userId }) => UserModel.findById(userId).populate('addressId');
 
+// get user by userId
+// also fetch top 10 students
+const getUserInfoByUserId = async ({ userId }) => UserModel.aggregate([
+  {
+    $match: {
+      _id: mongoose.Types.ObjectId(userId),
+    },
+  },
+  {
+    $lookup: {
+      from: 'addresses',
+      localField: '_id',
+      foreignField: 'userId',
+      as: 'address',
+    },
+  },
+  {
+    $lookup: {
+      from: 'projects',
+      localField: '_id',
+      foreignField: 'userId',
+      as: 'projects',
+    },
+  },
+  {
+    $lookup: {
+      from: 'user_assignments',
+      localField: '_id',
+      foreignField: 'userId',
+      as: 'assignments',
+    },
+  },
+  {
+    $lookup: {
+      from: 'enrolled_courses',
+      localField: '_id',
+      foreignField: 'userId',
+      as: 'enrolled_courses',
+    },
+  },
+]);
+
+// service to fetch top students whose done maximum no of assignments
+const getCandidates = async () => UserModel.aggregate([
+  {
+    $lookup: {
+      from: 'user_assignments', // The name of the collection you want to join
+      localField: '_id', // The field in the Candidate collection to join on
+      foreignField: 'userId', // The field in the Assignment collection to join on
+      as: 'assignments', // The name of the field to store the joined documents
+    },
+  },
+  {
+    $addFields: {
+      assignmentCount: { $size: '$assignments' }, // Add a field to store the count of assignments
+    },
+  },
+  {
+    $sort: {
+      assignmentCount: -1, // Sort candidates based on assignment count in descending order
+    },
+  },
+  {
+    $limit: 10, // Retrieve only the top 10 candidates
+  },
+]);
+
 module.exports = {
   getUserByEmail,
   createUserIdentification,
   getUserByIdFromIdentification,
   createUser,
   getUserByUserId,
+  getCandidates,
+  getUserInfoByUserId,
 };

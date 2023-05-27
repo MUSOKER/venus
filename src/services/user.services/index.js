@@ -4,6 +4,8 @@ const {
   createUser,
   createUserIdentification,
   getUserByUserId,
+  getUserInfoByUserId,
+  getCandidates,
 } = require('./user.services');
 
 module.exports = {
@@ -11,5 +13,7 @@ module.exports = {
   getUserByUserId,
   createUser,
   createUserIdentification,
+  getCandidates,
   getUserByIdFromIdentification,
+  getUserInfoByUserId,
 };
