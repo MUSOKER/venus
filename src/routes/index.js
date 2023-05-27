@@ -5,11 +5,9 @@ const assignmentRoutes = require('./assignment.routes');
 const feedbackRoutes = require('./feedback.routes');
 
 const apiRoutes = express.Router();
-
 apiRoutes.use('/user', userRoutes);
 apiRoutes.use('/assignments', assignmentRoutes);
 apiRoutes.use('/feedback', feedbackRoutes);
-
 apiRoutes.use('*', () => error.throwNotFound({ item: 'Route' }));
 
 module.exports = apiRoutes;
