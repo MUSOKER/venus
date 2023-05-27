@@ -1,19 +1,15 @@
 const {
-    getAllProjects,
-    getProjectById,
-    getProjectByTitle,
-    getProjectsByStatus,
-    getProjectsByUserId,
     createProject,
-    updateTheProject
+    updateTheProject,
+    getAllProjects,
+    filterProject,
+    deleteProjectById,
 } = require('./project.services');
 
 module.exports = {
-    getAllProjects,
-    getProjectById,
-    getProjectByTitle,
-    getProjectsByStatus,
-    getProjectsByUserId,
     createProject,
     updateTheProject,
+    getAllProjects,
+    filterProject,
+    deleteProjectById,
 };
