@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const FeedbackSchema = new mongoose.Schema({
+const assgnmentFeedbackSchema = new mongoose.Schema({
   userId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'user',
@@ -13,19 +13,19 @@ const FeedbackSchema = new mongoose.Schema({
   },
   rating: {
     type: Number,
-    required: true,
+
   },
   comment: {
     type: Array,
-    required: true,
+
   },
   like: {
     type: Boolean,
-    required: true,
+
   },
 
 });
 
-const FeedbackModel = mongoose.model('assignment-feedback', FeedbackSchema);
+const assignmentFeedbackModel = mongoose.model('assignment_feedback ', assgnmentFeedbackSchema);
 
-module.exports = FeedbackModel;
+module.exports = assignmentFeedbackModel;

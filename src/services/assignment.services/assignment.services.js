@@ -4,7 +4,7 @@ const createAssignment = async ({
   title,
   description,
   requirements,
-  statuss,
+  isActive,
   category,
   topics,
   createdBy,
@@ -16,7 +16,7 @@ const createAssignment = async ({
     title,
     description,
     requirements,
-    statuss,
+    isActive,
     category,
     topics,
     createdBy,
@@ -29,15 +29,17 @@ const createAssignment = async ({
 };
 
 const getAssignments = async ({
-  title, category, statuss, difficultyLevel,
-  marks,
+  _id, title, category, isActive, difficultyLevel, marks,
 }) => {
   const query = {};
+  if (_id) {
+    query._id = _id;
+  }
   if (title) {
     query.title = title;
   }
-  if (statuss) {
-    query.statuss = statuss;
+  if (isActive) {
+    query.isActive = isActive;
   }
   if (difficultyLevel) {
     query.difficultyLevel = difficultyLevel;
@@ -56,7 +58,7 @@ const updateTheAssignment = async ({
   title,
   description,
   requirements,
-  statuss,
+  isActive,
   category,
   topics,
   createdBy,
@@ -67,7 +69,7 @@ const updateTheAssignment = async ({
   title,
   description,
   requirements,
-  statuss,
+  isActive,
   category,
   topics,
   createdBy,
@@ -76,7 +78,10 @@ const updateTheAssignment = async ({
   marks,
 });
 
-const deleteAssignment = async (AssignmentID) => AssignmentsModel.findByIdAndDelete(AssignmentID);
+const deleteAssignment = async (AssignmentID) => {
+  const deletedAssignment = await AssignmentsModel.findByIdAndDelete(AssignmentID);
+  return deletedAssignment;
+};
 
 module.exports = {
   createAssignment,

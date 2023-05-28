@@ -1,7 +1,8 @@
 const userControllers = require('./user');
 const assignmentController = require('./assignment');
-const feedbackController = require('./feedback');
+const assignmentFeedBack = require('./assignment.Feedback');
+const courseAssignmentController = require('./courseAssignment');
 
 module.exports = {
-  userControllers, assignmentController, feedbackController,
+  userControllers, assignmentController, assignmentFeedBack, courseAssignmentController,
 };

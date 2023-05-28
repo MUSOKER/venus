@@ -1,6 +1,6 @@
 const userValidation = require('./user.validations');
 const assignmentValidation = require('./assignments.validations');
-const feedbackValidation = require('./feedback.validations');
+const assignmentFeedBackValidation = require('./assignment.feedback.validations');
 const projectValidation = require('./project.validations');
 const categoryValidation = require('./category.validations');
 
@@ -9,5 +9,5 @@ module.exports = {
   projectValidation,
   categoryValidation,
   assignmentValidation,
-  feedbackValidation,
+  assignmentFeedBackValidation,
 };

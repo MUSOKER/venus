@@ -11,13 +11,12 @@ const AssignmentSchema = new mongoose.Schema({
         required: true,
     },
     requirements: {
-        type: String,
+        type: Array,
         required: true,
     },
-    statuss: {
-        type: String,
-        enum: ['Pending', 'Assigned', 'Submitted'],
-        default: 'Pending',
+    isActive: {
+        type: Boolean,
+        required: true,
     },
     category: {
         type: Array,
@@ -38,11 +37,10 @@ const AssignmentSchema = new mongoose.Schema({
     },
     deadline: {
         type: Date,
-        required: true,
+
     },
     marks: {
         type: Number,
-        required: true,
     },
 });
 
