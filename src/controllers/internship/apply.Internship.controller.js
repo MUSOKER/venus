@@ -1,5 +1,5 @@
 const { success, error } = require('@Enseedling/enseedling-lib-handler');
-const { internshipService } = require('../../services');
+const { internshipService, userServices } = require('../../services');
 const { internshipValidation } = require('../../validations');
 const { Transaction } = require('../../utils');
 
@@ -14,9 +14,12 @@ const applyInternship = async (req, res, next) => {
       additionalInformation,
     } = await internshipValidation.appliedInternshipValidation.validateAsync.req.body;
 
+    // Use the getUserId function to retrieve the actual user ID from the provided ID
+    const actualUser = await userServices.getUserId(userId);
+
     // Call the applyInternship service to apply for the internship
     const Internship = await internshipService.applyInternship({
-      userId,
+      userId: actualUser,
       internshipId,
       selectionStatus,
       additionalInformation,
