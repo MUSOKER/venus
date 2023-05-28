@@ -10,7 +10,11 @@ const appliedInternshipValidation = Joi.object({
     .label('Selection Status'),
   additionalInformation: Joi.string().allow('').optional().label('Additional Information'),
 });
+const deleteInternshipValidation = Joi.object({
+  internshipId: enseedlingValidator.generic.string.medium.required().label('Internship Id'),
+});
 
 module.exports = {
   appliedInternshipValidation,
+  deleteInternshipValidation,
 };
