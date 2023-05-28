@@ -1,5 +1,10 @@
-const { PostedInternshipModel, AppliedInternshipModel } = require('../../models');
+const { PostedInternshipModel, AppliedInternshipModel, UserModel } = require('../../models');
 
+//
+const getUserId = async (id) => {
+  const userId = await UserModel.findById({ _id: id });
+  return userId;
+};
 // Get posted internship by ID
 const getPostedInternshipById = async (id) => {
   const postedInternship = await PostedInternshipModel.findOne({ _id: id });
@@ -41,5 +46,5 @@ const deleteInternship = async (id, transaction) => {
 };
 
 module.exports = {
-  applyInternship, deleteInternship, getPostedInternshipById, getAppliedInternshipById,
+  applyInternship, deleteInternship, getPostedInternshipById, getAppliedInternshipById, getUserId,
 };
