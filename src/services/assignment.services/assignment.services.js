@@ -76,7 +76,7 @@ const updateTheAssignment = async ({
   difficultyLevel,
   deadline,
   marks,
-});
+}, { new: true });
 
 const deleteAssignment = async (AssignmentID) => {
   const deletedAssignment = await AssignmentsModel.findByIdAndDelete(AssignmentID);

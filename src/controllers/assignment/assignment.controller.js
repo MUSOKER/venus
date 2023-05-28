@@ -16,7 +16,7 @@ const addAssignment = async (req, res, next) => {
       deadline,
       marks,
     } = await assignmentValidation.addAssignmentValidation.validateAsync(req.body);
-    const Assignment = await assignmentServices.createAssignment({
+    const assignments = await assignmentServices.createAssignment({
       title,
       description,
       requirements,
@@ -28,7 +28,12 @@ const addAssignment = async (req, res, next) => {
       deadline,
       marks,
     });
-    return success.handler({ Assignment }, req, res, next);
+
+    if (!assignments) {
+      throw error.throwNotFound({ message: 'Unable to Create Assignment. Try Again' });
+    }
+
+    return success.handler({ assignments }, req, res, next);
   } catch (err) {
     return error.handler(err, req, res, next);
   }
@@ -51,8 +56,8 @@ const findAssignments = async (req, res, next) => {
       difficultyLevel,
       marks,
     });
-    if (assignments.length === 0) {
-      throw error.throwNotFound({ message: 'Assignments Not Found' });
+    if (!assignments.length) {
+      throw error.throwNotFound({ message: 'Assignment Not Found' });
     }
     return success.handler({ assignments }, req, res, next);
   } catch (err) {
@@ -102,6 +107,9 @@ const updateAssignment = async (req, res, next) => {
       deadline,
       marks,
     });
+    if (!updatedAssignment) {
+      throw error.throwNotFound({ message: 'Sorry! unable to update assignment' });
+    }
     return success.handler({ updatedAssignment }, req, res, next);
   } catch (err) {
     return error.handler(err, req, res, next);

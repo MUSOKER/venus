@@ -9,7 +9,6 @@ const addCourseAssignment = async (req, res, next) => {
       status,
       courseCompletition,
     } = req.body;
-    console.log('addcrse assngmt runs');
     const addedCourseAssignment = await courseAssignmentServices.createCourseAssignment({
       courseID,
       assignmentId,
