@@ -22,5 +22,5 @@ const userIdentificationSchema = new Schema({
   },
 });
 
-const UserIndentificationSchema = mongoose.model('user_identification', userIdentificationSchema);
-module.exports = UserIndentificationSchema;
+const UserIdentificationSchema = mongoose.model('user_identification', userIdentificationSchema);
+module.exports = UserIdentificationSchema;

@@ -1,7 +1,13 @@
-const { addProject } = require('./project.controllers');
-const { updateProject } = require('./project.controllers');
+const {
+    getProject,
+    addProject,
+    deleteProjectById,
+    updateProject
+} = require('./project.controllers');
 
 module.exports = {
-  addProject,
-  updateProject,
+    getProject,
+    addProject,
+    deleteProjectById,
+    updateProject
 };
