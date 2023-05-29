@@ -3,7 +3,7 @@ const projectControllers = require('./project');
 const courseControllers = require('./course');
 
 module.exports = {
-  userControllers,
-  projectControllers,
-  courseControllers,
+    userControllers,
+    projectControllers,
+    courseControllers,
 };
