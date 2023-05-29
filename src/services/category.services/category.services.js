@@ -1,10 +1,21 @@
 const { CategoryModel } = require('../../models');
 
-const getCategoryById = async ({ id }) => CategoryModel.findOne({ id });
-const getCategoryByName = async ({ name }) => CategoryModel.findOne({ name });
-const getAllCategories = async () => CategoryModel.find();
-const deleteCategoryById = async ({ id }) => CategoryModel.deleteOne(id);
-const getCategoryByNameAndVersion = async ({ categoryName, categoryVersion }) => CategoryModel.find({ categoryName, categoryVersion });
+const getCategoryById = async ({ id }) => await CategoryModel.findById( id );
+const getCategoryByName = async ({ name }) =>  await CategoryModel.findOne({ categoryName: name });
+const getAllCategories = async () => await CategoryModel.find();
+const deleteCategoryById = async ({ id }) => await CategoryModel.deleteOne({ _id: id });
+  
+const getCategoryByNameAndVersion = async ({
+  categoryName,
+  categoryVersion,
+}) => {
+  const category = await CategoryModel.findOne({
+    categoryName,
+    categoryVersion,
+    });
+  console.log("data from database:", category)
+  return category;
+};
 
 // create category
 const createCategory = async (
@@ -16,7 +27,7 @@ const createCategory = async (
 });
 
 module.exports = {
-  getCategoryById,
+ getCategoryById,
   getCategoryByName,
   createCategory,
   getAllCategories,

@@ -5,7 +5,7 @@ const {
   getAllCategories,
   getCategoryByNameAndVersion,
   deleteCategoryById,
-} = require('./category.services');
+} = require("./category.services");
 
 module.exports = {
   getCategoryById,
