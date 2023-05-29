@@ -46,7 +46,7 @@ const userSchema = new Schema({
   title: {
     type: String,
   },
-  prefrences: {
+  preferences: {
     type: Array,
   },
   last_login: {
