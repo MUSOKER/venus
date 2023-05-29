@@ -1,17 +1,15 @@
 const {
   getCategoryById,
-  getCategoryByName,
   createCategory,
-  getAllCategories,
+  getCategory,
   getCategoryByNameAndVersion,
   deleteCategoryById,
 } = require("./category.services");
 
 module.exports = {
   getCategoryById,
-  getCategoryByName,
   createCategory,
-  getAllCategories,
+  getCategory,
   getCategoryByNameAndVersion,
   deleteCategoryById,
 };

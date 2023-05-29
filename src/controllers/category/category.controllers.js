@@ -4,21 +4,18 @@ const { categoryValidation } = require('../../validations');
 const { categoryServices } = require('../../services');
 
 // fetching all available categories
-const fetchAllCategories = async (req, res, next) => {
+const fetchCategory = async (req, res, next) => {
   const transaction = await Transaction.startSession();
   try {
     await transaction.startTransaction();
-    // check if any category has been created and available
-    const categories = await categoryServices.getAllCategories();
-    console.log(categories);
-    if (!categories) {
-      throw error.throwNotFound({ message: 'categories not found' });
-    }
-    return success.handler(
-      { message: 'Categories has been successfully fetched', categories },
+    const { categoryName } = req.query;
+      // check for category 
+    const category = await categoryServices.getCategory({ categoryName });
+      return success.handler(
+      { message: "Categories has been successfully fetched", category },
       req,
       res,
-      next,
+      next
     );
   } catch (err) {
     await transaction.abortTransaction();
@@ -43,37 +40,6 @@ const fetchCategoryById = async (req, res, next) => {
     if (!category) {
       throw error.throwNotFound({ message: 'category not found' });
     } else { return success.handler({ message: 'Category successfully fetched', category }, req, res, next); }
-  } catch (err) {
-    await transaction.abortTransaction();
-    return error.handler(err, req, res, next);
-  } finally {
-    await transaction.endSession();
-  }
-};
-
-// fetching by category name
-const fetchCategoryByName = async (req, res, next) => {
-  const transaction = await Transaction.startSession();
-  try {
-    await transaction.startTransaction();
-  if (!req.query.categoryName) {
-       throw error.throwNotFound({ message: "name is required" });
-     }
-  const {categoryName: name} = await categoryValidation.categoryNameValidation.validateAsync(
-      {categoryName: req.query.categoryName}
-    );
-       // check name exist or not
-    const category = await categoryServices.getCategoryByName({name} );
-    console.log(category.categoryName)
-    if (!category) {
-      throw error.throwNotFound({ message: 'category not found' });
-    }
-    return success.handler(
-      { message: 'Category successfully fetched', category },
-      req,
-      res,
-      next,
-    );
   } catch (err) {
     await transaction.abortTransaction();
     return error.handler(err, req, res, next);
@@ -134,9 +100,8 @@ const createCategory = async (req, res, next) => {
 };
 
 module.exports = {
-  fetchAllCategories,
+  fetchCategory,
   fetchCategoryById,
-  fetchCategoryByName,
   deleteCategoryById,
   createCategory,
 };

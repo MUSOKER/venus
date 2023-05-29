@@ -1,15 +1,13 @@
 const {
-  fetchAllCategories,
+  fetchCategory,
   fetchCategoryById,
-  fetchCategoryByName,
   deleteCategoryById,
   createCategory,
 } = require('./category.controllers');
 
 module.exports = {
-  fetchAllCategories,
+  fetchCategory,
   fetchCategoryById,
-  fetchCategoryByName,
   deleteCategoryById,
   createCategory,
 };
