@@ -3,7 +3,7 @@ const { Transaction } = require('../../utils');
 const { categoryValidation } = require('../../validations');
 const { categoryServices } = require('../../services');
 
-// fetching all available categories
+// fetching all available categories or category-name
 const fetchCategory = async (req, res, next) => {
   const transaction = await Transaction.startSession();
   try {
@@ -78,7 +78,10 @@ const createCategory = async (req, res, next) => {
     const { categoryName, categoryDescription, categoryVersion } =
       await categoryValidation.addCategoryValidation.validateAsync(req.body);
   // check if category name and version exist 
-    const existingCategory = await categoryServices.getCategoryByNameAndVersion({categoryName, categoryVersion } );
+    const existingCategory = await categoryServices.checkNameAndVersion({
+      categoryName,
+      categoryVersion,
+    });
      if (existingCategory) {
       throw error.throwConflict({
         message: "Category with the same name and version already exists",

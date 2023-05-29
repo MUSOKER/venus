@@ -2,7 +2,7 @@ const {
   getCategoryById,
   createCategory,
   getCategory,
-  getCategoryByNameAndVersion,
+  checkNameAndVersion,
   deleteCategoryById,
 } = require("./category.services");
 
@@ -10,6 +10,6 @@ module.exports = {
   getCategoryById,
   createCategory,
   getCategory,
-  getCategoryByNameAndVersion,
+  checkNameAndVersion,
   deleteCategoryById,
 };
