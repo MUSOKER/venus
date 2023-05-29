@@ -1,9 +1,12 @@
 const { error, success } = require('@Enseedling/enseedling-lib-handler');
 const { internshipValidation } = require('../../validations');
 const { internshipServices } = require('../../services');
+const { Transaction } = require('../../utils');
 
 const addinternship = async (req, res, next) => {
+  const transaction = await Transaction.startSession();
   try {
+    await transaction.startTransaction();
     const {
       internshipTitle,
       internshipDescription,
@@ -32,21 +35,19 @@ const addinternship = async (req, res, next) => {
     });
     return success.handler({ internship }, req, res, next);
   } catch (err) {
+    await transaction.abortTransaction();
     return error.handler(err, req, res, next);
   }
 };
 
 const findInternship = async (req, res, next) => {
+  const transaction = await Transaction.startSession();
   try {
-    const { page = 1, limit = 5 } = req.query;
-
-    const AllInternship = await internshipServices.getAllInternship()
-      .limit(limit * 1).skip((page - 1) * limit).exec();
-
-    const doc = await internshipServices.getAllInternship.countDocuments();
-
-    return success.handler({ AllInternship, totalPages: Math.ceil(doc / limit), currentPage: page }, req, res, next);
+    await transaction.startTransaction();
+    const allInternships = await internshipServices.getAllInternship();
+    return success.handler({ allInternships }, req, res, next);
   } catch (err) {
+    await transaction.abortTransaction();
     return error.handler(err, req, res, next);
   }
 };

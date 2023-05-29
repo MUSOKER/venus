@@ -1,7 +1,7 @@
 const userControllers = require('./user');
-const internshipControllers = require('./internship');
+const internshipController = require('./internship');
 
 module.exports = {
   userControllers,
-  internshipControllers,
+  internshipController,
 };
