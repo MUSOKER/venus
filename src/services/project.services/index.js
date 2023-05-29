@@ -1,15 +1,13 @@
 const {
     createProject,
     updateTheProject,
-    getAllProjects,
-    filterProject,
+    getProject,
     deleteProjectById,
 } = require('./project.services');
 
 module.exports = {
     createProject,
     updateTheProject,
-    getAllProjects,
-    filterProject,
+    getProject,
     deleteProjectById,
 };

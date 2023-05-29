@@ -1,24 +1,8 @@
 const { success, error } = require('@Enseedling/enseedling-lib-handler');
 const { Transaction } = require('../../utils');
-const { ProjectModel } = require('../../models');
+const { projectValidation } = require('../../validations');
+const { projectServices } = require('../../services');
 // fetching all available projects
-const fetchAllProjects = async(req, res, next) => {
-    const transaction = await Transaction.startSession();
-    try {
-        await transaction.startTransaction();
-        // check if any projects has been created and available
-        const projects = await projectServices.getAllProjects();
-        if (!projects) {
-            throw error.throwNotFound({ message: 'Projects' });
-        }
-        return success.handler({ message: 'Projects has been successfully fetched', projects: projects }, req, res, next);
-    } catch (err) {
-        await transaction.abortTransaction();
-        return error.handler(err, req, res, next);
-    } finally {
-        await transaction.endSession();
-    }
-};
 
 
 const addProject = async(req, res, next) => {
@@ -127,10 +111,10 @@ const deleteProjectById = async(req, res, next) => {
         await transaction.endSession();
     }
 };
-const filterProject = async(req, res, next) => {
+const getProject = async(req, res, next) => {
     try {
         const { projectTitle, status, projectId, userId, categoryIds } = await projectValidation.getProjectValidation.validateAsync(req.query);
-        const projects = await projectServices.filterProject({ projectId, projectTitle, category, userId, status });
+        const projects = await projectServices.getProject({ projectTitle, status, projectId, userId, categoryIds });
         return success.handler({ projects },
             req, res, next);
 
@@ -141,7 +125,6 @@ const filterProject = async(req, res, next) => {
 module.exports = {
     addProject,
     updateProject,
-    fetchAllProjects,
     deleteProjectById,
-    filterProject
+    getProject
 };

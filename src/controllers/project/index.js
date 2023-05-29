@@ -1,14 +1,12 @@
 const {
-    fetchAllProjects,
-    filterProject,
+    getProject,
     addProject,
     deleteProjectById,
     updateProject
 } = require('./project.controllers');
 
 module.exports = {
-    fetchAllProjects,
-    filterProject,
+    getProject,
     addProject,
     deleteProjectById,
     updateProject

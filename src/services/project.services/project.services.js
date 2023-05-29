@@ -1,10 +1,8 @@
 const { ProjectModel } = require('../../models');
 
-// Fetch all projects
-const getAllProjects = async() => ProjectModel.findAll();
-// Fetching project by the project id
-// Fetcing project by userId
-const filterProject = async({ projectId, projectTitle, category, userId, status }) => {
+
+// Fetching projects
+const getProject = async({ projectId, projectTitle, category, userId, status }) => {
         let q = {};
         if (projectId) {
             q._id = projectId;
@@ -88,7 +86,6 @@ const updateTheProject = async({
 module.exports = {
     createProject,
     updateTheProject,
-    getAllProjects,
-    filterProject,
+    getProject,
     deleteProjectById,
 };

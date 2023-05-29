@@ -6,8 +6,7 @@ const projectRoutes = express.Router();
 
 projectRoutes.post('/add', projectControllers.addProject);
 projectRoutes.put('/:projectId', projectControllers.updateProject);
-projectRoutes.get('/allProjects', projectControllers.fetchAllProjects);
-projectRoutes.get('/project', projectControllers.filterProject);
+projectRoutes.get('/project', projectControllers.getProject);
 projectRoutes.delete('/delete/:projectId', projectControllers.deleteProjectById);
 
 module.exports = projectRoutes;
