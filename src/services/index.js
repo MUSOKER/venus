@@ -3,11 +3,13 @@ const notificationDispatcher = require('./thirdParty');
 const categoryServices = require('./category.services');
 const projectServices= require('./project.services');
 const courseServices = require('./course.services');
+const topicServices = require('./topic.services')
 
 module.exports = {
-    userServices,
-    notificationDispatcher,
-    projectServices,
-    courseServices,
+  userServices,
+  notificationDispatcher,
+  projectServices,
+  courseServices,
   categoryServices,
+  topicServices,
 };
