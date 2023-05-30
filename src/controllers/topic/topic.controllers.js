@@ -81,7 +81,6 @@ const updateTopic = async (req, res, next) => {
   try {
     await transaction.startTransaction();
     const {
-      topic_id,
       topic_name,
       topic_description,
       topic_duration,
@@ -90,10 +89,10 @@ const updateTopic = async (req, res, next) => {
       demo_src,
       course_id,
     } = await topicValidation.updateTopicValidation.validateAsync(req.body);
-    const { topicId } =
+    const { topic_id } =
       await projectValidation.projectIdValidation.validateAsync(req.params);
     await topicServices.updateTopic({
-      topicId,
+      topic_id,
       topic_name,
       topic_description,
       topic_duration,
