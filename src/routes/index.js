@@ -8,7 +8,7 @@ const courseAssignmentRoutes = require('./course.assignments.routes');
 const apiRoutes = express.Router();
 apiRoutes.use('/user', userRoutes);
 apiRoutes.use('/assignments', assignmentRoutes);
-apiRoutes.use('/assignment-feedback', assignmentFeedBackRoute);
+apiRoutes.use('/assignment_feedback', assignmentFeedBackRoute);
 apiRoutes.use('/course_assignments', courseAssignmentRoutes);
 apiRoutes.use('*', () => error.throwNotFound({ item: 'Route' }));
 

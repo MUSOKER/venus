@@ -30,6 +30,7 @@ const getUserByUserId = async ({ userId }) => UserModel.findById(userId).populat
 
 // get user by userId
 // also fetch top 10 students
+
 const getUserInfoByUserId = async ({ userId }) => UserModel.aggregate([
   {
     $match: {
