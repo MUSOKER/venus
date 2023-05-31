@@ -17,7 +17,7 @@ const checkNameAndVersion = async ({ categoryName, categoryVersion }) => {
 
 const createCategory = async (
   { categoryName, categoryDescription, categoryVersion },
-) => CategoryModel.create({
+) => await CategoryModel.create({
   categoryName,
   categoryDescription,
   categoryVersion,
