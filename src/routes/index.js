@@ -5,6 +5,7 @@ const projectsRoutes = require("./project.routes");
 const coursesRoutes = require("./course.routes");
 const categoryRoutes = require("./category.routes");
 const topicRoutes = require("./topic.routes");
+const chapterRoutes = require('./chapter.routes');
 
 const apiRoutes = express.Router();
 
@@ -13,6 +14,8 @@ apiRoutes.use("/category", categoryRoutes);
 apiRoutes.use("/project", projectsRoutes);
 apiRoutes.use("/course", coursesRoutes);
 apiRoutes.use("/topic", topicRoutes);
+apiRoutes.use("/chapter", chapterRoutes);
+
 apiRoutes.use("*", () => error.throwNotFound({ item: "Route" }));
 
 module.exports = apiRoutes;

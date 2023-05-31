@@ -5,13 +5,15 @@ const UserIdentificationSchema = require('./user_identification.model');
 const CategoryModel = require('./category.model');
 const ProjectModel = require('./project.model');
 const EnrolledCourseModel = require('./enrolledCourses.model');
+const ChapterModel = reuire('./chapter.model');
 
 module.exports = {
-  UserModel,
-  AddressModel,
-  AdminModel,
-  UserIdentificationSchema,
-  ProjectModel,
-  EnrolledCourseModel,
-  CategoryModel,
+    UserModel,
+    AddressModel,
+    AdminModel,
+    UserIdentificationSchema,
+    ProjectModel,
+    EnrolledCourseModel,
+    CategoryModel,
+    ChapterModel,
 };
