@@ -1,8 +1,13 @@
 {
     "extends": "airbnb-base",
     "rules": {
+<<<<<<< HEAD
         // "linebreak-style": ["error", "windows"],
         "linebreak-style": ["error", "windows"],
+=======
+        // "linebreak-style": ["error", "unix"],
+        "linebreak-style": ["error", "window"],
+>>>>>>> 5051c78a0c99af6e764295604fbd0dac24ae933f
         "max-len": [1, 200, 2, {"ignoreComments": true}],
         "no-underscore-dangle": [0, { "allow": [] }],
         "semi": ["error", "always"],
