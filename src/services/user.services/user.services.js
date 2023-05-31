@@ -3,7 +3,8 @@ const { UserModel, UserIdentificationSchema } = require('../../models');
 
 const getUserByEmail = async({ email }) => UserModel.findOne({ email });
 
-const getUserByIdFromIdentification = async({ id }) => UserIndentificationSchema.findOne({ id });
+const getUserByIdFromIdentification = async ({ id }) => UserIdentificationSchema.findOne({ id });
+
 // create user
 const createUser = async({ fullName, email }, transaction) => {
     const addUser = new UserModel({
@@ -15,14 +16,13 @@ const createUser = async({ fullName, email }, transaction) => {
 };
 
 // create user identification
-const createUserIdentification = async({ isUserVerified, id }, transaction) => {
-    const addUserIdentification = new UserIndentificationSchema({
-        is_user_verified: isUserVerified,
-        id,
-    });
-    const saveUserIdentification = await addUserIdentification.save({ transaction });
-    return saveUserIdentification;
-
+const createUserIdentification = async ({ isUserVerified, id }, transaction) => {
+  const addUserIdentification = new UserIdentificationSchema({
+    is_user_verified: isUserVerified,
+    id,
+  });
+  const saveUserIdentification = await addUserIdentification.save({ transaction });
+  return saveUserIdentification;
 };
 
 // get user by userId
@@ -30,6 +30,7 @@ const getUserByUserId = async({ userId }) => UserModel.findById(userId).populate
 
 // get user by userId
 // also fetch top 10 students
+
 const getUserInfoByUserId = async ({ userId }) => UserModel.aggregate([
   {
     $match: {

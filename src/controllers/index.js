@@ -1,17 +1,10 @@
 const userControllers = require('./user');
-const categoryControllers = require('./category');
-const projectControllers = require('./project');
-const courseControllers = require('./course');
-const topicControllers = require('./topic');
-const chaptertControllers = require('./Chapter')
+const assignmentController = require('./assignment');
+const assignmentFeedBack = require('./assignment.Feedback');
+const courseAssignmentController = require('./courseAssignment');
 
 module.exports = {
-  userControllers,
-  projectControllers,
-  courseControllers,
-  categoryControllers,
-  topicControllers,
-  chaptertControllers
+  userControllers, assignmentController, assignmentFeedBack, courseAssignmentController,
 };
 
 
