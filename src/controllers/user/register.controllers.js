@@ -31,6 +31,7 @@ const registerUser = async (req, res, next) => {
         }
         // create a token
         const token = await jwt.createToken({ userId: user._doc._id });
+        console.log(token);
         // send a mail
         await dispatcher({
           payload: {
@@ -68,6 +69,7 @@ const registerUser = async (req, res, next) => {
       }
       // create a token
       const token = await jwt.createToken({ userId: addUser._id });
+
       // now send a mail
       // send a mail
       await dispatcher({

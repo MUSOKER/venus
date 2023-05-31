@@ -1,11 +1,13 @@
 const express = require('express');
+const { header: { authentication } } = require('@Enseedling/enseedling-lib-middlewares');
 
 const { assignmentController } = require('../../controllers');
 
 const assignmentsRoutes = express.Router();
-assignmentsRoutes.post('/assignment', assignmentController.addAssignment);
-assignmentsRoutes.get('/assignment/:assignmentId?', assignmentController.findAssignments);
-assignmentsRoutes.put('/:assignmentId', assignmentController.updateAssignment);
-assignmentsRoutes.delete('/:assignmentId', assignmentController.removeAssignment);
+
+assignmentsRoutes.post('/assignment', authentication, assignmentController.addAssignment);
+assignmentsRoutes.get('/assignment/:assignmentId?', authentication, assignmentController.findAssignments);
+assignmentsRoutes.put('/:assignmentId', authentication, assignmentController.updateAssignment);
+assignmentsRoutes.delete('/:assignmentId', authentication, assignmentController.removeAssignment);
 
 module.exports = assignmentsRoutes;

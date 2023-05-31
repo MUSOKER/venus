@@ -1,13 +1,17 @@
 const mongoose = require('mongoose');
 
 const courseAssignmentSchema = new mongoose.Schema({
-  courseID: {
+
+  courseId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'course',
+    ref: 'courses',
+    // required: true,
+    // course table is empty, ( required false)
   },
   assignmentId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'assignments',
+    required: true,
   },
   status: {
     type: Number,
