@@ -18,10 +18,10 @@ const AssignmentSchema = new mongoose.Schema({
         type: Boolean,
         required: true,
     },
-    category: {
-        type: Array,
-        required: true,
-    },
+    category: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'category',
+    }],
     topics: [{
         type: Array,
         required: true,
