@@ -1,13 +1,13 @@
 const {
-    chapterIdValidation,
-    getChapterValidation,
-    updateChapterValidation,
-    createChapterValidation
-} = require("./chapter.validations.js")
+  chapterIdValidation,
+  getChapterValidation,
+  updateChapterValidation,
+  createChapterValidation,
+} = require('./chapter.validations');
 
 module.exports = {
-    chapterIdValidation,
-    getChapterValidation,
-    updateChapterValidation,
-    createChapterValidation
+  chapterIdValidation,
+  getChapterValidation,
+  updateChapterValidation,
+  createChapterValidation,
 };
