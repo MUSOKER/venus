@@ -1,18 +1,18 @@
 const mongoose = require('mongoose');
 const { UserModel, UserIdentificationSchema } = require('../../models');
 
-const getUserByEmail = async ({ email }) => UserModel.findOne({ email });
+const getUserByEmail = async({ email }) => UserModel.findOne({ email });
 
 const getUserByIdFromIdentification = async ({ id }) => UserIdentificationSchema.findOne({ id });
 
 // create user
-const createUser = async ({ fullName, email }, transaction) => {
-  const addUser = new UserModel({
-    fullName,
-    email,
-  });
-  const saveUser = await addUser.save({ transaction });
-  return saveUser;
+const createUser = async({ fullName, email }, transaction) => {
+    const addUser = new UserModel({
+        fullName,
+        email,
+    });
+    const saveUser = await addUser.save({ transaction });
+    return saveUser;
 };
 
 // create user identification
@@ -26,10 +26,11 @@ const createUserIdentification = async ({ isUserVerified, id }, transaction) => 
 };
 
 // get user by userId
-const getUserByUserId = async ({ userId }) => UserModel.findById(userId).populate('addressId');
+const getUserByUserId = async({ userId }) => UserModel.findById(userId).populate('addressId');
 
 // get user by userId
 // also fetch top 10 students
+
 const getUserInfoByUserId = async ({ userId }) => UserModel.aggregate([
   {
     $match: {

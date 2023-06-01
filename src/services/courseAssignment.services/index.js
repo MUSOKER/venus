@@ -1,4 +1,5 @@
 const {
+  courseAssignmentExist,
   createCourseAssignment,
   getCourseAssignment,
   deleteCourseAssignment,
@@ -6,6 +7,7 @@ const {
 } = require('./courseAssignment.services');
 
 module.exports = {
+  courseAssignmentExist,
   createCourseAssignment,
   getCourseAssignment,
   deleteCourseAssignment,
