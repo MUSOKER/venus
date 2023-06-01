@@ -44,7 +44,12 @@ const deleteInternship = async (id, transaction) => {
   const deletedInternship = await AppliedInternshipModel.findByIdAndDelete(id, { session: transaction });
   return deletedInternship;
 };
+// Get all applied internships
+const getAppliedInternships = async () => {
+  const appliedInternships = await AppliedInternshipModel.find();
+  return appliedInternships;
+};
 
 module.exports = {
-  applyInternship, deleteInternship, getPostedInternshipById, getAppliedInternshipById, getUserId,
+  applyInternship, deleteInternship, getPostedInternshipById, getAppliedInternshipById, getUserId, getAppliedInternships,
 };

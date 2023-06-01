@@ -2,7 +2,7 @@ const Joi = require('joi');
 const enseedlingValidator = require('@Enseedling/enseedling-validations');
 
 const appliedInternshipValidation = Joi.object({
-  userId: enseedlingValidator.generic.string.medium.required().label('User ID'),
+  userId: enseedlingValidator.generic.string.medium.required().label('User Id'),
   internshipId: enseedlingValidator.generic.string.medium.required().label('Internship Id'),
   selectionStatus: Joi.string()
     .valid('Hired', 'Rejected', 'Shortlisted', 'pending')

@@ -46,6 +46,17 @@ const deleteInternship = async (req, res, next) => {
   }
 };
 
+const getAppliedInternships = async (req, res, next) => {
+  try {
+    // Call the getAppliedInternships service to retrieve all applied internships
+    const appliedInternships = await internshipService.getAppliedInternshipById();
+
+    return success.handler({ appliedInternships }, req, res, next);
+  } catch (err) {
+    return error.handler(err, req, res, next);
+  }
+};
+
 module.exports = {
-  applyInternship, deleteInternship,
+  applyInternship, deleteInternship, getAppliedInternships,
 };

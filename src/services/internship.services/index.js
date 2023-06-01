@@ -1,3 +1,3 @@
-const { applyInternship, deleteInternship } = require('./apply.internship.services');
+const { applyInternship, deleteInternship, getAppliedInternshipById } = require('./apply.internship.services');
 
-module.exports = { applyInternship, deleteInternship };
+module.exports = { applyInternship, deleteInternship, getAppliedInternshipById };
