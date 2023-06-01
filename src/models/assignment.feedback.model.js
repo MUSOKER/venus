@@ -21,7 +21,6 @@ const assgnmentFeedbackSchema = new mongoose.Schema({
   },
   like: {
     type: Boolean,
-
   },
 
 });

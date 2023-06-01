@@ -5,12 +5,17 @@ const { assignmentFeedBackValidation } = require('../../validations');
 
 const createAssignmentFeedback = async (req, res, next) => {
   try {
-    const { like, comment, rating } = await assignmentFeedBackValidation.createAssignmentFeedbackVal.validateAsync(req.body);
+    const { id: userId } = req.user;
     const { assignmentId } = await assignmentValidation.assignmentIdValidation.validateAsync(req.params);
-    await assignmentFeedbackServices.createAssignmentTheFeedback({
-      assignmentId, like, comment, rating,
+    const { like, comment, rating } = await assignmentFeedBackValidation.createAssignmentFeedbackVal.validateAsync(req.body);
+    const addedFeedback = await assignmentFeedbackServices.createUpdateTheFeedback({
+      userId, assignmentId, like, comment, rating,
     });
-    return success.handler({ message: 'feedback created/ updated successfully' }, req, res, next);
+    if (!addedFeedback) {
+      throw error.throwNotFound({ message: 'Sorry! unable to create feedback' });
+    }
+
+    return success.handler({ addedFeedback }, req, res, next);
   } catch (err) {
     return error.handler(err, req, res, next);
   }
@@ -19,7 +24,11 @@ const createAssignmentFeedback = async (req, res, next) => {
 const removeAssignmentFeedback = async (req, res, next) => {
   try {
     const { feedbackId } = await assignmentFeedBackValidation.assignmentFeedbackIdValidation.validateAsync(req.params);
-    const deleteFeedback = await assignmentFeedbackServices.assignmentDeleteFeedback(feedbackId);
+    const deleteFeedback = await assignmentFeedbackServices.deleteAssignmentFeedback(feedbackId);
+    if (!deleteFeedback) {
+      throw error.throwNotFound({ message: 'Assignment Not Found' });
+    }
+
     return success.handler({ deleteFeedback }, req, res, next);
   } catch (err) {
     return error.handler(err, req, res, next);
