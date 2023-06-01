@@ -32,14 +32,14 @@ const deleteInternship = async (req, res, next) => {
   const transaction = await Transaction.startSession();
   try {
     await transaction.startTransaction();
-    const { internshipId } = await internshipValidation.appliedInternshipValidation.validateAsync(req.params);
+    const { internshipId } = await internshipValidation.deleteInternshipValidation.validateAsync(req.body);
 
     // Call the deleteInternship service to delete the applied internship
     const deletedInternship = await internshipService.deleteInternship(internshipId);
     if (!deletedInternship) {
-      return success.handler({ message: 'internship not found' });
+      return success.handler({ internshipId, message: 'Internship not found' }, req, res, next);
     }
-    return success.handler({ message: 'Applied internship deleted successfully' }, req, res, next);
+    return success.handler({ internshipId, message: 'Applied internship deleted successfully' }, req, res, next);
   } catch (err) {
     await transaction.abortTransaction();
     return error.handler(err, req, res, next);
@@ -49,7 +49,7 @@ const deleteInternship = async (req, res, next) => {
 const getAppliedInternships = async (req, res, next) => {
   try {
     // Call the getAppliedInternships service to retrieve all applied internships
-    const appliedInternships = await internshipService.getAppliedInternshipById();
+    const appliedInternships = await internshipService.getAppliedInternships();
 
     return success.handler({ appliedInternships }, req, res, next);
   } catch (err) {

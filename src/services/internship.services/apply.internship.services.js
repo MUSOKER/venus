@@ -11,11 +11,11 @@ const getPostedInternshipById = async (id) => {
   return postedInternship;
 };
 
-// Get applied internship by ID
-const getAppliedInternshipById = async (id) => {
-  const appliedInternship = await AppliedInternshipModel.findOne({ _id: id });
-  return appliedInternship;
-};
+// // Get applied internship by ID
+// const getAppliedInternships = async (id) => {
+//   const appliedInternship = await AppliedInternshipModel.findOne({ _id: id });
+//   return appliedInternship;
+// };
 
 // Apply internship
 const applyInternship = async (
@@ -51,5 +51,5 @@ const getAppliedInternships = async () => {
 };
 
 module.exports = {
-  applyInternship, deleteInternship, getPostedInternshipById, getAppliedInternshipById, getUserId, getAppliedInternships,
+  applyInternship, deleteInternship, getPostedInternshipById, getAppliedInternships, getUserId,
 };
