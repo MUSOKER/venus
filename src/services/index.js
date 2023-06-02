@@ -6,8 +6,9 @@ const courseAssignmentServices = require('./courseAssignment.services');
 const categoryServices = require('./category.services');
 const projectServices = require('./project.services');
 const courseServices = require('./course.services');
-const chapterServices = require('./chapter.services')
-const topicServices = require('./topic.services')
+const chapterServices = require('./chapter.services');
+const topicServices = require('./topic.services');
+const messageServices = require('./message.services');
 
 module.exports = {
   userServices,
@@ -20,4 +21,5 @@ module.exports = {
   categoryServices,
   topicServices,
   chapterServices,
+  messageServices,
 };
