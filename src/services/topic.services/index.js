@@ -1,4 +1,4 @@
-const  {
+const {
   createTopic,
   deleteTopic,
   getAllTopics,
@@ -10,4 +10,4 @@ module.exports = {
   deleteTopic,
   getAllTopics,
   updateTopic,
-}
+};

@@ -1,14 +1,13 @@
 const {
-    createChapter,
-    updateTheChapter,
-    getChapter,
-    deleteChapterById,
-} = require('./chapter.services')
-
+  createChapter,
+  updateTheChapter,
+  getChapter,
+  deleteChapterById,
+} = require('./chapter.services');
 
 module.exports = {
-    createChapter,
-    updateTheChapter,
-    getChapter,
-    deleteChapterById,
+  createChapter,
+  updateTheChapter,
+  getChapter,
+  deleteChapterById,
 };
