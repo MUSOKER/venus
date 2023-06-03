@@ -19,12 +19,12 @@ apiRoutes.use('/internship', internshipRoutes);
 apiRoutes.use("/user", userRoutes);
 apiRoutes.use('/assignments', assignmentRoutes);
 apiRoutes.use('/assignment_feedback', assignmentFeedBackRoute);
-apiRoutes.use('/course_assignments', courseAssignmentRoutes);apiRoutes.use("/category", categoryRoutes);
-apiRoutes.use("/project", projectsRoutes);
-apiRoutes.use("/course", coursesRoutes);
-apiRoutes.use("/topic", topicRoutes);
-apiRoutes.use("/chapter", chapterRoutes);
+apiRoutes.use('/course_assignments', courseAssignmentRoutes); apiRoutes.use('/category', categoryRoutes);
+apiRoutes.use('/project', projectsRoutes);
+apiRoutes.use('/course', coursesRoutes);
+apiRoutes.use('/topic', topicRoutes);
+apiRoutes.use('/chapter', chapterRoutes);
 
-apiRoutes.use("*", () => error.throwNotFound({ item: "Route" }));
+apiRoutes.use('*', () => error.throwNotFound({ item: 'Route' }));
 
 module.exports = apiRoutes;
