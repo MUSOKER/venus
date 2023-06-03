@@ -4,8 +4,8 @@ const { createCourse } = require('./course.controllers');
 const { updateCourse } = require('./course.controllers');
 
 module.exports = {
-    findCourses,
-    findCourse,
-    createCourse,
-    updateCourse
+  findCourses,
+  findCourse,
+  createCourse,
+  updateCourse,
 };

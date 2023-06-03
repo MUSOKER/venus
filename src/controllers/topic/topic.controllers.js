@@ -1,13 +1,11 @@
-const { success, error } = require("@Enseedling/enseedling-lib-handler");
-const { Transaction } = require("../../utils");
-const { topicValidation } = require("../../validations");
-const { topicServices } = require("../../services");
-
+const { success, error } = require('@Enseedling/enseedling-lib-handler');
+const { Transaction } = require('../../utils');
+const { topicValidation } = require('../../validations');
+const { topicServices } = require('../../services');
 
 const getAllTopics = async (req, res, next) => {
   try {
-    const { course_id } =
-      await topicValidation.getTopicsValidation.validateAsync(req.params);
+    const { course_id } = await topicValidation.getTopicsValidation.validateAsync(req.params);
     const topics = await topicServices.getAllTopics({
       course_id,
     });
@@ -22,18 +20,13 @@ const deleteTopic = async (req, res, next) => {
   try {
     await transaction.startTransaction();
     const { id } = await topicValidation.topicIdValidation.validateAsync(
-      req.params
+      req.params,
     );
-    const deleteTopic = await topicServices.deleteTopic({ id });
+    const deletedTopic = await topicServices.deleteTopic({ id });
     if (!deleteTopic) {
-      throw error.throwNotFound({ message: "topic not found" });
+      throw error.throwNotFound({ message: 'topic not found' });
     }
-    return success.handler(
-      { message: "topic has been successfully deleted." },
-      req,
-      res,
-      next
-    );
+    return success.handler({ deletedTopic }, req, res, next);
   } catch (err) {
     await transaction.abortTransaction();
     return error.handler(err, req, res, next);
@@ -43,7 +36,7 @@ const deleteTopic = async (req, res, next) => {
 };
 
 const createTopic = async (req, res, next) => {
-  const transaction = await transaction.startTransaction();
+  const transaction = await Transaction.startTransaction();
   try {
     await transaction.startTransaction();
     const {
@@ -65,7 +58,7 @@ const createTopic = async (req, res, next) => {
         demo_src,
         course_id,
       },
-      transaction
+      transaction,
     );
     return success.handler({ topic }, req, res, next);
   } catch (err) {
@@ -89,8 +82,7 @@ const updateTopic = async (req, res, next) => {
       demo_src,
       course_id,
     } = await topicValidation.updateTopicValidation.validateAsync(req.body);
-    const { topic_id } =
-      await projectValidation.projectIdValidation.validateAsync(req.params);
+    const { topic_id } = await topicValidation.topicIdValidation.validateAsync(req.params);
     await topicServices.updateTopic({
       topic_id,
       topic_name,
@@ -101,7 +93,7 @@ const updateTopic = async (req, res, next) => {
       demo_src,
       course_id,
     });
-    return success.handler({ message: "topic updated" }, req, res, next);
+    return success.handler({ message: 'topic updated' }, req, res, next);
   } catch (err) {
     await transaction.abortTransaction();
     return error.handler(err, req, res, next);
@@ -109,8 +101,6 @@ const updateTopic = async (req, res, next) => {
     await transaction.endSession();
   }
 };
-
-
 
 module.exports = {
   deleteTopic,
