@@ -2,10 +2,10 @@ const express = require('express');
 const { error } = require('@Enseedling/enseedling-lib-handler');
 const chapterRoutes = require('./chapter.routes');
 
-const chapterRoutes = express.Router();
+const chaptersRoutes = express.Router();
 
-chapterRoutes.use(courseRoutes);
+chaptersRoutes.use(chapterRoutes);
 
-chapterRoutes.use('*', () => error.throwNotFound({ item: 'Route' }));
+chaptersRoutes.use('*', () => error.throwNotFound({ item: 'Route' }));
 
-module.exports = chapterRoutes;
+module.exports = chaptersRoutes;

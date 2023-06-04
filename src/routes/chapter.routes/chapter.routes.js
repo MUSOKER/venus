@@ -1,12 +1,12 @@
 const express = require('express');
 
-const { chaptertControllers } = require('../../controllers');
+const { chapterControllers } = require('../../controllers');
 
-const chaptertRoutes = express.Router();
+const chapterRoutes = express.Router();
 
-chaptertRoutes.post('/add', chaptertControllers.addChapter);
-chaptertRoutes.put('/:chapterId', chaptertControllers.updateChapter);
-chaptertRoutes.get('/chapter', chaptertControllers.getChapter);
-chaptertRoutes.delete('/delete/:chapterId', chaptertControllers.deleteChapterById);
+chapterRoutes.post('/add', chapterControllers.addChapter);
+chapterRoutes.put('/:chapterId', chapterControllers.updateChapter);
+chapterRoutes.get('/chapter', chapterControllers.getChapter);
+chapterRoutes.delete('/delete/:chapterId', chapterControllers.deleteChapterById);
 
-module.exports = chaptertRoutes;
+module.exports = chapterRoutes;
