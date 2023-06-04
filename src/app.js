@@ -3,13 +3,13 @@ const { error } = require('@Enseedling/enseedling-lib-handler');
 const express = require('express');
 
 // const socketIO = require('socket.io');
-const http = require('http')
+const http = require('http');
 const cors = require('cors');
 
 // Import internal modules;
-const { 
-  connectToMongoDb, 
-  configureSocket, 
+const {
+  connectToMongoDb,
+  configureSocket,
   environmentVariables,
 } = require('./config');
 
@@ -17,8 +17,9 @@ const apiRoutes = require('./routes');
 
 const app = express();
 const server = http.createServer(app);
+
 // Configure Socket.IO
-const io = configureSocket(server);
+configureSocket(server);
 
 // Middleware
 app.use(cors());
@@ -54,4 +55,3 @@ server.listen(environmentVariables.APP_PORT || 8000, (err) => {
       console.log(_error);
     });
 });
-
