@@ -8,4 +8,4 @@ chapterRoute.use(chapterRoutes);
 
 chapterRoute.use('*', () => error.throwNotFound({ item: 'Route' }));
 
-module.exports = chapterRoute;
+module.exports = chapterRoutes;

@@ -17,11 +17,10 @@ apiRoutes.use('/user', userRoutes);
 apiRoutes.use('/assignments', assignmentRoutes);
 apiRoutes.use('/assignment_feedback', assignmentFeedBackRoute);
 apiRoutes.use('/course_assignments', courseAssignmentRoutes);
-apiRoutes.use('/category', categoryRoutes);
 apiRoutes.use('/project', projectsRoutes);
 apiRoutes.use('/course', coursesRoutes);
-apiRoutes.use('/chapter', chapterRoutes);
 apiRoutes.use('/topic', topicRoutes);
+apiRoutes.use('/chapter', chapterRoutes);
 apiRoutes.use('/message', messagesRoutes);
 
 apiRoutes.use('*', () => error.throwNotFound({ item: 'Route' }));

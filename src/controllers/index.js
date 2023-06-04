@@ -6,7 +6,7 @@ const categoryControllers = require('./category');
 const projectControllers = require('./project');
 const courseControllers = require('./course');
 const topicControllers = require('./topic');
-const chapterControllers = require('./chapter');
+const chaptertControllers = require('./chapter');
 const messageControllers = require('./message');
 
 module.exports = {
@@ -14,11 +14,11 @@ module.exports = {
   assignmentController,
   assignmentFeedBack,
   courseAssignmentController,
-  categoryControllers,
   projectControllers,
   courseControllers,
+  categoryControllers,
   topicControllers,
-  chapterControllers,
+  chaptertControllers,
   messageControllers,
 
 };
