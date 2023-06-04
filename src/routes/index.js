@@ -5,7 +5,7 @@ const projectsRoutes = require('./project.routes');
 const coursesRoutes = require('./course.routes');
 const categoryRoutes = require('./category.routes');
 const topicRoutes = require('./topic.routes');
-const chaptersRoutes = require('./chapter.routes');
+const chapterRoutes = require('./chapter.routes');
 const assignmentRoutes = require('./assignment.routes');
 const assignmentFeedBackRoute = require('./assignment.feedback.routes');
 const courseAssignmentRoutes = require('./course.assignments.routes');
@@ -20,7 +20,7 @@ apiRoutes.use('/course_assignments', courseAssignmentRoutes);
 apiRoutes.use('/category', categoryRoutes);
 apiRoutes.use('/project', projectsRoutes);
 apiRoutes.use('/course', coursesRoutes);
-apiRoutes.use('/chapter', chaptersRoutes);
+apiRoutes.use('/chapter', chapterRoutes);
 apiRoutes.use('/topic', topicRoutes);
 apiRoutes.use('/message', messagesRoutes);
 

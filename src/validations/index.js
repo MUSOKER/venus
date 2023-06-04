@@ -15,5 +15,7 @@ module.exports = {
   assignmentValidation,
   assignmentFeedBackValidation,
   courseAssignmentValidation,
+  courseValidation,
+  chapterValidation,
   messagesValidation,
 };
