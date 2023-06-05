@@ -1,13 +1,13 @@
-const { 
-    sendMessage,
-    getMessages,
-    fetchMessageHistory,
-    deleteMessage,
+const {
+  sendMessage,
+  getMessages,
+  fetchMessageHistory,
+  deleteMessage,
 } = require('./messages.controller');
 
 module.exports = {
-    sendMessage,
-    getMessages,
-    fetchMessageHistory,
-    deleteMessage,
-}
+  sendMessage,
+  getMessages,
+  fetchMessageHistory,
+  deleteMessage,
+};

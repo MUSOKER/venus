@@ -22,5 +22,4 @@ module.exports = {
   topicControllers,
   chapterControllers,
   messageControllers,
-
 };

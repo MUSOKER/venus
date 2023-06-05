@@ -9,6 +9,7 @@ const ProjectModel = require('./project.model');
 const CategoryModel = require('./category.model');
 const EnrolledCourseModel = require('./enrolledCourses.model');
 const AppliedInternshipModel = require('./applied_internship.model');
+const MessageModel = require('./message.model');
 
 module.exports = {
   UserModel,
@@ -22,4 +23,5 @@ module.exports = {
   EnrolledCourseModel,
   CategoryModel,
   AppliedInternshipModel,
+  MessageModel,
 };
