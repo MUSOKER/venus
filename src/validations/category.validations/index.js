@@ -2,7 +2,7 @@ const {
   addCategoryValidation,
   categoryIdValidation,
   categoryNameValidation,
-} = require("./category.validations");
+} = require('./category.validations');
 
 module.exports = {
   addCategoryValidation,
