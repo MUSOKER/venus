@@ -1,13 +1,7 @@
 const mongoose = require('mongoose');
 const { UserModel, UserIdentificationSchema } = require('../../models');
 
-<<<<<<< HEAD
-const getUserByEmail = async ({ email }) => UserModel.findOne({ email });
-
-const getUserByIdFromIdentification = async ({ id }) => UserIdentificationSchema.findOne({ id });
-=======
 const getUserByEmail = async({ email }) => UserModel.findOne({ email });
->>>>>>> 5051c78a0c99af6e764295604fbd0dac24ae933f
 
 const getUserByIdFromIdentification = async({ id }) => UserIndentificationSchema.findOne({ id });
 // create user
@@ -21,15 +15,6 @@ const createUser = async({ fullName, email }, transaction) => {
 };
 
 // create user identification
-<<<<<<< HEAD
-const createUserIdentification = async ({ isUserVerified, id }, transaction) => {
-  const addUserIdentification = new UserIdentificationSchema({
-    is_user_verified: isUserVerified,
-    id,
-  });
-  const saveUserIdentification = await addUserIdentification.save({ transaction });
-  return saveUserIdentification;
-=======
 const createUserIdentification = async({ isUserVerified, id }, transaction) => {
     const addUserIdentification = new UserIndentificationSchema({
         is_user_verified: isUserVerified,
@@ -38,7 +23,6 @@ const createUserIdentification = async({ isUserVerified, id }, transaction) => {
     const saveUserIdentification = await addUserIdentification.save({ transaction });
     return saveUserIdentification;
 
->>>>>>> 5051c78a0c99af6e764295604fbd0dac24ae933f
 };
 
 // get user by userId
@@ -111,8 +95,6 @@ const getCandidates = async () => UserModel.aggregate([
   },
 ]);
 
-<<<<<<< HEAD
-=======
 // update user by user ID
 const updateUserByID = async ({
   fullName,
@@ -161,7 +143,6 @@ const updateUserByID = async ({
   state,
 }, { new: true });
 
->>>>>>> 5051c78a0c99af6e764295604fbd0dac24ae933f
 module.exports = {
   getUserByEmail,
   updateUserByID,

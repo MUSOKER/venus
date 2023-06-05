@@ -1,18 +1,10 @@
 const userServices = require('./user.services');
 const notificationDispatcher = require('./thirdParty');
-<<<<<<< HEAD
-const internshipServices = require('./internship.services');
-
-module.exports = {
-  userServices,
-  notificationDispatcher,
-  internshipServices,
-};
-=======
 const categoryServices = require('./category.services');
 const projectServices = require('./project.services');
 const courseServices = require('./course.services');
-const chapterServices = require('./chapter.services')
+const chapterServices = require('./chapter.services');
+const internshipServices = require('./internship.services')
 
 module.exports = {
     userServices,
@@ -21,5 +13,5 @@ module.exports = {
     courseServices,
     categoryServices,
     chapterServices,
+    internshipServices
 };
->>>>>>> 5051c78a0c99af6e764295604fbd0dac24ae933f

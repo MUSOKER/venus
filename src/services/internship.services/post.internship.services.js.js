@@ -27,6 +27,4 @@ const createInternship = async ({
   return saveInternship;
 };
 
-module.exports = {
-  createInternship, getAllInternship, deleteInternship, getInternshipById,
-};
+module.exports = { createInternship,getAllInternship, getInternshipById, deleteInternship}
