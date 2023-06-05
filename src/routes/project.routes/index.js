@@ -8,5 +8,4 @@ projectsRoutes.use(projectRoutes);
 
 projectsRoutes.use('*', () => error.throwNotFound({ item: 'Route' }));
 
-
 module.exports = projectsRoutes;

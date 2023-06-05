@@ -1,13 +1,13 @@
 const {
-    getCourses,
-    getCourse,
-    createCourse,
-    updateTheCourse,
+  getCourses,
+  getCourse,
+  createCourse,
+  updateTheCourse,
 } = require('./course.services');
-module.exports = {
-    getCourses,
-    getCourse,
-    createCourse,
-    updateTheCourse,
-};
 
+module.exports = {
+  getCourses,
+  getCourse,
+  createCourse,
+  updateTheCourse,
+};
