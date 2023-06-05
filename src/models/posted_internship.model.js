@@ -1,9 +1,13 @@
-const mongoose = require('mongoose');
-
+const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
 const postedInternshipSchema = new Schema(
   {
+    categoryId: {
+      type: Schema.Types.ObjectId,
+      ref: "category",
+      required: true,
+    },
 
     internshipTitle: {
       type: String,
@@ -38,38 +42,44 @@ const postedInternshipSchema = new Schema(
     },
     internshipStatus: {
       type: String,
-      enum: ['Active', 'Inactive'],
-      default: 'Active',
+      enum: ["Active", "Inactive"],
+      default: "Active",
     },
     internshipLocation: {
       type: String,
-      default: 'Point',
+      default: "Point",
     },
     experienceLevel: {
       type: String,
-      enum: ['Entry_Level', 'Junior_Level', 'Mid_Level', 'Senior_Level'],
+      enum: ["Entry_Level", "Junior_Level", "Mid_Level", "Senior_Level"],
+    },
+    companyId: {
+      type: Schema.Types.ObjectId,
+      ref: "Company",
+      required: true,
     },
     ApprovedAt: {
       type: Date,
     },
     approvedBy: {
       type: Schema.Types.ObjectId,
-      ref: 'User',
+      ref: "User",
     },
     status: {
       type: String,
-      enum: ['Approved', 'Rejected', 'Pending'],
-      default: 'Pending',
+      enum: ["Approved", "Rejected", "Pending"],
+      default: "Pending",
     },
   },
   {
     timestamps: true,
-  },
+  }
 );
 
 const PostedInternshipModel = mongoose.model(
-  'PostedInternship',
-  postedInternshipSchema,
+  "PostedInternship",
+  postedInternshipSchema
+
 );
 
 module.exports = PostedInternshipModel;

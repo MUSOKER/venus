@@ -1,10 +1,14 @@
-// const express = require('express');
-// const { deleteAppliedInternshipController, applyInternshipController } = require('../../controllers/internship/apply.internship.controller');
-// const internshipRoutes = require('./index');
+const express = require('express');
 
-// const applyInternshipRoute = express.Router();
-// const deleteAppliedInternshipRoute = express.Router();
+const { internshipControllers } = require('../../controllers');
 
-// // internshipRoutes.post('/applyinternship', applyInternshipController);
-// // internshipRoutes.delete('/delete', deleteAppliedInternshipController);
-// module.exports = { applyInternshipRoute, deleteAppliedInternshipRoute };
+const internshipRoutes = express.Router();
+
+internshipRoutes.post('/applyinternship', internshipControllers.applyInternship);
+
+internshipRoutes.delete('/delete', internshipControllers.deleteInternship);
+
+internshipRoutes.get('/appliedinternships', internshipControllers.getAppliedInternships);
+
+module.exports = internshipRoutes;
+
