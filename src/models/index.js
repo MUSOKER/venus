@@ -5,12 +5,11 @@ const AssignmentsModel = require('./assignment.model');
 const assignmentFeedbackModel = require('./assignment.feedback.model');
 const CourseAssignmentModel = require('./course.assignment.model');
 const UserIdentificationSchema = require('./user_identification.model');
-const UserIndentificationSchema = require('./user_identification.model');
 const ProjectModel = require('./project.model');
 const CategoryModel = require('./category.model');
-const ProjectModel = require('./project.model');
 const EnrolledCourseModel = require('./enrolledCourses.model');
 const AppliedInternshipModel = require('./applied_internship.model');
+const MessageModel = require('./message.model');
 
 module.exports = {
   UserModel,
@@ -24,4 +23,5 @@ module.exports = {
   EnrolledCourseModel,
   CategoryModel,
   AppliedInternshipModel,
+  MessageModel,
 };

@@ -1,4 +1,4 @@
-const { applyInternship, deleteInternship, getAppliedInternships } = require('./apply.internship.controller');
+const { applyInternship, deleteInternship, getAppliedInternships } = require('./apply.Internship.controller');
 
 module.exports = {
   applyInternship,
