@@ -23,5 +23,4 @@ const postedInternshipValidation = Joi.object({
 
 module.exports = {
   postedInternshipValidation,
-}
-
+};

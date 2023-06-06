@@ -1,4 +1,5 @@
 const { PostedInternshipModel, AppliedInternshipModel, UserModel } = require('../../models');
+
 const getUserId = async (id) => {
   const userId = await UserModel.findById({ _id: id });
   return userId;
@@ -32,7 +33,6 @@ const applyInternship = async (
     selectionStatus,
     additionalInformation,
   });
-
 
   const savedInternship = await appliedInternship.save({ session: transaction });
 
