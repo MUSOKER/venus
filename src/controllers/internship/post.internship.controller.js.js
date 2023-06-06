@@ -55,7 +55,7 @@ const findInternship = async (req, res, next) => {
 const removeInternship = async (req, res, next) => {
   try {
     const internshipId = await internshipValidation.postedInternshipValidation.validateAsync(req.params);
-    const deletedIntership = await internshipServices.getInternshipById({ internshipId });
+    const deletedIntership = await internshipServices.deleteInternship({ internshipId });
     return success.handler({ deletedIntership }, req, res, next);
   } catch (err) {
     return error.handler(err, req, res, next);
