@@ -1,7 +1,14 @@
 const userControllers = require('./user');
-const internshipController = require('./internship');
+const internshipControllers = require('./internship');
+const assignmentController = require('./assignment');
+const assignmentFeedBack = require('./assignment.Feedback');
+const courseAssignmentController = require('./courseAssignment');
 
 module.exports = {
   userControllers,
-  internshipController,
+  userControllers,
+  assignmentController,
+  assignmentFeedBack,
+  courseAssignmentController,
+  internshipControllers,
 };
