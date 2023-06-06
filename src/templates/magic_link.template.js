@@ -107,7 +107,7 @@ const magicLinkTemplate = (name, token) => {
                                   <td style="padding: 0 30px">
                                       <h4 style="font-size: 15px; color: #000000; font-weight: 600; margin: 0; text-transform: uppercase; margin-bottom: 10px">or</h4>
                                       <p style="margin-bottom: 10px;">If the button above does not work, paste this link into your web browser:</p>
-                                      <a href='https://enseedling-internship.onrender.com/user/verify?login_token=${token}' style="color: #6576ff; text-decoration:none;word-break: break-all;">https://internship.back.enseedling.com/user/verify?login_token=${token}</a>
+                                      <a href='https://enseedling-internship.onrender.com/user/verify?login_token=${token}' style="color: #6576ff; text-decoration:none;word-break: break-all;">https://enseedling-internship.onrender.com/user/verify?login_token=${token}</a>
                                   </td>
                               </tr>
                               <tr>
