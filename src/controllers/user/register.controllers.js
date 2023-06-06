@@ -11,6 +11,7 @@ const { userServices } = require('../../services');
 const registerUser = async (req, res, next) => {
   const transaction = await Transaction.startSession();
   try {
+    await transaction.startTransaction();
     // step 1. take all params from user and validate them
     const { email, fullName } = await userValidation.userloginValidation.validateAsync(req.body);
     // now check user exist with email or not
