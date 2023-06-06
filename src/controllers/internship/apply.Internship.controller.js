@@ -22,6 +22,20 @@ const applyInternship = async (req, res, next) => {
       additionalInformation,
     });
 
+const deleteAppliedInternshipController = async (req, res, next) => {
+  try {
+    const { internshipId } = req.params;
+
+    // Call the deleteAppliedInternship service to delete the applied internship
+    const deletedInternship = await deleteAppliedInternship(internshipId);
+    if (!deletedInternship) {
+      return res.status(404).json({ message: 'Applied internship not found' });
+    }
+
+    return res.json({ message: 'Applied internship deleted successfully' });
+  } catch (error) {
+    return next(error);
+
     return success.handler({ Internship }, req, res, next);
   } catch (err) {
     await transaction.abortTransaction();
@@ -59,4 +73,5 @@ const getAppliedInternships = async (req, res, next) => {
 
 module.exports = {
   applyInternship, deleteInternship, getAppliedInternships,
+
 };

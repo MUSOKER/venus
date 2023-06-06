@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-
 const { Schema } = mongoose;
 
 const postedInternshipSchema = new Schema(
@@ -9,6 +8,7 @@ const postedInternshipSchema = new Schema(
       ref: "category",
       required: true,
     },
+
     internshipTitle: {
       type: String,
       required: true,
@@ -79,6 +79,7 @@ const postedInternshipSchema = new Schema(
 const PostedInternshipModel = mongoose.model(
   "PostedInternship",
   postedInternshipSchema
+
 );
 
 module.exports = PostedInternshipModel;
