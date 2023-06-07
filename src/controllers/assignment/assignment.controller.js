@@ -47,7 +47,7 @@ const findAssignments = async (req, res, next) => {
     } = await assignmentValidation.findAssignmentValidation.validateAsync(req.query);
     const {
       assignmentId: _id,
-    } = await assignmentValidation.findAssignmentValidation.validateAsync(req.params);
+    } = await assignmentValidation.findAssignmentValidation.validateAsync(req.query);
     const assignments = await assignmentServices.getAssignments({
       _id,
       title,
