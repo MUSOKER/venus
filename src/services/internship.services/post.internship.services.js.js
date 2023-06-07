@@ -4,7 +4,7 @@ const getAllInternship = async () => PostedInternshipModel.find();
 
 const getInternshipById = async ({ id }) => PostedInternshipModel.findById({ id });
 
-const deleteInternship = async ({ id }) => PostedInternshipModel.findByIdAndDelete({ id });
+const removeInternship = async ({ id }) => PostedInternshipModel.findByIdAndDelete({ id });
 
 const createInternship = async ({
   internshipTitle, internshipDescription, internshipType, salary, skills, responsibilities, internshipEndDate,
@@ -28,5 +28,5 @@ const createInternship = async ({
 };
 
 module.exports = {
-  createInternship, getAllInternship, getInternshipById, deleteInternship,
+  createInternship, getAllInternship, getInternshipById, removeInternship,
 };
