@@ -10,13 +10,6 @@
         "camelcase": "off"
     },
     "overrides": [
-        // {
-        //     "files": "*.test.js",
-        //     "rules": {
-        //         "no-unused-expressions": "off",
-        //         "camelcase": "off"
-        //     }
-        // },
         {
             "files": "*.js",
             "rules": {

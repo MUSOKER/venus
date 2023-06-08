@@ -1,6 +1,8 @@
 const { success, error } = require('@Enseedling/enseedling-lib-handler');
 const {
-  Transaction, encryption, generateOTP, dispatcher, jwt,
+  Transaction,
+  encryption, generateOTP,
+  dispatcher, jwt,
 } = require('../../utils');
 const { userValidation } = require('../../validations');
 const { userServices } = require('../../services');
