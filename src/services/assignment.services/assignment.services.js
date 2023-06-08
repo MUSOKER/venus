@@ -38,7 +38,7 @@ const getAssignments = async ({
   if (title) {
     query.title = title;
   }
-  if (isActive) {
+  if (isActive !== undefined) {
     query.isActive = isActive;
   }
   if (difficultyLevel) {
