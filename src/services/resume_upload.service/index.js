@@ -1,4 +1,4 @@
-const { processFileService } = require("resume.service");
+const { processFileService } = require("./resume.services");
 
 module.exports = {
     processFileService,
