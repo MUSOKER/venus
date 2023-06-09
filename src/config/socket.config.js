@@ -1,5 +1,5 @@
 const socketio = require('socket.io');
-let io;
+
 // Create a map to store connected sockets and their associated receivers
 const socketReceiverMap = new Map();
 
@@ -33,14 +33,10 @@ const configureSocket = (server) => {
 
   return io;
 };
-
+let io;
 // Get the receiver associated with a socket
-const getReceiverBySocket = (socketId) => {
-  return socketReceiverMap.get(socketId);
-};
-const getIo = () => {
-  return io;
-};
+const getReceiverBySocket = (socketId) => socketReceiverMap.get(socketId);
+const getIo = () => io;
 
 module.exports = {
   configureSocket,
