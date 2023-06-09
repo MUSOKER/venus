@@ -41,6 +41,7 @@ const createCourse = async({
 });
 
 const updateTheCourse = async({
+    courseId,
     course_name,
     course_description,
     course_duration,

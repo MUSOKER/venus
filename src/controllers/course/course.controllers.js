@@ -1,10 +1,10 @@
 const { error, success } = require('@Enseedling/enseedling-lib-handler');
-
+const { Transaction } = require('../../utils');
 const { courseValidation } = require('../../validations');
 
 const { courseServices } = require('../../services');
 const createCourse = async(req, res, next) => {
-    const transaction = await transaction.startTransaction();
+    const transaction = await Transaction.startSession();
     try {
         await transaction.startTransaction();
         const {
@@ -26,7 +26,7 @@ const createCourse = async(req, res, next) => {
             instructorId,
             demo_video_src,
             meta_info
-        } = await courseValidation.addCoursetValidation.validateAsync(req.query);
+        } = await courseValidation.addCourseValidation.validateAsync(req.body);
         const course = await courseServices.createCourse({
             course_name,
             comments,
@@ -79,7 +79,7 @@ const updateCourse = async(req, res, next) => {
             instructorId,
             demo_video_src,
             meta_info
-        } = await courseValidation.updateCourseValidation.validateAsync(req.query);
+        } = await courseValidation.updateCourseValidation.validateAsync(req.body);
         const course = await courseServices.updateTheCourse({
             course_name,
             course_description,
@@ -114,7 +114,7 @@ const findCourses = async(req, res, next) => {
         /**
          * pass query parameters to service to filter data
          */
-        const courses = await courseServices.getcourses({
+        const courses = await courseServices.getCourses({
             courseName,
             category,
         });

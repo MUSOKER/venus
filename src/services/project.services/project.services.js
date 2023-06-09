@@ -8,9 +8,9 @@ const getProject = async({ projectId, projectTitle, category, userId, status }) 
             q._id = projectId;
         }
         if (projectTitle) {
-            q.projectId = projectId;
+            q.projectTitle = projectTitle;
         }
-        if (category && catgory.length > 0) {
+        if (category && category.length > 0) {
             q.category = { $in: category };
         }
         if (userId) {
