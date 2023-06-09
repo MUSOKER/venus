@@ -3,14 +3,14 @@ const Joi = require('joi');
 const { PROJECT_STATUS } = require('../../const');
 const { PROJECT_VISIBILITY } = require('../../const');
 
-const addCoursetValidation = Joi.object().keys({
+const addCourseValidation = Joi.object().keys({
     course_name: enseedlingValidator.generic.string.any.required().label('Course Name'),
     comments: Joi.array()
         .items(enseedlingValidator.generic.string.any)
         .label('Comments'),
     course_description: enseedlingValidator.generic.string.any.required().label('Course Description'),
     course_duration: enseedlingValidator.generic.number.integer.required().label('Course Duration'),
-    course_rating: enseedlingValidator._id.required().label('Course Rating'),
+    course_rating: enseedlingValidator._id.label('Course Rating'),
     course_thumb_image: enseedlingValidator.generic.string.medium.required().label('Course Thumb Image'),
     course_state: enseedlingValidator.generic.string.medium.label('Course State'),
     category_ids: enseedlingValidator._id.required().label('Category'),
@@ -20,11 +20,11 @@ const addCoursetValidation = Joi.object().keys({
     total_videos: enseedlingValidator.generic.number.integer.required().label('Total Video'),
     startDate: Joi.date().required().label('Start Date'),
     endDate: Joi.date().required().label('End Date'),
-    capacity: enseedlingValidator.generic.number.integer.required().label('Capacity'),
+    capacity: enseedlingValidator.generic.number.integer.label('Capacity'),
     status: enseedlingValidator.generic.string.medium.label('Course Status'),
-    createdBy: enseedlingValidator._id.required().label('Created By'),
-    instructorId: enseedlingValidator._id.required().label('Insructor'),
-    demo_video_src: enseedlingValidator.generic.string.medium.required().label('Demo Video src'),
+    createdBy: enseedlingValidator._id.label('Created By'),
+    instructorId: enseedlingValidator._id.label('Insructor'),
+    demo_video_src: enseedlingValidator.generic.string.medium.label('Demo Video src'),
     meta_info: Joi.array()
         .items(enseedlingValidator.generic.string.any)
         .label('Meta Info'),
@@ -69,6 +69,6 @@ const courseIdValidation = Joi.object().keys({
 module.exports = {
     getCoursesValidation,
     courseIdValidation,
-    addCoursetValidation,
+    addCourseValidation,
     updateCourseValidation,
 };

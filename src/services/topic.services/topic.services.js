@@ -36,7 +36,7 @@ const updateTopic = async ({
 }) =>
   await topicModel.findByIdAndUpdate(
     {
-      topic_id,
+      _id: topic_id,
       topic_name,
       topic_description,
       topic_duration,
@@ -49,7 +49,8 @@ const updateTopic = async ({
   );
 
 //delete topic
-const deleteTopic = async ({ id }) => await topicModel.deleteOne({ _id: id });
+const deleteTopic = async ({ id }) =>
+  await topicModel.findAndDeleteOne({ _id: id });
 
 module.exports = {
   createTopic,

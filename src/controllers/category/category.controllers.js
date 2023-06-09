@@ -30,10 +30,11 @@ const fetchCategoryById = async (req, res, next) => {
   const transaction = await Transaction.startSession();
   try {
     await transaction.startTransaction();
+   
     if(!req.params.id){
       throw error.throwNotFound({ message: "id not found" });
     }
-    const { id } = await categoryValidation.categoryIdValidation.validateAsync(
+    const {id} = await categoryValidation.categoryIdValidation.validateAsync(
       req.params
     );
     const category = await categoryServices.getCategoryById({id});
@@ -51,6 +52,7 @@ const fetchCategoryById = async (req, res, next) => {
 const deleteCategoryById = async (req, res, next) => {
   const transaction = await Transaction.startSession();
   try {
+     console.log(req.params.id);
     await transaction.startTransaction();
     const { id } = await categoryValidation.categoryIdValidation.validateAsync(
       req.params

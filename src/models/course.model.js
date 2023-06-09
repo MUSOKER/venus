@@ -60,27 +60,27 @@ const courseSchema = new Schema({
   topics: [{
     type: Schema.Types.ObjectId,
     ref: 'topic',
-    required: true,
+    // required: true,
   }],
   modules: [{
     type: Schema.Types.ObjectId,
     ref: 'module',
-    required: true,
+    // required: true,
   }],
   chapters: [{
     type: Schema.Types.ObjectId,
     ref: 'module',
-    required: true,
+    // required: true,
   }],
     createdBy: {
         type: Schema.Types.ObjectId,
         ref: 'user',
-        required: true,
+        // required: true,
     },
     instructorId: {
         type: Schema.Types.ObjectId,
         ref: 'user',
-        required: true,
+        // required: true,
     },
     demo_video_src: {
         type: String,

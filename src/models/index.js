@@ -5,6 +5,7 @@ const UserIdentificationSchema = require('./user_identification.model');
 const CategoryModel = require('./category.model');
 const ProjectModel = require('./project.model');
 const EnrolledCourseModel = require('./enrolledCourses.model');
+const CourseModel = require('./course.model')
 
 module.exports = {
   UserModel,
@@ -14,4 +15,5 @@ module.exports = {
   ProjectModel,
   EnrolledCourseModel,
   CategoryModel,
+  CourseModel,
 };
