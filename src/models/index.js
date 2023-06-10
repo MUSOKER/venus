@@ -7,6 +7,8 @@ const ProjectModel = require('./project.model');
 const EnrolledCourseModel = require('./enrolledCourses.model');
 const ChapterModel = require('./chapter.model');
 const CourseModel = require('./course.model');
+const TeacherModel = require('./teacher.model');
+const TeacherRatingModel = require('./rating.teacher.model')
 module.exports = {
     UserModel,
     AddressModel,
@@ -17,4 +19,6 @@ module.exports = {
     CategoryModel,
     ChapterModel,
     CourseModel,
+    TeacherModel,
+    TeacherRatingModel,
 };

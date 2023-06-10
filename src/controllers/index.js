@@ -4,6 +4,7 @@ const projectControllers = require('./project');
 const courseControllers = require('./course');
 const chaptertControllers = require('./Chapter');
 const uploadControllers = require('./upload_resume');
+const teacherControllers = require('./teacher');
 module.exports = {
     userControllers,
     projectControllers,
@@ -11,4 +12,5 @@ module.exports = {
     categoryControllers,
     chaptertControllers,
     uploadControllers,
+    teacherControllers,
 };
