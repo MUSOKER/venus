@@ -108,7 +108,7 @@ const deleteTeacherById = async(req, res, next) => {
 const getTeacher = async(req, res, next) => {
     try {
         const { teacherName, teacherId } = await teacherValidation.getTeacherValidation.validateAsync(req.query);
-        const teachers = await teacherServices.getTeacher({ teacherName, teacherId });
+        const teachers = await teacherServices.getTeacher({ teacherId, teacherName });
         return success.handler({ teachers },
             req, res, next);
 

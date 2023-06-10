@@ -110,11 +110,12 @@ const updateCourse = async(req, res, next) => {
 
 const findCourses = async(req, res, next) => {
     try {
-        const { courseName, category } = await courseValidation.getCoursesValidation.validateAsync(req.query);
+        const { courseId, courseName, category } = await courseValidation.getCoursesValidation.validateAsync(req.query);
         /**
          * pass query parameters to service to filter data
          */
         const courses = await courseServices.getCourses({
+            courseId,
             courseName,
             category,
         });

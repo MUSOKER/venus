@@ -2,7 +2,7 @@ const { TeacherModel } = require('../../models');
 
 
 // Fetching projects
-const getTeacher = async({ teacherId, teacherName }) => {
+const getTeacher = async({ teacherName }) => {
         let q = {};
         if (teacherId) {
             q._id = teacherId;

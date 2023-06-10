@@ -77,8 +77,11 @@ const updateTheCourse = async({
     }, { returnedDocument: 'after' },
 );
 
-const getCourses = async({ courseName, category }) => {
+const getCourses = async({ courseId, courseName, category }) => {
     const filter = { is_Active: true };
+    if (courseId) {
+        filter._id = courseId;
+    }
     if (courseName) {
         filter.course_name = courseName;
     }
