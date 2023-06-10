@@ -3,7 +3,7 @@ const { topicControllers } = require("../../controllers");
 
 const updateTopicRoutes = express.Router();
 
-updateTopicRoutes.put("/:topicId", topicControllers.updateTopic);
+updateTopicRoutes.put("/:id", topicControllers.updateTopic);
 
 module.exports = {
   updateTopicRoutes,

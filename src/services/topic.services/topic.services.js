@@ -1,4 +1,4 @@
-const { topicModel } = require("../../models");
+const { TopicModel } = require("../../models");
 
 //if course exist, create topic
 const createTopic = async ({
@@ -10,7 +10,7 @@ const createTopic = async ({
   demo_src,
   course_id,
 }) =>
-  await topicModel.create({
+  await TopicModel.create({
     topic_name,
     topic_description,
     topic_duration,
@@ -21,7 +21,7 @@ const createTopic = async ({
   });
 
 //find all topic by course id
-const getAllTopics = async ({ course_id }) => await topicModel.find(course_id);
+const getAllTopics = async ({ course_id }) => await TopicModel.find({course_id});
 
 //update all fields
 const updateTopic = async ({
@@ -34,9 +34,9 @@ const updateTopic = async ({
   demo_src,
   course_id,
 }) =>
-  await topicModel.findByIdAndUpdate(
+  await TopicModel.findByIdAndUpdate(
+    topic_id,
     {
-      _id: topic_id,
       topic_name,
       topic_description,
       topic_duration,
@@ -45,12 +45,12 @@ const updateTopic = async ({
       demo_src,
       course_id,
     },
-    { returnedDocument: "after" }
+    { new: true }
   );
 
 //delete topic
-const deleteTopic = async ({ id }) =>
-  await topicModel.findAndDeleteOne({ _id: id });
+const deleteTopic = async ({ topic_id }) =>
+  await TopicModel.findOneAndDelete({ _id: topic_id });
 
 module.exports = {
   createTopic,

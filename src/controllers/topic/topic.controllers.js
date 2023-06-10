@@ -1,5 +1,5 @@
 const { success, error } = require("@Enseedling/enseedling-lib-handler");
-const { Transaction } = require("../../utils");
+const { Transaction } = require("../../utils/");
 const { topicValidation } = require("../../validations");
 const { topicServices } = require("../../services");
 
@@ -7,7 +7,7 @@ const { topicServices } = require("../../services");
 const getAllTopics = async (req, res, next) => {
   try {
     const { course_id } =
-      await topicValidation.getTopicsValidation.validateAsync(req.params);
+      await topicValidation.getTopicsValidation.validateAsync({course_id: req.params.id});
     const topics = await topicServices.getAllTopics({
       course_id,
     });
@@ -21,15 +21,15 @@ const deleteTopic = async (req, res, next) => {
   const transaction = await Transaction.startSession();
   try {
     await transaction.startTransaction();
-    const { id } = await topicValidation.topicIdValidation.validateAsync(
-      req.params
+    const {  topic_id} = await topicValidation.topicIdValidation.validateAsync(
+      { topic_id: req.params.id,}
     );
-    const deleteTopic = await topicServices.deleteTopic({ id });
-    if (!deleteTopic) {
+    const deletedTopic = await topicServices.deleteTopic({ topic_id });
+    if (!deletedTopic) {
       throw error.throwNotFound({ message: "topic not found" });
     }
     return success.handler(
-      { message: "topic has been successfully deleted." },
+      {deletedTopic},
       req,
       res,
       next
@@ -43,7 +43,7 @@ const deleteTopic = async (req, res, next) => {
 };
 
 const createTopic = async (req, res, next) => {
-  const transaction = await transaction.startTransaction();
+  const transaction = await Transaction.startSession();
   try {
     await transaction.startTransaction();
     const {
@@ -54,7 +54,7 @@ const createTopic = async (req, res, next) => {
       topic_info,
       demo_src,
       course_id,
-    } = await topicValidation.addTopicValidation.validateAsync(req.query);
+    } = await topicValidation.addTopicValidation.validateAsync(req.body);
     const topic = await topicServices.createTopic(
       {
         topic_name,
@@ -89,19 +89,21 @@ const updateTopic = async (req, res, next) => {
       demo_src,
       course_id,
     } = await topicValidation.updateTopicValidation.validateAsync(req.body);
-    const { topic_id } =
-      await projectValidation.projectIdValidation.validateAsync(req.params);
-    await topicServices.updateTopic({
-      topic_id,
-      topic_name,
-      topic_description,
-      topic_duration,
-      totalVideos,
-      topic_info,
-      demo_src,
-      course_id,
+    const {topic_id} = await topicValidation.topicIdValidation.validateAsync({
+      topic_id: req.params.id,
     });
-    return success.handler({ message: "topic updated" }, req, res, next);
+  
+   const updatedTopic = await topicServices.updateTopic({
+     topic_id,
+     topic_name,
+     topic_description,
+     topic_duration,
+     totalVideos,
+     topic_info,
+     demo_src,
+     course_id,
+   });
+    return success.handler({updatedTopic}, req, res, next);
   } catch (err) {
     await transaction.abortTransaction();
     return error.handler(err, req, res, next);
