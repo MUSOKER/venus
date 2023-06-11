@@ -8,13 +8,13 @@ const courseAssignmentExist = async ({ assignmentId: _id }) => {
 };
 
 const createCourseAssignment = async ({
-  courseID,
+  courseId,
   assignmentId,
   status,
   courseCompletition,
 }, transaction) => {
   const CourseAssignment = new CourseAssignmentModel({
-    courseID,
+    courseId,
     assignmentId,
     status,
     courseCompletition,
