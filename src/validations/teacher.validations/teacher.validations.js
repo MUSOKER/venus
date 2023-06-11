@@ -4,43 +4,7 @@ const Joi = require('joi');
 const createTeacherValidation = Joi.object().keys({
     teacherName: enseedlingValidator.name.label('Teacher Full Name'),
     email: enseedlingValidator.email.label('Email'),
-    contactNo: Joi.array().items(enseedlingValidator.phoneNo).label('Contact Number'),
-    profilePic: enseedlingValidator.generic.string.medium.label('Profile Pic'),
-    description: enseedlingValidator.generic.string.medium.label('Description'),
-    qualification: Joi.array().items(Joi.object().keys({
-        instituteName: enseedlingValidator.generic.string.small.required().label('Institute Name'),
-        degree: enseedlingValidator.generic.string.small.required().label('degree'),
-        fieldOfStudy: enseedlingValidator.generic.string.small.required().label('Field Of Study'),
-        fromDate: enseedlingValidator.generic.string.small.required().label('From Date'),
-        toDate: enseedlingValidator.generic.string.small.required().label('To  Date'),
-    })).label('Qualification'),
-    document_certificates: Joi.array().items(Joi.object().keys({
-        documentName: enseedlingValidator.generic.string.small.required().label('Document Certificate Name'),
-        document: enseedlingValidator.generic.string.small.required().label('Document'),
-    })).label('Documents'),
-    experience: Joi.array().items(Joi.object().keys({
-        companyName: enseedlingValidator.generic.string.small.required().label('Company Name'),
-        roleDescription: enseedlingValidator.generic.string.small.required().label('Role Description'),
-        role: enseedlingValidator.generic.string.small.required().label('Role'),
-        employmentType: enseedlingValidator.generic.string.small.required().label('Employment Type'),
-        fromDate: enseedlingValidator.generic.string.small.required().label('From Date'),
-        toDate: enseedlingValidator.generic.string.small.required().label('To  Date'),
-    })).label('Experience'),
-    designation: Joi.array().items(enseedlingValidator.generic.string.small).label('Skills'),
-    expertise: Joi.array().items(enseedlingValidator.generic.string.small).label('Preferences'),
-    is_active: enseedlingValidator.generic.boolean.valid(true, false).label('Is Active').default(true),
-    socialMedia: Joi.array().items(Joi.object().keys({
-        mediaName: enseedlingValidator.generic.string.small.required().label('Media Name'),
-        socialLink: enseedlingValidator.generic.string.small.required().label('Social Link'),
-    })).label('Social Media'),
-
-});
-
-// update techer validation
-const updateTeacherValidation = Joi.object().keys({
-    teacherName: enseedlingValidator.name.label('Teacher Full Name'),
-    email: enseedlingValidator.email.label('Email'),
-    contactNo: Joi.array().items(enseedlingValidator.phoneNo).label('Contact Number'),
+    contactNo: Joi.string().label('Contact Number'),
     profilePic: enseedlingValidator.generic.string.medium.label('Profile Pic'),
     description: enseedlingValidator.generic.string.medium.label('Description'),
     qualification: Joi.array().items(Joi.object().keys({
@@ -62,8 +26,44 @@ const updateTeacherValidation = Joi.object().keys({
         fromDate: enseedlingValidator.generic.string.small.label('From Date'),
         toDate: enseedlingValidator.generic.string.small.label('To  Date'),
     })).label('Experience'),
-    designation: Joi.array().items(enseedlingValidator.generic.string.small).label('Designation'),
-    expertise: Joi.array().items(enseedlingValidator.generic.string.small).label('Expertise'),
+    designation: Joi.string().label('Designation'),
+    expertise: Joi.string().label('Expertise'),
+    is_active: enseedlingValidator.generic.boolean.valid(true, false).label('Is Active').default(true),
+    socialMedia: Joi.array().items(Joi.object().keys({
+        mediaName: enseedlingValidator.generic.string.small.required().label('Media Name'),
+        socialLink: enseedlingValidator.generic.string.small.required().label('Social Link'),
+    })).label('Social Media'),
+
+});
+
+// update techer validation
+const updateTeacherValidation = Joi.object().keys({
+    teacherName: enseedlingValidator.name.label('Teacher Full Name'),
+    email: enseedlingValidator.email.label('Email'),
+    contactNo: Joi.string().label('Contact Number'),
+    profilePic: enseedlingValidator.generic.string.medium.label('Profile Pic'),
+    description: enseedlingValidator.generic.string.medium.label('Description'),
+    qualification: Joi.array().items(Joi.object().keys({
+        instituteName: enseedlingValidator.generic.string.small.required().label('Institute Name'),
+        degree: enseedlingValidator.generic.string.small.label('degree'),
+        fieldOfStudy: enseedlingValidator.generic.string.small.label('Field Of Study'),
+        fromDate: enseedlingValidator.generic.string.small.label('From Date'),
+        toDate: enseedlingValidator.generic.string.small.label('To  Date'),
+    })).label('Qualification'),
+    document_certificates: Joi.array().items(Joi.object().keys({
+        documentName: enseedlingValidator.generic.string.small.label('Document Certificate Name'),
+        document: enseedlingValidator.generic.string.small.label('Document'),
+    })).label('Documents'),
+    experience: Joi.array().items(Joi.object().keys({
+        companyName: enseedlingValidator.generic.string.small.label('Company Name'),
+        roleDescription: enseedlingValidator.generic.string.small.label('Role Description'),
+        role: enseedlingValidator.generic.string.small.label('Role'),
+        employmentType: enseedlingValidator.generic.string.small.label('Employment Type'),
+        fromDate: enseedlingValidator.generic.string.small.label('From Date'),
+        toDate: enseedlingValidator.generic.string.small.label('To  Date'),
+    })).label('Experience'),
+    designation: Joi.string().label('Designation'),
+    expertise: Joi.string().label('Expertise'),
     is_active: enseedlingValidator.generic.boolean.valid(true, false).label('Is Active').default(true),
     socialMedia: Joi.array().items(Joi.object().keys({
         mediaName: enseedlingValidator.generic.string.small.required().label('Media Name'),

@@ -2,7 +2,7 @@ const { TeacherModel } = require('../../models');
 
 
 // Fetching projects
-const getTeacher = async({ teacherName }) => {
+const getTeacher = async({ teacherId, teacherName }) => {
         let q = {};
         if (teacherId) {
             q._id = teacherId;
@@ -13,7 +13,7 @@ const getTeacher = async({ teacherName }) => {
         return TeacherModel.find(q);
     }
     // Deleting project by projectId
-const deleteTeacherById = async({ id }) => ProjectModel.findAndDeleteOne({ id });
+const deleteTeacherById = async({ id }) => TeacherModel.findOneAndDelete({ id });
 
 const createTeacher = async({
     teacherName,

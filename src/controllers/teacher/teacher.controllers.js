@@ -61,7 +61,7 @@ const updateTeacher = async(req, res, next) => {
             expertise,
             socialMedia,
         } = await teacherValidation.updateTeacherValidation.validateAsync(req.body);
-        const { teacherId } = await teacherValidation.teacherIdValidation.validateAsync(req.params);
+        const { teacherId } = await teacherValidation.deleteTeacherValidation.validateAsync(req.params);
         await teacherServices.updateTheTeacher({
             teacherId,
             teacherName,
@@ -91,9 +91,9 @@ const deleteTeacherById = async(req, res, next) => {
     const transaction = await Transaction.startSession();
     try {
         await transaction.startTransaction();
-        const id = await teacherValidation.teacherIdValidation.validateAsync(req.params.id);
+        const id = await teacherValidation.deleteTeacherValidation.validateAsync(req.params.id);
         // check user exits or not
-        const teacher = await teacherServices.deleteteacherById({ id });
+        const teacher = await teacherServices.deleteTeacherById({ id });
         if (!teacher) {
             throw error.throwNotFound({ message: 'Teacher' });
         }
