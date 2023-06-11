@@ -5,8 +5,7 @@ const courseAssignmentSchema = new mongoose.Schema({
   courseId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'courses',
-    // required: true,
-    // course table is empty, ( required false)
+    required: true,
   },
   assignmentId: {
     type: mongoose.Schema.Types.ObjectId,

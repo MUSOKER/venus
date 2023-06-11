@@ -15,7 +15,7 @@ const addAssignmentValidation = Joi.object().keys({
     .required()
     .label('isActive'),
   category: Joi.array()
-    .items(enseedlingValidations.generic.string.small)
+    .items(enseedlingValidations._id)
     .required()
     .label('Category'),
   topics: Joi.array()
