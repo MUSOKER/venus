@@ -1,25 +1,25 @@
 const userValidation = require('./user.validations');
+const assignmentValidation = require('./assignments.validations');
+const assignmentFeedBackValidation = require('./assignment.feedback.validations');
+const courseAssignmentValidation = require('./course.assignment.validations');
 const projectValidation = require('./project.validations');
 const categoryValidation = require('./category.validations');
+const internshipValidation = require('./internship.validations');
 const courseValidation = require('./course.validations');
-<<<<<<< HEAD
-const topicValidation = require("./topic.validations")
-
+const topicValidation = require('./topic.validations');
+const chapterValidation = require('./chapter.validations');
+const messagesValidation = require('./message.validations');
 
 module.exports = {
   userValidation,
   projectValidation,
   categoryValidation,
+  internshipValidation,
+  assignmentValidation,
+  assignmentFeedBackValidation,
+  courseAssignmentValidation,
   courseValidation,
+  chapterValidation,
+  messagesValidation,
   topicValidation,
-=======
-const chapterValidation = require('./chapter.validations');
-
-module.exports = {
-    userValidation,
-    projectValidation,
-    categoryValidation,
-    courseValidation,
-    chapterValidation,
->>>>>>> 548fe013358a35cd3ac5c8d98c5f8c4ec56e015e
 };

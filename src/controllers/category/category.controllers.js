@@ -9,13 +9,13 @@ const fetchCategory = async (req, res, next) => {
   try {
     await transaction.startTransaction();
     const { categoryName } = req.query;
-      // check for category 
+    // check for category
     const category = await categoryServices.getCategory({ categoryName });
-      return success.handler(
-      { message: "Categories has been successfully fetched", category },
+    return success.handler(
+      { message: 'Categories has been successfully fetched', category },
       req,
       res,
-      next
+      next,
     );
   } catch (err) {
     await transaction.abortTransaction();
@@ -30,17 +30,24 @@ const fetchCategoryById = async (req, res, next) => {
   const transaction = await Transaction.startSession();
   try {
     await transaction.startTransaction();
-   
-    if(!req.params.id){
-      throw error.throwNotFound({ message: "id not found" });
+    if (!req.params.id) {
+      throw error.throwNotFound({ message: 'id not found' });
     }
-    const {id} = await categoryValidation.categoryIdValidation.validateAsync(
-      req.params
+
+    const { id } = await categoryValidation.categoryIdValidation.validateAsync(
+      req.params,
     );
-    const category = await categoryServices.getCategoryById({id});
+    const category = await categoryServices.getCategoryById({ id });
     if (!category) {
       throw error.throwNotFound({ message: 'category not found' });
-    } else { return success.handler({ message: 'Category successfully fetched', category }, req, res, next); }
+    } else {
+      return success.handler(
+        { message: 'Category successfully fetched', category },
+        req,
+        res,
+        next,
+      );
+    }
   } catch (err) {
     await transaction.abortTransaction();
     return error.handler(err, req, res, next);
@@ -52,18 +59,21 @@ const fetchCategoryById = async (req, res, next) => {
 const deleteCategoryById = async (req, res, next) => {
   const transaction = await Transaction.startSession();
   try {
-     console.log(req.params.id);
+    console.log(req.params.id);
     await transaction.startTransaction();
     const { id } = await categoryValidation.categoryIdValidation.validateAsync(
-      req.params
+      req.params,
     );
     const deleteCategory = await categoryServices.deleteCategoryById({ id });
     if (!deleteCategory) {
-      throw error.throwNotFound({ message: "category not found" });
+      throw error.throwNotFound({ message: 'category not found' });
     }
     return success.handler(
-      { message: "category has been successfully deleted." },
-      req,res,next );
+      { message: 'category has been successfully deleted.' },
+      req,
+      res,
+      next,
+    );
   } catch (err) {
     await transaction.abortTransaction();
     return error.handler(err, req, res, next);
@@ -77,16 +87,15 @@ const createCategory = async (req, res, next) => {
   try {
     await transaction.startTransaction();
     // step 1. take all params from category and validate them
-    const { categoryName, categoryDescription, categoryVersion } =
-      await categoryValidation.addCategoryValidation.validateAsync(req.body);
-  // check if category name and version exist 
+    const { categoryName, categoryDescription, categoryVersion } = await categoryValidation.addCategoryValidation.validateAsync(req.body);
+    // check if category name and version exist
     const existingCategory = await categoryServices.checkNameAndVersion({
       categoryName,
       categoryVersion,
     });
-     if (existingCategory) {
+    if (existingCategory) {
       throw error.throwConflict({
-        message: "Category with the same name and version already exists",
+        message: 'Category with the same name and version already exists',
       });
     }
     // create new category
@@ -100,7 +109,7 @@ const createCategory = async (req, res, next) => {
     await transaction.abortTransaction();
     return error.handler(err, req, res, next);
   } finally {
-     await transaction.endSession();
+    await transaction.endSession();
   }
 };
 

@@ -5,7 +5,6 @@ const {
   updateTopicValidation,
 } = require('./topic.validations');
 
-
 module.exports = {
   addTopicValidation,
   getTopicsValidation,
