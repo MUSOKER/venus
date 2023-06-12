@@ -1,53 +1,53 @@
-const { topicModel } = require('../../models');
+const { TopicModel } = require('../../models');
 
 // if course exist, create topic
 const createTopic = async ({
-  topic_name,
-  topic_description,
-  topic_duration,
+  topicName,
+  topicDescription,
+  topicDuration,
   totalVideos,
-  topic_info,
-  demo_src,
-  course_id,
-}) => topicModel.create({
-  topic_name,
-  topic_description,
-  topic_duration,
+  topicInfo,
+  demoSrc,
+  courseId,
+}) => TopicModel.create({
+  topicName,
+  topicDescription,
+  topicDuration,
   totalVideos,
-  topic_info,
-  demo_src,
-  course_id,
+  topicInfo,
+  demoSrc,
+  courseId,
 });
 
 // find all topic by course id
-const getAllTopics = async ({ course_id }) => topicModel.find(course_id);
+const getAllTopics = async ({ courseId }) => TopicModel.find({ courseId });
 
 // update all fields
 const updateTopic = async ({
-  topic_id,
-  topic_name,
-  topic_description,
-  topic_duration,
+  topicId,
+  topicName,
+  topicDescription,
+  topicDuration,
   totalVideos,
-  topic_info,
-  demo_src,
-  course_id,
-}) => topicModel.findByIdAndUpdate(
+  topicInfo,
+  demoSrc,
+  courseId,
+}) => TopicModel.findByIdAndUpdate(
+  topicId,
   {
-    topic_id,
-    topic_name,
-    topic_description,
-    topic_duration,
+    topicName,
+    topicDescription,
+    topicDuration,
     totalVideos,
-    topic_info,
-    demo_src,
-    course_id,
+    topicInfo,
+    demoSrc,
+    courseId,
   },
-  { returnedDocument: 'after' },
+  { new: true },
 );
 
 // delete topic
-const deleteTopic = async ({ id }) => topicModel.deleteOne({ _id: id });
+const deleteTopic = async ({ topicId }) => TopicModel.findOneAndDelete({ _id: topicId });
 
 module.exports = {
   createTopic,

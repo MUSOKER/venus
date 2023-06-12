@@ -60,18 +60,40 @@ const courseSchema = new Schema({
   topics: [{
     type: Schema.Types.ObjectId,
     ref: 'topic',
-    required: true,
+    // required: true,
   }],
   modules: [{
     type: Schema.Types.ObjectId,
     ref: 'module',
-    required: true,
+    // required: true,
   }],
   chapters: [{
     type: Schema.Types.ObjectId,
     ref: 'module',
-    required: true,
+    // required: true,
   }],
+<<<<<<< HEAD
+    createdBy: {
+        type: Schema.Types.ObjectId,
+        ref: 'user',
+        // required: true,
+    },
+    instructorId: {
+        type: Schema.Types.ObjectId,
+        ref: 'user',
+        // required: true,
+    },
+    demo_video_src: {
+        type: String,
+    },
+    meta_info: {
+        type: Array,
+    },
+    is_Active: {
+        type: Boolean,
+        default: true,
+    },
+=======
   createdBy: {
     type: Schema.Types.ObjectId,
     ref: 'user',
@@ -92,6 +114,7 @@ const courseSchema = new Schema({
     type: Boolean,
     default: true,
   },
+>>>>>>> d400164d1c0f98c59398600677daa2d10a6f082d
 }, {
   timestamps: true,
 });

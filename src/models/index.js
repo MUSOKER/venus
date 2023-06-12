@@ -9,6 +9,8 @@ const ProjectModel = require('./project.model');
 const CategoryModel = require('./category.model');
 const PostedInternshipModel = require('./posted_internship.model');
 const EnrolledCourseModel = require('./enrolledCourses.model');
+const CourseModel = require('./course.model');
+const TopicModel = require('./topic.model');
 const AppliedInternshipModel = require('./applied_internship.model');
 const MessageModel = require('./message.model');
 const ChapterModel = require('./chapter.model');
@@ -30,4 +32,5 @@ module.exports = {
   UserIdentificationSchema,
   MessageModel,
   CourseModel,
+  TopicModel,
 };

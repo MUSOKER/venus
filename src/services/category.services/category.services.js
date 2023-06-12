@@ -8,7 +8,7 @@ const getCategory = async ({ categoryName }) => {
   }
   return CategoryModel.find(query);
 };
-const deleteCategoryById = async ({ id }) => CategoryModel.deleteOne({ _id: id });
+const deleteCategoryById = async ({ id }) => CategoryModel.findOneAndDelete({ _id: id });
 const checkNameAndVersion = async ({ categoryName, categoryVersion }) => {
   const category = await CategoryModel.findOne({ categoryName, categoryVersion });
   return category;
