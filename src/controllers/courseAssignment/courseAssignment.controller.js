@@ -35,10 +35,10 @@ const addCourseAssignment = async (req, res, next) => {
 const findCourseAssignment = async (req, res, next) => {
   try {
     const {
+      courseAssignmentsId: _id,
       status,
       courseCompletition,
     } = await courseAssignmentValidation.findCourseAssignmentVal.validateAsync(req.query);
-    const { courseAssignmentsId: _id } = await courseAssignmentValidation.findCourseAssignmentVal.validateAsync(req.params);
     const courseAssignments = await courseAssignmentServices.getCourseAssignment({
       _id,
       status,
