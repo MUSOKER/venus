@@ -115,7 +115,7 @@ const findCourses = async (req, res, next) => {
     /**
          * pass query parameters to service to filter data
          */
-    const courses = await courseServices.getcourses({
+    const courses = await courseServices.getCourses({
       courseName,
       category,
     });
