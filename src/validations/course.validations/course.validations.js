@@ -61,7 +61,7 @@ const getCoursesValidation = Joi.object().keys({
 });
 
 const courseIdValidation = Joi.object().keys({
-  projectId: enseedlingValidator._id.required().label('Course Id'),
+  courseId: enseedlingValidator._id.required().label('Course Id'),
 });
 
 module.exports = {

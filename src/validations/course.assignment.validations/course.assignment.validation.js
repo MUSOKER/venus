@@ -4,8 +4,7 @@ const Joi = require('joi');
 // courseId  assignmentId  status  courseCompletition
 
 const addCourseAssignmentVal = Joi.object().keys({
-  // course table is empty, required will be added after course table
-  // courseId: enseedlingValidations._id.required().label('Course Id'),
+  courseId: enseedlingValidations._id.required().label('Course Id'),
   assignmentId: enseedlingValidations._id.required().label('Assignment Id'),
   status: enseedlingValidations.generic.number.integer
     .required()
@@ -20,8 +19,7 @@ const addCourseAssignmentVal = Joi.object().keys({
 
 const findCourseAssignmentVal = Joi.object().keys({
   courseAssignmentsId: enseedlingValidations._id.label('Course Assignment Id'),
-  // courseId: enseedlingValidations._id.label('Course Id'),
-  assignmentId: enseedlingValidations._id.label('Assignment Id'),
+  courseId: enseedlingValidations._id.label('Course Id'),
   status: enseedlingValidations.generic.number.integer
     .min(0)
     .max(100)
@@ -32,7 +30,7 @@ const findCourseAssignmentVal = Joi.object().keys({
 });
 
 const updateCourseAssignmentVal = Joi.object().keys({
-  // courseId: enseedlingValidations._id.required().label('Course Id'),
+  courseId: enseedlingValidations._id.required().label('Course Id'),
   assignmentId: enseedlingValidations._id.required().label('Assignment Id'),
   status: enseedlingValidations.generic.number.integer
     .min(0)

@@ -16,7 +16,7 @@ const addProjectValidation = Joi.object().keys({
   projectImage: enseedlingValidator.generic.string.medium.label('Project Image'),
   projectMilestone: enseedlingValidator.generic.string.medium.label('Project Milestone'),
   status: enseedlingValidator.generic.number.integer.valid(PROJECT_STATUS.pending, PROJECT_STATUS.in_progress, PROJECT_STATUS.completed, PROJECT_STATUS.to_do).label('Status'),
-  category_ids: enseedlingValidator._id.required().label('Category'),
+  categoryIds: enseedlingValidator._id.required().label('Category'),
   userId: enseedlingValidator._id.required().label('User Id'),
 });
 

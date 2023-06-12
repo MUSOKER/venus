@@ -119,13 +119,13 @@ const courseSchema = new Schema({
   timestamps: true,
 });
 
-courseSchema.pre(/^find/, function (next) {
-  this.populate({
-    path: 'topics, modules, chapters ',
-    select: 'topic_name, topics_description, module_name, module_description, chapter_name, video_src',
-  });
-  next();
-});
+// courseSchema.pre(/^find/, function (next) {
+//   this.populate({
+//     path: 'topics, modules, chapters ',
+//     select: 'topic_name, topics_description, module_name, module_description, chapter_name, video_src',
+//   });
+//   next();
+// });
 
 const CourseModel = mongoose.model('course', courseSchema);
 module.exports = CourseModel;

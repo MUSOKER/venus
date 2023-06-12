@@ -14,6 +14,7 @@ const TopicModel = require('./topic.model');
 const AppliedInternshipModel = require('./applied_internship.model');
 const MessageModel = require('./message.model');
 const ChapterModel = require('./chapter.model');
+const CourseModel = require('./course.model');
 
 module.exports = {
   UserModel,

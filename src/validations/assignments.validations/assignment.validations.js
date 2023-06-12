@@ -2,12 +2,12 @@ const enseedlingValidations = require('@Enseedling/enseedling-validations');
 const Joi = require('joi');
 
 const addAssignmentValidation = Joi.object().keys({
-  title: enseedlingValidations.generic.string.medium.required().label('Title'),
+  title: enseedlingValidations.generic.string.small.required().label('Title'),
   description: enseedlingValidations.generic.string.any
     .required()
     .label('Description'),
   requirements: Joi.array()
-    .items(enseedlingValidations.generic.string.small)
+    .items(enseedlingValidations.generic.string.medium)
     .required()
     .label('Requirements'),
   isActive: enseedlingValidations.generic.boolean
@@ -15,7 +15,7 @@ const addAssignmentValidation = Joi.object().keys({
     .required()
     .label('isActive'),
   category: Joi.array()
-    .items(enseedlingValidations.generic.string.small)
+    .items(enseedlingValidations._id)
     .required()
     .label('Category'),
   topics: Joi.array()
@@ -33,7 +33,7 @@ const addAssignmentValidation = Joi.object().keys({
 
 const findAssignmentValidation = Joi.object().keys({
   assignmentId: enseedlingValidations._id.label('Assignment Id'),
-  title: enseedlingValidations.generic.string.medium.label('Title'),
+  title: enseedlingValidations.generic.string.small.label('Title'),
   category: Joi.array()
     .items(enseedlingValidations.generic.string.small)
     .label('Category'),
@@ -46,10 +46,10 @@ const findAssignmentValidation = Joi.object().keys({
 });
 
 const updateAssignmentValidation = Joi.object().keys({
-  title: enseedlingValidations.generic.string.medium.label('Title'),
+  title: enseedlingValidations.generic.string.small.label('Title'),
   description: enseedlingValidations.generic.string.any.label('Description'),
   requirements: Joi.array()
-    .items(enseedlingValidations.generic.string.small)
+    .items(enseedlingValidations.generic.string.medium)
     .label('Requirements'),
   isActive: enseedlingValidations.generic.boolean
     .valid(true, false)
