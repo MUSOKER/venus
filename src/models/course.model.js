@@ -75,12 +75,12 @@ const courseSchema = new Schema({
     createdBy: {
         type: Schema.Types.ObjectId,
         ref: 'user',
-        required: true,
+        // required: true,
     },
     instructorId: {
         type: Schema.Types.ObjectId,
         ref: 'user',
-        required: true,
+        // required: true,
     },
     demo_video_src: {
         type: String,
@@ -92,6 +92,7 @@ const courseSchema = new Schema({
         type: Boolean,
         default: true,
     },
+
 }, {
     timestamps: true,
 });
@@ -124,3 +125,10 @@ module.exports = CourseModel;
 //   }],
 //  }]
 //  }
+// courseSchema.pre(/^find/, function (next) {
+//   this.populate({
+//     path: 'topics, modules, chapters ',
+//     select: 'topic_name, topics_description, module_name, module_description, chapter_name, video_src',
+//   });
+//   next();
+// });

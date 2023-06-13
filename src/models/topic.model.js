@@ -3,27 +3,27 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const topicSchema = new Schema({
-  course_id: {
+  courseId: {
     type: Schema.Types.ObjectId,
     ref: 'course',
     required: true,
   },
-  topic_name: {
+  topicName: {
     type: String,
     required: true,
   },
-  topic_description: {
+  topicDescription: {
     type: String,
     required: true,
   },
-  topic_duration: {
+  topicDuration: {
     type: Number,
     required: true,
   },
-  topic_info: {
+  topicInfo: {
     type: String,
   },
-  demo_src: {
+  demoSrc: {
     type: String,
   },
   totalVideos: {

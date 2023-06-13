@@ -4,6 +4,7 @@ const { PROJECT_STATUS } = require('../../const');
 const { PROJECT_VISIBILITY } = require('../../const');
 
 const addProjectValidation = Joi.object().keys({
+<<<<<<< HEAD
     comments: Joi.array()
         .items(enseedlingValidator.generic.string.any)
         .label('Comments'),
@@ -18,42 +19,57 @@ const addProjectValidation = Joi.object().keys({
     status: enseedlingValidator.generic.number.integer.valid(PROJECT_STATUS.pending, PROJECT_STATUS.in_progress, PROJECT_STATUS.completed, PROJECT_STATUS.to_do).label('Status'),
     category_ids: enseedlingValidator._id.required().label('Category Id'),
     userId: enseedlingValidator._id.required().label('User Id'),
+=======
+  comments: Joi.array()
+    .items(enseedlingValidator.generic.string.any)
+    .label('Comments'),
+  visibility: enseedlingValidator.generic.number.integer.valid(PROJECT_VISIBILITY.public, PROJECT_VISIBILITY.private).label('Visibility'),
+  startDate: Joi.date().required().label('Start Date'),
+  endDate: Joi.date().required().label('End Date'),
+  projectTitle: enseedlingValidator.generic.string.any.required().label('Project Title'),
+  projectDescription: enseedlingValidator.generic.string.any.required().label('Project Description'),
+  projectLink: enseedlingValidator.generic.string.medium.required().label('Project Link'),
+  projectImage: enseedlingValidator.generic.string.medium.label('Project Image'),
+  projectMilestone: enseedlingValidator.generic.string.medium.label('Project Milestone'),
+  status: enseedlingValidator.generic.number.integer.valid(PROJECT_STATUS.pending, PROJECT_STATUS.in_progress, PROJECT_STATUS.completed, PROJECT_STATUS.to_do).label('Status'),
+  categoryIds: enseedlingValidator._id.required().label('Category'),
+  userId: enseedlingValidator._id.required().label('User Id'),
+>>>>>>> e0e2b89f8d2df9d3edf72c47a96b002d635b8d80
 });
 
 const getProjectValidation = Joi.object().keys({
-    projectTitle: enseedlingValidator.generic.string.medium.label('Project Title'),
-    status: enseedlingValidator.generic.number.integer.valid(PROJECT_STATUS.pending, PROJECT_STATUS.in_progress, PROJECT_STATUS.completed, PROJECT_STATUS.to_do),
-    projectId: enseedlingValidator._id.label('Project Id'),
-    userId: enseedlingValidator._id.label('User Id'),
-    categoryIds: Joi.array()
-        .items(enseedlingValidator._id)
-        .label('Category Ids'),
+  projectTitle: enseedlingValidator.generic.string.medium.label('Project Title'),
+  status: enseedlingValidator.generic.number.integer.valid(PROJECT_STATUS.pending, PROJECT_STATUS.in_progress, PROJECT_STATUS.completed, PROJECT_STATUS.to_do),
+  projectId: enseedlingValidator._id.label('Project Id'),
+  userId: enseedlingValidator._id.label('User Id'),
+  categoryIds: Joi.array()
+    .items(enseedlingValidator._id)
+    .label('Category Ids'),
 });
 const userIdValidation = Joi.object().keys({
-    userId: enseedlingValidator._id.required()
+  userId: enseedlingValidator._id.required(),
 });
 
-
 const updateProjectValidation = Joi.object().keys({
-    comments: Joi.array()
-        .items(enseedlingValidator.generic.string.any)
-        .label('Comments'),
-    visibility: enseedlingValidator.generic.number.integer.valid(PROJECT_VISIBILITY.public, PROJECT_VISIBILITY.private).label('Visibility'),
-    startDate: Joi.date().label('Start Date'),
-    endDate: Joi.date().label('End Date'),
-    projectTitle: enseedlingValidator.generic.string.any.label('Project Title'),
-    projectDescription: enseedlingValidator.generic.string.any.label('Project Description'),
-    projectLink: enseedlingValidator.generic.string.medium.label('Project Link'),
-    projectImage: enseedlingValidator.generic.string.medium.label('Project Image'),
-    projectMilestone: enseedlingValidator.generic.string.medium.label('Project Milestone'),
-    status: enseedlingValidator.generic.number.integer.valid(PROJECT_STATUS.pending, PROJECT_STATUS.in_progress, PROJECT_STATUS.completed, PROJECT_STATUS.to_do).label('Status'),
-    categoryIds: enseedlingValidator._id.label('Category'),
-    userId: enseedlingValidator._id.label('User Id'),
+  comments: Joi.array()
+    .items(enseedlingValidator.generic.string.any)
+    .label('Comments'),
+  visibility: enseedlingValidator.generic.number.integer.valid(PROJECT_VISIBILITY.public, PROJECT_VISIBILITY.private).label('Visibility'),
+  startDate: Joi.date().label('Start Date'),
+  endDate: Joi.date().label('End Date'),
+  projectTitle: enseedlingValidator.generic.string.any.label('Project Title'),
+  projectDescription: enseedlingValidator.generic.string.any.label('Project Description'),
+  projectLink: enseedlingValidator.generic.string.medium.label('Project Link'),
+  projectImage: enseedlingValidator.generic.string.medium.label('Project Image'),
+  projectMilestone: enseedlingValidator.generic.string.medium.label('Project Milestone'),
+  status: enseedlingValidator.generic.number.integer.valid(PROJECT_STATUS.pending, PROJECT_STATUS.in_progress, PROJECT_STATUS.completed, PROJECT_STATUS.to_do).label('Status'),
+  categoryIds: enseedlingValidator._id.label('Category'),
+  userId: enseedlingValidator._id.label('User Id'),
 });
 
 module.exports = {
-    addProjectValidation,
-    getProjectValidation,
-    userIdValidation,
-    updateProjectValidation,
+  addProjectValidation,
+  getProjectValidation,
+  userIdValidation,
+  updateProjectValidation,
 };

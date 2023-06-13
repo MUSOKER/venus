@@ -3,8 +3,6 @@ const { categoryControllers } = require('../../controllers');
 
 const createCategoryRoutes = express.Router();
 
+createCategoryRoutes.post('/', categoryControllers.createCategory);
 
-createCategoryRoutes.post("/create", categoryControllers.createCategory);
-
-module.exports = 
- {createCategoryRoutes} 
+module.exports = { createCategoryRoutes };

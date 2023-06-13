@@ -99,7 +99,7 @@ const updateCourse = async(req, res, next) => {
             demo_video_src,
             meta_info,
         });
-        return success.handler({ message: 'course updated' }, req, res, next);
+        return success.handler({ message: 'course updated', course }, req, res, next);
     } catch (err) {
         await transaction.abortTransaction();
         return error.handler(err, req, res, next);
@@ -110,7 +110,7 @@ const updateCourse = async(req, res, next) => {
 
 const findCourses = async(req, res, next) => {
     try {
-        const { courseId, courseName, category } = await courseValidation.getCoursesValidation.validateAsync(req.query);
+        const { courseId, courseName, category } = await courseValidation.getCoursesValidation.validateAsync(req.params);
         /**
          * pass query parameters to service to filter data
          */
@@ -123,24 +123,11 @@ const findCourses = async(req, res, next) => {
     } catch (err) {
         return error.handler(err, req, res, next);
     }
-};
 
-const findCourse = async(req, res, next) => {
-    try {
-        const courseId = await courseValidation.courseIdValidation.validateAsync(req.params);
-        const course = await courseServices.getCourse(courseId);
-        if (!course) {
-            throw error.throwNotFound({ message: 'Course' });
-        }
-        return success.handler({ course }, req, res, next);
-    } catch (err) {
-        return error.handler(err, req, res, next);
-    }
 };
 
 module.exports = {
     findCourses,
-    findCourse,
     updateCourse,
     createCourse,
 };
