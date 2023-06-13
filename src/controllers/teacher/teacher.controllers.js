@@ -62,7 +62,7 @@ const updateTeacher = async(req, res, next) => {
             socialMedia,
         } = await teacherValidation.updateTeacherValidation.validateAsync(req.body);
         const { teacherId } = await teacherValidation.deleteTeacherValidation.validateAsync(req.params);
-        await teacherServices.updateTheTeacher({
+        const teacher = await teacherServices.updateTheTeacher({
             teacherId,
             teacherName,
             email,
@@ -76,7 +76,7 @@ const updateTeacher = async(req, res, next) => {
             expertise,
             socialMedia,
         });
-        return success.handler({ message: 'teacher updated' }, req, res, next);
+        return success.handler({ message: 'teacher updated', teacher }, req, res, next);
     } catch (err) {
         await transaction.abortTransaction();
         return error.handler(err, req, res, next);
@@ -97,7 +97,7 @@ const deleteTeacherById = async(req, res, next) => {
         if (!teacher) {
             throw error.throwNotFound({ message: 'Teacher' });
         }
-        return success.handler({ message: 'Teacher has been successfully deleted.' }, req, res, next);
+        return success.handler({ message: 'Teacher has been successfully deleted.', teacher }, req, res, next);
     } catch (err) {
         await transaction.abortTransaction();
         return error.handler(err, req, res, next);

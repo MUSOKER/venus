@@ -26,9 +26,9 @@ const createTeacherValidation = Joi.object().keys({
         fromDate: enseedlingValidator.generic.string.small.label('From Date'),
         toDate: enseedlingValidator.generic.string.small.label('To  Date'),
     })).label('Experience'),
-    designation: Joi.string().label('Designation'),
-    expertise: Joi.string().label('Expertise'),
-    is_active: enseedlingValidator.generic.boolean.valid(true, false).label('Is Active').default(true),
+    designation: enseedlingValidator.generic.string.small.label('Designation'),
+    expertise: enseedlingValidator.generic.string.small.label('Expertise'),
+    isActive: enseedlingValidator.generic.boolean.valid(true, false).label('Is Active').default(true),
     socialMedia: Joi.array().items(Joi.object().keys({
         mediaName: enseedlingValidator.generic.string.small.required().label('Media Name'),
         socialLink: enseedlingValidator.generic.string.small.required().label('Social Link'),
@@ -40,7 +40,7 @@ const createTeacherValidation = Joi.object().keys({
 const updateTeacherValidation = Joi.object().keys({
     teacherName: enseedlingValidator.name.label('Teacher Full Name'),
     email: enseedlingValidator.email.label('Email'),
-    contactNo: Joi.string().label('Contact Number'),
+    contactNo: enseedlingValidator.generic.string.small.label('Contact Number'),
     profilePic: enseedlingValidator.generic.string.medium.label('Profile Pic'),
     description: enseedlingValidator.generic.string.medium.label('Description'),
     qualification: Joi.array().items(Joi.object().keys({
@@ -62,9 +62,9 @@ const updateTeacherValidation = Joi.object().keys({
         fromDate: enseedlingValidator.generic.string.small.label('From Date'),
         toDate: enseedlingValidator.generic.string.small.label('To  Date'),
     })).label('Experience'),
-    designation: Joi.string().label('Designation'),
-    expertise: Joi.string().label('Expertise'),
-    is_active: enseedlingValidator.generic.boolean.valid(true, false).label('Is Active').default(true),
+    designation: enseedlingValidator.generic.string.small.label('Designation'),
+    expertise: enseedlingValidator.generic.string.small.label('Expertise'),
+    isActive: enseedlingValidator.generic.boolean.valid(true, false).label('Is Active').default(true),
     socialMedia: Joi.array().items(Joi.object().keys({
         mediaName: enseedlingValidator.generic.string.small.required().label('Media Name'),
         socialLink: enseedlingValidator.generic.string.small.required().label('Social Link'),
@@ -78,7 +78,7 @@ const getTeacherValidation = Joi.object().keys({
     categoryIds: Joi.array()
         .items(enseedlingValidator._id)
         .label('Category Ids'),
-    is_Active: Joi.boolean().label('Is Active')
+    isActive: Joi.boolean().label('Is Active')
 });
 const deleteTeacherValidation = Joi.object().keys({
     teacherId: enseedlingValidator._id.required().label('Teacher Id')

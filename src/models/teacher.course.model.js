@@ -8,7 +8,7 @@ const teacherCourseSchema = new Schema({
         ref: 'teacher',
         required: true,
     },
-    userId: {
+    courseId: {
         type: Schema.Types.ObjectId,
         ref: 'course',
         required: true,
