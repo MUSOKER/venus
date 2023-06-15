@@ -25,7 +25,7 @@ apiRoutes.use('/course', coursesRoutes);
 apiRoutes.use('/topic', topicRoutes);
 apiRoutes.use('/chapter', chapterRoutes);
 apiRoutes.use('/message', messagesRoutes);
-apiRoutes.use("/teacher", teachersRoutes);
+apiRoutes.use('/teacher', teachersRoutes);
 
 apiRoutes.use('*', () => error.throwNotFound({ item: 'Route' }));
 

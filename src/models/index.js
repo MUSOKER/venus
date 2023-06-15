@@ -15,24 +15,25 @@ const MessageModel = require('./message.model');
 const ChapterModel = require('./chapter.model');
 const CourseModel = require('./course.model');
 const TeacherModel = require('./teacher.model');
-const TeacherRatingModel = require('./rating.teacher.model')
+const TeacherRatingModel = require('./rating.teacher.model');
+
 module.exports = {
-    UserModel,
-    AddressModel,
-    AdminModel,
-    UserIdentificationSchema,
-    ProjectModel,
-    EnrolledCourseModel,
-    CategoryModel,
-    ChapterModel,
-    CourseModel,
-    TeacherModel,
-    TeacherRatingModel,
-    AppliedInternshipModel,
-    PostedInternshipModel,
-    AssignmentsModel,
-    assignmentFeedbackModel,
-    CourseAssignmentModel,
-    MessageModel,
-    TopicModel,
+  UserModel,
+  AddressModel,
+  AdminModel,
+  UserIdentificationSchema,
+  ProjectModel,
+  EnrolledCourseModel,
+  CategoryModel,
+  ChapterModel,
+  CourseModel,
+  TeacherModel,
+  TeacherRatingModel,
+  AppliedInternshipModel,
+  PostedInternshipModel,
+  AssignmentsModel,
+  assignmentFeedbackModel,
+  CourseAssignmentModel,
+  MessageModel,
+  TopicModel,
 };

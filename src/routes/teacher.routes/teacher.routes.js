@@ -8,5 +8,4 @@ teacherRoutes.put('/:teacherId', authentication, teacherControllers.updateTeache
 teacherRoutes.get('/getTeachers', authentication, teacherControllers.getTeacher);
 teacherRoutes.delete('/:teacherId', authentication, teacherControllers.deleteTeacherById);
 
-
 module.exports = teacherRoutes;
