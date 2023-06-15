@@ -40,57 +40,6 @@ const createCourse = async ({
   meta_info,
 });
 
-<<<<<<< HEAD
-const updateTheCourse = async({
-    courseId,
-    course_name,
-    course_description,
-    course_duration,
-    course_rating,
-    course_thumb_image,
-    category_ids,
-    social_media_links,
-    total_videos,
-    startDate,
-    endDate,
-    capacity,
-    createdBy,
-    instructorId,
-    demo_video_src,
-    meta_info,
-}) => CourseModel.findByIdAndUpdate(
-    courseId, {
-        course_name,
-        course_description,
-        course_duration,
-        course_rating,
-        course_thumb_image,
-        category_ids,
-        social_media_links,
-        total_videos,
-        startDate,
-        endDate,
-        capacity,
-        createdBy,
-        instructorId,
-        demo_video_src,
-        meta_info,
-    }, { returnedDocument: 'after' },
-);
-
-const getCourses = async({ courseId, courseName, category }) => {
-    const filter = { is_Active: true };
-    if (courseId) {
-        filter._id = courseId;
-    }
-    if (courseName) {
-        filter.course_name = courseName;
-    }
-    if (category) {
-        filter.category_ids = { $in: category };
-    }
-    return CourseModel.find(filter);
-=======
 const updateTheCourse = async ({
   courseId,
   course_name,
@@ -135,7 +84,6 @@ const getCourses = async ({ courseName, category }) => {
     filter.category_ids = { $in: category };
   }
   return CourseModel.find(filter);
->>>>>>> e0e2b89f8d2df9d3edf72c47a96b002d635b8d80
 };
 
 const getCourse = async ({ courseId }) => CourseModel.findById(courseId);
