@@ -8,6 +8,7 @@ const internshipValidation = require('./internship.validations');
 const courseValidation = require('./course.validations');
 const chapterValidation = require('./chapter.validations');
 const messagesValidation = require('./message.validations');
+const uploadValidation = require('./upload.validations');
 
 module.exports = {
   userValidation,
@@ -20,5 +21,5 @@ module.exports = {
   courseValidation,
   chapterValidation,
   messagesValidation,
+  uploadValidation,
 };
-

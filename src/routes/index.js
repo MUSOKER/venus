@@ -11,6 +11,7 @@ const assignmentRoutes = require('./assignment.routes');
 const assignmentFeedBackRoute = require('./assignment.feedback.routes');
 const courseAssignmentRoutes = require('./course.assignments.routes');
 const messagesRoutes = require('./message.routes');
+const uploadsRoutes = require('./upload.routes');
 
 const apiRoutes = express.Router();
 apiRoutes.use('/user', userRoutes);
@@ -23,6 +24,8 @@ apiRoutes.use('/course', coursesRoutes);
 apiRoutes.use('/topic', topicRoutes);
 apiRoutes.use('/chapter', chapterRoutes);
 apiRoutes.use('/message', messagesRoutes);
+apiRoutes.use('/message', messagesRoutes);
+apiRoutes.use('/file', uploadsRoutes);
 
 apiRoutes.use('*', () => error.throwNotFound({ item: 'Route' }));
 

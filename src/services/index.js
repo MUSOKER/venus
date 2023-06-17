@@ -11,6 +11,7 @@ const chapterServices = require('./chapter.services');
 const internshipServices = require('./internship.services');
 const topicServices = require('./topic.services');
 const messageServices = require('./message.services');
+const gcpServices = require('./gcp.services');
 
 module.exports = {
   userServices,
@@ -26,4 +27,5 @@ module.exports = {
   chapterServices,
   messageServices,
   internshipServices,
+  gcpServices,
 };

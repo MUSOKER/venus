@@ -9,14 +9,21 @@ exports.uploadFile = async (filePath, destFileName, bucketName = 'enseedling') =
   return res;
 };
 
-exports.uploadFileAndGetSignedUrl = async (filePath, destFileName, bucketName = 'enseedling') => {
-  await storage
-    .bucket(bucketName)
-    .upload(filePath, { destination: destFileName });
-  return this.getFileURL(bucketName, destFileName);
+// exports.uploadFileAndGetSignedUrl = async (filePath, destFileName, bucketName = 'roger-venus') => {
+//   await storage
+//     .bucket(bucketName)
+//     .upload(filePath, { destination: destFileName });
+//   return this.getFileURL(bucketName, destFileName);
+// };
+exports.uploadFileAndGetSignedUrl = async (filePath, destFileName, bucketName = 'roger-venus') => {
+  await storage.bucket(bucketName).upload(filePath, {
+    destination: destFileName,
+  });
+
+  return this.getFileURL(destFileName);
 };
 
-exports.getFileURL = async (fileName, time = 30, bucketName = 'enseedling') => {
+exports.getFileURL = async (fileName, time = 30, bucketName = 'roger-venus') => {
   const options = {
     version: 'v4',
     action: 'read',
@@ -72,7 +79,7 @@ exports.generateV4UploadSignedUrl = async (
   return response;
 };
 
-exports.configureBucketCors = async (bucketName = 'enseedling') => {
+exports.configureBucketCors = async (bucketName = 'roger-venus') => {
   try {
     await storage.bucket(bucketName).setCorsConfiguration([
       {
