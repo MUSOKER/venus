@@ -8,6 +8,8 @@ const categoryServices = require('./category.services');
 const projectServices = require('./project.services');
 const courseServices = require('./course.services');
 const chapterServices = require('./chapter.services');
+const processFileService = require('./resume_upload.service');
+const teacherServices = require('./teacher.services');
 const internshipServices = require('./internship.services');
 const topicServices = require('./topic.services');
 const messageServices = require('./message.services');
@@ -27,5 +29,7 @@ module.exports = {
   chapterServices,
   messageServices,
   internshipServices,
+  teacherServices,
+  processFileService,
   gcpServices,
 };

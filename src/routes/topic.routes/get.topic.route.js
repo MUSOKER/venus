@@ -3,7 +3,7 @@ const { topicControllers } = require('../../controllers');
 
 const getTopicRoutes = express.Router();
 
-getTopicRoutes.get('/:courseId', topicControllers.getAllTopics);
+getTopicRoutes.get('/:id', topicControllers.getAllTopics);
 
 module.exports = {
   getTopicRoutes,

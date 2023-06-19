@@ -6,7 +6,9 @@ const projectValidation = require('./project.validations');
 const categoryValidation = require('./category.validations');
 const internshipValidation = require('./internship.validations');
 const courseValidation = require('./course.validations');
+const topicValidation = require('./topic.validations');
 const chapterValidation = require('./chapter.validations');
+const teacherValidation = require('./teacher.validations');
 const messagesValidation = require('./message.validations');
 const uploadValidation = require('./upload.validations');
 
@@ -22,4 +24,6 @@ module.exports = {
   chapterValidation,
   messagesValidation,
   uploadValidation,
+  topicValidation,
+  teacherValidation,
 };

@@ -12,7 +12,7 @@ const fetchCategory = async (req, res, next) => {
     // check for category
     const category = await categoryServices.getCategory({ categoryName });
     return success.handler(
-      { message: 'Categories has been successfully fetched', category },
+      { category },
       req,
       res,
       next,
@@ -33,13 +33,16 @@ const fetchCategoryById = async (req, res, next) => {
     if (!req.params.id) {
       throw error.throwNotFound({ message: 'id not found' });
     }
+
     const { id } = await categoryValidation.categoryIdValidation.validateAsync(
       req.params,
     );
     const category = await categoryServices.getCategoryById({ id });
     if (!category) {
       throw error.throwNotFound({ message: 'category not found' });
-    } else { return success.handler({ message: 'Category successfully fetched', category }, req, res, next); }
+    } else {
+      return success.handler({ category }, req, res, next);
+    }
   } catch (err) {
     await transaction.abortTransaction();
     return error.handler(err, req, res, next);
@@ -59,12 +62,7 @@ const deleteCategoryById = async (req, res, next) => {
     if (!deleteCategory) {
       throw error.throwNotFound({ message: 'category not found' });
     }
-    return success.handler(
-      { message: 'category has been successfully deleted.' },
-      req,
-      res,
-      next,
-    );
+    return success.handler({ deleteCategory }, req, res, next);
   } catch (err) {
     await transaction.abortTransaction();
     return error.handler(err, req, res, next);

@@ -6,10 +6,12 @@ const courseAssignmentController = require('./courseAssignment');
 const categoryControllers = require('./category');
 const projectControllers = require('./project');
 const courseControllers = require('./course');
-const topicControllers = require('./topic');
 const chapterControllers = require('./chapter');
+const topicControllers = require('./topic');
 const messageControllers = require('./message');
-const uploadControllers = require('./upload');
+const uploadControllers = require('./upload_resume');
+const teacherControllers = require('./teacher');
+const uploadFileControllers = require('./upload');
 
 module.exports = {
   userControllers,
@@ -24,4 +26,6 @@ module.exports = {
   chapterControllers,
   messageControllers,
   uploadControllers,
+  teacherControllers,
+  uploadFileControllers,
 };

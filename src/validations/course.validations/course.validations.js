@@ -1,7 +1,7 @@
 const enseedlingValidator = require('@Enseedling/enseedling-validations');
 const Joi = require('joi');
 
-const addCoursetValidation = Joi.object().keys({
+const addCourseValidation = Joi.object().keys({
   course_name: enseedlingValidator.generic.string.any.required().label('Course Name'),
   comments: Joi.array()
     .items(enseedlingValidator.generic.string.any)
@@ -67,6 +67,6 @@ const courseIdValidation = Joi.object().keys({
 module.exports = {
   getCoursesValidation,
   courseIdValidation,
-  addCoursetValidation,
+  addCourseValidation,
   updateCourseValidation,
 };

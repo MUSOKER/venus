@@ -1,13 +1,13 @@
 const {
   getCoursesValidation,
   courseIdValidation,
-  addCoursetValidation,
+  addCourseValidation,
   updateCourseValidation,
 } = require('./course.validations');
 
 module.exports = {
   getCoursesValidation,
   courseIdValidation,
-  addCoursetValidation,
+  addCourseValidation,
   updateCourseValidation,
 };

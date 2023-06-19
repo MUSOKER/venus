@@ -9,25 +9,31 @@ const ProjectModel = require('./project.model');
 const CategoryModel = require('./category.model');
 const PostedInternshipModel = require('./posted_internship.model');
 const EnrolledCourseModel = require('./enrolledCourses.model');
+const TopicModel = require('./topic.model');
 const AppliedInternshipModel = require('./applied_internship.model');
 const MessageModel = require('./message.model');
 const ChapterModel = require('./chapter.model');
 const CourseModel = require('./course.model');
+const TeacherModel = require('./teacher.model');
+const TeacherRatingModel = require('./rating.teacher.model');
 
 module.exports = {
   UserModel,
   AddressModel,
   AdminModel,
+  UserIdentificationSchema,
   ProjectModel,
+  EnrolledCourseModel,
+  CategoryModel,
+  ChapterModel,
+  CourseModel,
+  TeacherModel,
+  TeacherRatingModel,
   AppliedInternshipModel,
   PostedInternshipModel,
-  CategoryModel,
-  EnrolledCourseModel,
-  ChapterModel,
   AssignmentsModel,
   assignmentFeedbackModel,
   CourseAssignmentModel,
-  UserIdentificationSchema,
   MessageModel,
-  CourseModel,
+  TopicModel,
 };

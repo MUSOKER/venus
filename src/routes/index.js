@@ -7,6 +7,7 @@ const coursesRoutes = require('./course.routes');
 const categoryRoutes = require('./category.routes');
 const topicRoutes = require('./topic.routes');
 const chapterRoutes = require('./chapter.routes');
+const teachersRoutes = require('./teacher.routes');
 const assignmentRoutes = require('./assignment.routes');
 const assignmentFeedBackRoute = require('./assignment.feedback.routes');
 const courseAssignmentRoutes = require('./course.assignments.routes');
@@ -18,7 +19,8 @@ apiRoutes.use('/user', userRoutes);
 apiRoutes.use('/internship', internshipRoutes);
 apiRoutes.use('/assignments', assignmentRoutes);
 apiRoutes.use('/assignment_feedback', assignmentFeedBackRoute);
-apiRoutes.use('/course_assignments', courseAssignmentRoutes); apiRoutes.use('/category', categoryRoutes);
+apiRoutes.use('/course_assignments', courseAssignmentRoutes);
+apiRoutes.use('/category', categoryRoutes);
 apiRoutes.use('/project', projectsRoutes);
 apiRoutes.use('/course', coursesRoutes);
 apiRoutes.use('/topic', topicRoutes);
@@ -26,6 +28,7 @@ apiRoutes.use('/chapter', chapterRoutes);
 apiRoutes.use('/message', messagesRoutes);
 apiRoutes.use('/message', messagesRoutes);
 apiRoutes.use('/file', uploadsRoutes);
+apiRoutes.use('/teacher', teachersRoutes);
 
 apiRoutes.use('*', () => error.throwNotFound({ item: 'Route' }));
 

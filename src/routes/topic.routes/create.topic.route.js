@@ -3,6 +3,6 @@ const { topicControllers } = require('../../controllers');
 
 const createTopicRoutes = express.Router();
 
-createTopicRoutes.post('/create', topicControllers.createTopic);
+createTopicRoutes.post('/', topicControllers.createTopic);
 
 module.exports = { createTopicRoutes };
