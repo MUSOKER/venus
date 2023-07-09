@@ -16,10 +16,10 @@ const messageSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    entity_id: {
-      type: mongoose.Schema.Types.ObjectId,
-      required: true,
-    },
+    // entity_id: {
+    //   type: mongoose.Schema.Types.ObjectId,
+    //   required: true,
+    // },
     entity_name: {
       type: String,
       required: true,
